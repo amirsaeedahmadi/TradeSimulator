@@ -1,6 +1,6 @@
 # TradeSimulator
 
-# Tamrin1Mobile
+# Project Mobile
 تمرین یک برنامه سازی موبایل
 ## Teammates
 <ul>
