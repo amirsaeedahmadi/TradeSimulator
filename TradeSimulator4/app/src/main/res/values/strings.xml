@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Weather</string>
+    <string name="app_name">TradeSim</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="home"> Home </string>
     <string name="setting">Setting</string>
