@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,8 +29,14 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ImageView logoView;
+        TextView nameView, codeView;//todo: other attributes ...
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            logoView = itemView.findViewById(R.id.currencyLogoImageView);
+            nameView = itemView.findViewById(R.id.currencyNameTextView);
+            codeView = itemView.findViewById(R.id.currencyCodeTextView);
         }
 
         @Override
@@ -39,10 +47,16 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (getItemCount() != 0) {
-            //holder.courseName.setText(courses.get(position).courseName);
-
-        }
+//        if (getItemCount() != 0) {
+//            //holder.courseName.setText(courses.get(position).courseName);
+//            return;
+//
+//        }
+        Currency currency = Currency.getCurrencies().get(position);
+        holder.logoView.setImageResource(currency.getLogo());
+        holder.nameView.setText(currency.getName());
+        holder.codeView.setText(currency.getCode());
+        //todo: to add other attributes ...
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

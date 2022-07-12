@@ -3,10 +3,14 @@ package ir.mas.tradesim;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import ir.mas.tradesim.Model.Currency;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +19,8 @@ import android.view.ViewGroup;
  */
 public class HomeFragment extends Fragment {
 
+    CurrencyRecyclerViewAdapter adapter;
+    RecyclerView currencyRecyclerView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -52,6 +58,7 @@ public class HomeFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+//            Currency.initialize();
         }
     }
 
@@ -59,6 +66,13 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        //
+        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        Currency.initialize();
+        currencyRecyclerView = root.findViewById(R.id.CurrencyRecyclerView);
+        currencyRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new CurrencyRecyclerViewAdapter(getContext());
+        currencyRecyclerView.setAdapter(adapter);
+        return root;
     }
 }

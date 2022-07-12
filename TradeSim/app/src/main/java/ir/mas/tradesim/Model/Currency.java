@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.R;
 
 public class Currency {
     static ArrayList<Currency> currencies = new ArrayList<Currency>();
@@ -29,6 +30,8 @@ public class Currency {
         if (getCurrencyByCode(code) != null) {
             throw new DuplicateCodeException(code);
         }
+
+        currencies.add(this);
 
     }
 
@@ -68,6 +71,48 @@ public class Currency {
         return currencies;
     }
 
+    /*TODO: to modify it completely, now it is just for simulation and should be modified
+      TODO ... to get the data from the server
+    */
+    public static void initialize() {
+        try {
+            new Currency("Monero", "XMR", R.drawable.ic_monero_xmr_logo);
+            new Currency("Bitcoin", "BTC", R.drawable.ic_bitcoin_btc_logo);
+            new Currency("Ethereum", "ETH", R.drawable.ic_ethereum_eth_logo);
+            new Currency("Litecoin", "LTC", R.drawable.ic_litecoin_ltc_logo);
+            new Currency("Dogecoin", "DOGE", R.drawable.ic_dogecoin_doge_logo);
+            new Currency("Decentraland Mana", "MANA", R.drawable.ic_decentraland_mana_logo);
+            new Currency("Shiba Inu", "SHIB", R.drawable.ic_shiba_inu_shib_logo);
+            new Currency("The Sandbox", "SAND", R.drawable.ic_the_sandbox_sand_logo);
+            new Currency("Bitcoin Cash", "BCH", R.drawable.ic_bitcoin_cash_bch_logo);
+        } catch (DuplicateNameException e) {
+            e.printStackTrace();
+        } catch (DuplicateCodeException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @author Mahdi Teymoori Anar
+     * @return total Rial credit, sum of all Rial values
+     * @implNote It does not count the Rial credit which is not on any other currency, just currencies' equivalent Rial
+     * @throws NotAbleToUpdateException if unable to calculate the equivalent Rial of even one currency
+     * */
+    public static double getTotalRial() throws NotAbleToUpdateException {
+        double total = 0;
+        for (Currency currency :
+                currencies) {
+            total += currency.getRialEquivalent();
+        }
+        return total;
+    }
+
+
+
+
+
+
+
     /**
      * @author Mahdi Teymoori Anar
      * @return the Rial equivalent value of the user's credit which equals to credit * price
@@ -77,9 +122,10 @@ public class Currency {
         if (price != -1) {
             return this.credit * this.price;
         }
-        else throw new NotAbleToUpdateException();
+        else if (this.credit == 0) {return 0;} else throw new NotAbleToUpdateException();
     }
 
+    // getters and setters
     public String getName() {
         return name;
     }
