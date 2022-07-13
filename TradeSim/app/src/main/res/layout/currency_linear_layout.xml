@@ -14,7 +14,7 @@
         android:layout_marginTop="10pt"
         android:layout_marginBottom="10pt"
         android:layout_weight="1"
-        android:minWidth="40pt"
+        android:minWidth="30pt"
         app:srcCompat="@android:drawable/ic_menu_help" />
 
     <LinearLayout
@@ -49,13 +49,13 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/currencyPriceTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:gravity="center_vertical"
-        android:minWidth="60pt"
+        android:minWidth="70pt"
         android:text="TextView"
         android:textAlignment="viewStart" />
 
@@ -70,14 +70,14 @@
         android:textAlignment="viewStart">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/currencyCreditTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textAlignment="viewStart" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/currencyRialCreditTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"

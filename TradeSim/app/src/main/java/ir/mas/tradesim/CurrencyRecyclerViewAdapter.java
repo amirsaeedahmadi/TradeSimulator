@@ -11,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.math.BigDecimal;
+
+import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.Model.Currency;
 
 public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRecyclerViewAdapter.ViewHolder> {
@@ -30,13 +33,16 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView logoView;
-        TextView nameView, codeView;//todo: other attributes ...
+        TextView nameView, codeView, priceView, creditView, rialCreditView;//todo: other attributes ...
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             logoView = itemView.findViewById(R.id.currencyLogoImageView);
             nameView = itemView.findViewById(R.id.currencyNameTextView);
             codeView = itemView.findViewById(R.id.currencyCodeTextView);
+            priceView = itemView.findViewById(R.id.currencyPriceTextView);
+            creditView = itemView.findViewById(R.id.currencyCreditTextView);
+            rialCreditView = itemView.findViewById(R.id.currencyRialCreditTextView);
         }
 
         @Override
@@ -53,9 +59,41 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
 //
 //        }
         Currency currency = Currency.getCurrencies().get(position);
+        String x = new BigDecimal(currency.getCredit()).toPlainString();
         holder.logoView.setImageResource(currency.getLogo());
         holder.nameView.setText(currency.getName());
         holder.codeView.setText(currency.getCode());
+        if ((currency.getPrice() == -1)) {
+            holder.priceView.setText(R.string.not_able_to_update);
+        } else {
+            holder.priceView.setText(currency.getPrice() + "");
+        }
+        if (currency.getCredit() != 0) {
+            if (x.length() > 10) {
+                holder.creditView.setText(
+                        x.substring(0, 10));
+            } else
+            holder.creditView.setText(x);
+        } else {
+            holder.creditView.setText("0.00");
+        }
+//        System.out.println(">>>"+currency.getCode()+" : "+ new Float(currency.getCredit()).);
+//        System.out.println(">>>"+currency.getCode()+" : "+
+//                x.substring(0, (x.length() > 10 ? 10 : x.length()-1)));
+        try {
+            String y = new BigDecimal(currency.getRialEquivalent()).toPlainString();
+            if (currency.getRialEquivalent() != 0) {
+                if (y.length() > 10) {
+                    holder.rialCreditView.setText(y.substring(0,10));
+                } else {
+                    holder.rialCreditView.setText(y);
+                }
+            } else {
+                holder.rialCreditView.setText("0.00");
+            }
+        } catch (NotAbleToUpdateException e) {
+            holder.rialCreditView.setText(R.string.not_able_to_update);
+        }
         //todo: to add other attributes ...
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

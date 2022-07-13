@@ -90,6 +90,16 @@ public class Currency {
         } catch (DuplicateCodeException e) {
             e.printStackTrace();
         }
+        currencies.get(0).setPrice(4_017.492_2);// 10000IRR
+        currencies.get(1).setPrice(634_425.882_3);
+        currencies.get(2).setPrice(34_102.643_3);
+        currencies.get(3).setPrice(1_540);
+        currencies.get(4).setPrice(1.962_4);
+
+        currencies.get(0).setCredit(0.5);
+        currencies.get(1).setCredit(0.000_01);
+        currencies.get(2).setCredit(0.001);
+        currencies.get(3).setCredit(10);
     }
 
     /**

@@ -2,4 +2,5 @@
     <string name="app_name">TradeSim</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="not_able_to_update">Couldn\'t Update</string>
 </resources>
