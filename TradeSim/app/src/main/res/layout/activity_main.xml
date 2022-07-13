@@ -4,32 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:chainUseRtl="false"
+    app:guidelineUseRtl="false"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="409dp"
         android:layout_height="50dp"
+        android:background="@color/light_grey"
+        android:gravity="center"
+        android:layoutDirection="ltr"
         android:orientation="horizontal"
+        app:chainUseRtl="false"
+        app:guidelineUseRtl="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center"
-        android:background="@color/light_grey">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/settingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/other_light_grey"
+            app:srcCompat="@drawable/setting_icon" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            app:srcCompat="@drawable/ic_baseline_table_rows_24" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            app:srcCompat="@drawable/ic_baseline_history_24" />
+            app:srcCompat="@drawable/ic_baseline_show_chart_24" />
 
         <ImageButton
             android:id="@+id/homeButton"
@@ -40,20 +47,19 @@
             android:backgroundTint="@color/light_grey"
             app:srcCompat="@drawable/home_icon_filled" />
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <ImageButton
+            android:id="@+id/historyButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            app:srcCompat="@drawable/ic_baseline_show_chart_24" />
+            app:srcCompat="@drawable/ic_baseline_history_24" />
 
-        <ImageButton
-            android:id="@+id/settingButton"
+        <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="@color/other_light_grey"
-            app:srcCompat="@drawable/setting_icon" />
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            app:srcCompat="@drawable/ic_baseline_table_rows_24" />
 
     </LinearLayout>
 
@@ -62,6 +68,7 @@
         android:name="ir.mas.tradesim.HomeFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:guidelineUseRtl="false"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
