@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
             double x = Currency.getTotalRial()+ User.getInstance().getRialCredit();
             String xy = new BigDecimal(x).toPlainString();
             if (xy.length() > 12) {
-                totalEquivalentRialTextView.setText(t+xy.substring(1, 12));
+                totalEquivalentRialTextView.setText(t+xy.substring(0, 12));
             } else {
                 totalEquivalentRialTextView.setText(t+xy);
             }
@@ -99,7 +99,7 @@ public class HomeFragment extends Fragment {
         double  x1 = User.getInstance().getRialCredit();
         String x1y = new BigDecimal(x1).toPlainString();
         if (x1y.length() > 12) {
-            rialCreditTextView.setText(t+x1y.substring(1, 12));
+            rialCreditTextView.setText(t+x1y.substring(0, 12));
         } else {
             rialCreditTextView.setText(t+x1y);
         }
