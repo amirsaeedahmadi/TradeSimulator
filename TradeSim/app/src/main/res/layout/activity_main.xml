@@ -17,6 +17,20 @@
         android:gravity="center"
         android:background="@color/light_grey">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            app:srcCompat="@drawable/ic_baseline_table_rows_24" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            app:srcCompat="@drawable/ic_baseline_history_24" />
+
         <ImageButton
             android:id="@+id/homeButton"
             android:layout_width="wrap_content"
@@ -24,16 +38,23 @@
             android:layout_weight="3"
             android:background="@drawable/home_icon_bg"
             android:backgroundTint="@color/light_grey"
-            app:srcCompat="@drawable/home_icon_filled"/>
+            app:srcCompat="@drawable/home_icon_filled" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            app:srcCompat="@drawable/ic_baseline_show_chart_24" />
 
         <ImageButton
             android:id="@+id/settingButton"
-            android:background="@drawable/setting_icon_bg"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:backgroundTint="@color/other_light_grey"
             app:srcCompat="@drawable/setting_icon" />
+
     </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView

@@ -3,4 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="not_able_to_update">Couldn\'t Update</string>
+    <string name="total_equivalent_rial_text">"Equivalent Touman : "</string>
+    <string name="rial_credit">"Touman Credit : "</string>
 </resources>

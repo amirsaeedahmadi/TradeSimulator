@@ -9,8 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import java.math.BigDecimal;
+
+import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.Model.Currency;
+import ir.mas.tradesim.Model.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +26,7 @@ public class HomeFragment extends Fragment {
 
     CurrencyRecyclerViewAdapter adapter;
     RecyclerView currencyRecyclerView;
+    TextView totalEquivalentRialTextView, rialCreditTextView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -73,6 +79,31 @@ public class HomeFragment extends Fragment {
         currencyRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new CurrencyRecyclerViewAdapter(getContext());
         currencyRecyclerView.setAdapter(adapter);
+        totalEquivalentRialTextView = root.findViewById(R.id.totalEquivalentRialTextView);
+        totalEquivalentRialTextView.setText(R.string.total_equivalent_rial_text);
+        String t = (String) totalEquivalentRialTextView.getText();
+        try {
+            double x = Currency.getTotalRial()+ User.getInstance().getRialCredit();
+            String xy = new BigDecimal(x).toPlainString();
+            if (xy.length() > 12) {
+                totalEquivalentRialTextView.setText(t+xy.substring(1, 12));
+            } else {
+                totalEquivalentRialTextView.setText(t+xy);
+            }
+        } catch (NotAbleToUpdateException e) {
+            totalEquivalentRialTextView.setText(t+R.string.not_able_to_update);
+        }
+        rialCreditTextView = root.findViewById(R.id.rialCreditTextView);
+        rialCreditTextView.setText(R.string.rial_credit);
+        t = (String) rialCreditTextView.getText();
+        double  x1 = User.getInstance().getRialCredit();
+        String x1y = new BigDecimal(x1).toPlainString();
+        if (x1y.length() > 12) {
+            rialCreditTextView.setText(t+x1y.substring(1, 12));
+        } else {
+            rialCreditTextView.setText(t+x1y);
+        }
+
         return root;
     }
 }
