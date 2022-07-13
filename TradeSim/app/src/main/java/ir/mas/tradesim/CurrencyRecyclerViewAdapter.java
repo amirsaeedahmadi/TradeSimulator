@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.math.BigDecimal;
 
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.Model.Adad;
 import ir.mas.tradesim.Model.Currency;
 
 public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRecyclerViewAdapter.ViewHolder> {
@@ -66,31 +67,38 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
         if ((currency.getPrice() == -1)) {
             holder.priceView.setText(R.string.not_able_to_update);
         } else {
-            holder.priceView.setText(currency.getPrice() + "");
+            holder.priceView.setText(Adad.parse(currency.getPrice()));
         }
-        if (currency.getCredit() != 0) {
-            if (x.length() > 10) {
-                holder.creditView.setText(
-                        x.substring(0, 10));
-            } else
-            holder.creditView.setText(x);
-        } else {
-            holder.creditView.setText("0.00");
-        }
+        holder.creditView.setText(Adad.parse(currency.getCredit()));
+//        if (currency.getCredit() != 0) {
+//            if (x.length() > 10) {
+//                holder.creditView.setText(
+//                        x.substring(0, 10));
+//            } else
+//            holder.creditView.setText(x);
+//        } else {
+//            holder.creditView.setText("0.00");
+//        }
 //        System.out.println(">>>"+currency.getCode()+" : "+ new Float(currency.getCredit()).);
 //        System.out.println(">>>"+currency.getCode()+" : "+
 //                x.substring(0, (x.length() > 10 ? 10 : x.length()-1)));
+
+//        try {
+//            String y = new BigDecimal(currency.getRialEquivalent()).toPlainString();
+//            if (currency.getRialEquivalent() != 0) {
+//                if (y.length() > 10) {
+//                    holder.rialCreditView.setText(y.substring(0,10));
+//                } else {
+//                    holder.rialCreditView.setText(y);
+//                }
+//            } else {
+//                holder.rialCreditView.setText("0.00");
+//            }
+//        } catch (NotAbleToUpdateException e) {
+//            holder.rialCreditView.setText(R.string.not_able_to_update);
+//        }
         try {
-            String y = new BigDecimal(currency.getRialEquivalent()).toPlainString();
-            if (currency.getRialEquivalent() != 0) {
-                if (y.length() > 10) {
-                    holder.rialCreditView.setText(y.substring(0,10));
-                } else {
-                    holder.rialCreditView.setText(y);
-                }
-            } else {
-                holder.rialCreditView.setText("0.00");
-            }
+            holder.rialCreditView.setText(Adad.parse(currency.getRialEquivalent()));
         } catch (NotAbleToUpdateException e) {
             holder.rialCreditView.setText(R.string.not_able_to_update);
         }

@@ -6,4 +6,5 @@
     <string name="total_equivalent_rial_text">"Equivalent Touman : "</string>
     <string name="rial_credit">"Touman Credit : "</string>
     <string name="transactions_history">Transactions History</string>
+    <string name="settings">Settings</string>
 </resources>

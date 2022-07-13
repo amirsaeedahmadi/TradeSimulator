@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.math.BigDecimal;
 
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.Model.Adad;
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.Transaction;
 import ir.mas.tradesim.Model.TransactionType;
@@ -71,8 +72,8 @@ public class TransactionRecyclerViewAdapter extends RecyclerView.Adapter<Transac
             holder.typeView.setImageResource(R.drawable.ic_up);
         }
         holder.amountView.setText(
-                transaction.getCurrencyAmount()+" "+transaction.getCurrency().getCode());
-        holder.rialView.setText(transaction.getRialAmount()+" T");
+                Adad.parse(transaction.getCurrencyAmount())+" "+transaction.getCurrency().getCode());
+        holder.rialView.setText(Adad.parse(transaction.getRialAmount())+" T");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

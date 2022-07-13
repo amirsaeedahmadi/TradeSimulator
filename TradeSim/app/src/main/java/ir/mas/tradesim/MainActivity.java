@@ -43,10 +43,19 @@ public class MainActivity extends AppCompatActivity {
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("_____________clicked on history button");
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentContainerView, new TransactionsFragment());
                 transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        home = findViewById(R.id.homeButton);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainerView, new HomeFragment());
                 transaction.commit();
             }
         });

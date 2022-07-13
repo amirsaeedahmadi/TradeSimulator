@@ -5,4 +5,5 @@
     <string name="total_equivalent_rial_text">"معادل تومانی : "</string>
     <string name="rial_credit">"اعتبار تومانی : "</string>
     <string name="transactions_history">تاریخچه‌ی تراکنش‌ها</string>
+    <string name="settings">تنظیمات</string>
 </resources>
