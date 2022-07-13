@@ -33,7 +33,7 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView logoView;
-        TextView nameView, codeView, priceView, creditView, rialCreditView;//todo: other attributes ...
+        TextView nameView, codeView, priceView, creditView, rialCreditView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -94,8 +94,8 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
         } catch (NotAbleToUpdateException e) {
             holder.rialCreditView.setText(R.string.not_able_to_update);
         }
-        //todo: to add other attributes ...
 
+        //todo: to add onclickListener
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

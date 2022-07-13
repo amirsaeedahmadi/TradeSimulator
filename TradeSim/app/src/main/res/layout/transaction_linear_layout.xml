@@ -2,59 +2,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="30pt"
+    android:layout_marginHorizontal="2pt"
+    android:paddingHorizontal="2pt">
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/logoImageView"
+        android:layout_width="30pt"
+        android:layout_height="53dp"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:foregroundGravity="fill_vertical"
+        android:minWidth="30pt"
+        android:minHeight="30pt"
+        android:textAlignment="center"
         app:srcCompat="@android:drawable/ic_menu_help" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="60pt"
         android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:gravity="center_vertical"
+        android:minWidth="60pt"
+        android:orientation="vertical"
+        android:textAlignment="viewStart">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/nameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textAlignment="viewStart" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/dateTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textAlignment="viewStart" />
 
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/typeImageView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:foregroundGravity="fill_vertical"
+        android:maxWidth="30dp"
+        android:maxHeight="30dp"
+        android:minWidth="30dp"
+        android:minHeight="30dp"
+        android:scaleType="fitCenter"
         app:srcCompat="@drawable/ic_down" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="140dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:foregroundGravity="fill_vertical"
+        android:gravity="center_vertical"
+        android:minWidth="60pt"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/amountTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textAlignment="viewStart" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/rialAmountTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textAlignment="viewStart" />
     </LinearLayout>
 
 </LinearLayout>

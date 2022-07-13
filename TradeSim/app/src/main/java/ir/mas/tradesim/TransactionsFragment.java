@@ -3,10 +3,14 @@ package ir.mas.tradesim;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import ir.mas.tradesim.Model.Transaction;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +18,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class TransactionsFragment extends Fragment {
+    TransactionRecyclerViewAdapter adapter;
+    RecyclerView transactionRecyclerView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,17 +54,27 @@ public class TransactionsFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        System.out.println(":)");
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        System.out.println(":)");
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_transactions, container, false);
+        View root = inflater.inflate(R.layout.fragment_transactions, container, false);
+        Transaction.initialize();
+        System.out.println(">>> "+Transaction.getTransactions().size());
+        transactionRecyclerView = root.findViewById(R.id.TransactionsRecyclerView);
+        transactionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new TransactionRecyclerViewAdapter(getContext());
+        transactionRecyclerView.setAdapter(adapter);
+        return root;
     }
 }

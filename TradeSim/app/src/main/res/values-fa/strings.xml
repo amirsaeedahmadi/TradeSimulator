@@ -4,4 +4,5 @@
     <string name="not_able_to_update">نمی‌توان بروزرساند</string>
     <string name="total_equivalent_rial_text">"معادل تومانی : "</string>
     <string name="rial_credit">"اعتبار تومانی : "</string>
+    <string name="transactions_history">تاریخچه‌ی تراکنش‌ها</string>
 </resources>

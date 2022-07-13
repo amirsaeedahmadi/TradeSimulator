@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.Exceptions.NotEnoughValueException;
 import ir.mas.tradesim.R;
 
 public class Currency {
@@ -33,6 +34,16 @@ public class Currency {
 
         currencies.add(this);
 
+    }
+
+    public void increaseCredit(Double amount){
+        this.credit += amount;
+    }
+
+    public void decreaseCredit(Double amount) throws NotEnoughValueException {
+        if (amount > credit) {
+            throw new NotEnoughValueException();
+        } else credit -= amount;
     }
 
     static class DuplicateNameException extends Exception {
@@ -88,6 +99,7 @@ public class Currency {
     }
     public static void initialize() {
         try {
+            currencies = new ArrayList<Currency>();
             new Currency("Monero", "XMR", R.drawable.ic_monero_xmr_logo);
             new Currency("Bitcoin", "BTC", R.drawable.ic_bitcoin_btc_logo);
             new Currency("Ethereum", "ETH", R.drawable.ic_ethereum_eth_logo);
