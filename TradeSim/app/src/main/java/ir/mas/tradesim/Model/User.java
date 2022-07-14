@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import ir.mas.tradesim.Exceptions.NotEnoughValueException;
 
 public class User {
-    String username;
+    String username = "<USERNAME>";
+    String nickname = "<NICKNAME>";
     ArrayList<Currency> currencies = new ArrayList<Currency>();
     double rialCredit = 0;
     double rialEquivalent = 0;
@@ -13,7 +14,7 @@ public class User {
 //    public void User(String username, ArrayList<Currency> currencies, rial) {}
 
     private static User instance;
-    private User(){}
+    private User(){}//TODO: to modify and get it from database/sharedPrefs or the server
 
     public void increaseRialCredit(Double amount) {
         rialCredit += amount;
@@ -66,5 +67,13 @@ public class User {
 
     public void setRialEquivalent(double rialEquivalent) {
         this.rialEquivalent = rialEquivalent;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

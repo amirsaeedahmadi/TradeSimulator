@@ -72,8 +72,9 @@ public class TransactionRecyclerViewAdapter extends RecyclerView.Adapter<Transac
             holder.typeView.setImageResource(R.drawable.ic_up);
         }
         holder.amountView.setText(
-                Adad.parse(transaction.getCurrencyAmount())+" "+transaction.getCurrency().getCode());
-        holder.rialView.setText(Adad.parse(transaction.getRialAmount())+" T");
+                Adad.parse(transaction.getCurrencyAmount(), mContext)+
+                        " "+transaction.getCurrency().getCode());
+        holder.rialView.setText(Adad.parse(transaction.getRialAmount(), mContext)+" T");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

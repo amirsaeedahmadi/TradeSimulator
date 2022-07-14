@@ -67,9 +67,9 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
         if ((currency.getPrice() == -1)) {
             holder.priceView.setText(R.string.not_able_to_update);
         } else {
-            holder.priceView.setText(Adad.parse(currency.getPrice()));
+            holder.priceView.setText(Adad.parse(currency.getPrice(), mContext));
         }
-        holder.creditView.setText(Adad.parse(currency.getCredit()));
+        holder.creditView.setText(Adad.parse(currency.getCredit(), mContext));
 //        if (currency.getCredit() != 0) {
 //            if (x.length() > 10) {
 //                holder.creditView.setText(
@@ -98,7 +98,7 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
 //            holder.rialCreditView.setText(R.string.not_able_to_update);
 //        }
         try {
-            holder.rialCreditView.setText(Adad.parse(currency.getRialEquivalent()));
+            holder.rialCreditView.setText(Adad.parse(currency.getRialEquivalent(), mContext));
         } catch (NotAbleToUpdateException e) {
             holder.rialCreditView.setText(R.string.not_able_to_update);
         }

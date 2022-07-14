@@ -14,17 +14,19 @@ public class MainActivity extends AppCompatActivity {
 }*/
 
         import android.annotation.SuppressLint;
+        import android.content.SharedPreferences;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.ImageButton;
         import android.widget.LinearLayout;
 
         import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatDelegate;
         import androidx.fragment.app.FragmentContainerView;
         import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
-
+    SharedPreferences mPrefs;
     FragmentContainerView fragment;
     ImageButton settings, statistics, home, history, scoreboard;
     LinearLayout bar;
@@ -34,9 +36,16 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mPrefs = getPreferences(MODE_PRIVATE);
+        String isNightModeOn = mPrefs.getString("DarkMode", "");
+        System.out.println(isNightModeOn);
+        if (isNightModeOn.equals("True")) {
+            setTheme(R.style.Theme_TradeSimNight);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
 
         bar = findViewById(R.id.linearLayout);
         history = findViewById(R.id.historyButton);
@@ -60,6 +69,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        settings = findViewById(R.id.settingButton);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainerView, new SettingsFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
 //        SettingsFragment.mPrefs = getPreferences(MODE_PRIVATE);
 //        String viewMode = SettingsFragment.mPrefs.getString("DarkMode", "False");
@@ -191,5 +210,9 @@ public class MainActivity extends AppCompatActivity {
 //            scaleDown2.start();
 //        });
 //    }
+    }
+
+    public SharedPreferences getMPrefs() {
+        return mPrefs;
     }
 }

@@ -1,6 +1,11 @@
 package ir.mas.tradesim.Model;
 
+import android.content.Context;
+import android.widget.TextView;
+
 import java.math.BigDecimal;
+
+import ir.mas.tradesim.R;
 
 /**
  * This is a class which helps with showing numbers and handling exceptions
@@ -23,6 +28,37 @@ public class Adad {
         Adad adad = new Adad(value);
         adad.setLimit(limit);
         return adad.toString();
+    }
+
+    public static String parse(double value, Context context) {
+        String str = parse(value);
+        return castLang(str, context);
+    }
+
+    private static String castLang(String str, Context context) {
+        TextView textView = new TextView(context);
+        char [] star = str.toCharArray();
+        String nums = "";
+        textView.setText(R.string.n0);nums+=textView.getText();
+        textView.setText(R.string.n1);nums+=textView.getText();
+        textView.setText(R.string.n2);nums+=textView.getText();
+        textView.setText(R.string.n3);nums+=textView.getText();
+        textView.setText(R.string.n4);nums+=textView.getText();
+        textView.setText(R.string.n5);nums+=textView.getText();
+        textView.setText(R.string.n6);nums+=textView.getText();
+        textView.setText(R.string.n7);nums+=textView.getText();
+        textView.setText(R.string.n8);nums+=textView.getText();
+        textView.setText(R.string.n9);nums+=textView.getText();
+        textView.setText(R.string.nFloatingPoint);nums+=textView.getText();
+        char[] arr = nums.toCharArray();
+        int j;
+        String ans = "";
+        for (int i = 0; i < star.length; i++) {
+            if (star[i] != '.')
+                ans += arr[Integer.parseInt(String.valueOf(star[i]))];
+            else ans += arr[10];
+        }
+        return ans;
     }
 
     @Override

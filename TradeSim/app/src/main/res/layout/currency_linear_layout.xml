@@ -8,9 +8,10 @@
 
     <ImageView
         android:id="@+id/currencyLogoImageView"
-        android:layout_width="match_parent"
-        android:layout_height="51dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10pt"
         android:layout_marginBottom="10pt"
         android:layout_weight="1"
@@ -18,13 +19,13 @@
         app:srcCompat="@android:drawable/ic_menu_help" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:baselineAligned="true"
         android:gravity="center_vertical"
-        android:minWidth="40pt"
+        android:minWidth="100dp"
         android:orientation="vertical"
         android:padding="0pt"
         android:textAlignment="center">
@@ -34,6 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:fontFamily="@font/amiri"
+            android:includeFontPadding="false"
             android:text="TextView"
             android:textAlignment="viewStart"
             android:textSize="16sp" />
@@ -43,36 +46,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:fontFamily="@font/amiri"
             android:gravity="center_vertical"
+            android:includeFontPadding="false"
             android:text="TextView"
             android:textAlignment="viewStart" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/currencyPriceTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:fontFamily="@font/amiri"
         android:gravity="center_vertical"
-        android:minWidth="70pt"
+        android:includeFontPadding="false"
+        android:minWidth="90dp"
         android:text="TextView"
         android:textAlignment="viewStart" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:minWidth="60pt"
         android:orientation="vertical"
+        android:paddingStart="10dp"
         android:textAlignment="viewStart">
 
         <TextView
             android:id="@+id/currencyCreditTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/amiri"
+            android:includeFontPadding="false"
             android:text="TextView"
             android:textAlignment="viewStart" />
 
@@ -80,6 +90,8 @@
             android:id="@+id/currencyRialCreditTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/amiri"
+            android:includeFontPadding="false"
             android:text="TextView"
             android:textAlignment="viewStart" />
     </LinearLayout>

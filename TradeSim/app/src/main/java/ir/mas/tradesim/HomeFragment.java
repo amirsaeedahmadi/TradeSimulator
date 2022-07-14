@@ -25,6 +25,7 @@ import ir.mas.tradesim.Model.User;
  */
 public class HomeFragment extends Fragment {
 
+    public static boolean changed;
     CurrencyRecyclerViewAdapter adapter;
     RecyclerView currencyRecyclerView;
     TextView totalEquivalentRialTextView, rialCreditTextView;
@@ -85,7 +86,7 @@ public class HomeFragment extends Fragment {
         String t = (String) totalEquivalentRialTextView.getText();
         try {
             totalEquivalentRialTextView.setText(t+Adad.parse(
-                    Currency.getTotalRial()+ User.getInstance().getRialCredit()));
+                    Currency.getTotalRial()+ User.getInstance().getRialCredit(), getContext()));
 //            double x = Currency.getTotalRial()+ User.getInstance().getRialCredit();
 //            String xy = new BigDecimal(x).toPlainString();
 //            if (xy.length() > 12) {
@@ -106,7 +107,7 @@ public class HomeFragment extends Fragment {
 //        } else {
 //            rialCreditTextView.setText(t+x1y);
 //        }
-        rialCreditTextView.setText(t+Adad.parse(User.getInstance().getRialCredit()));
+        rialCreditTextView.setText(t+Adad.parse(User.getInstance().getRialCredit(), getContext()));
         return root;
     }
 }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fontFamily="@font/amiri"
     tools:context=".TransactionsFragment">
 
     <LinearLayout
@@ -12,14 +13,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20pt"
+            android:layout_height="60dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/amiri"
+                android:includeFontPadding="false"
+                android:padding="0dp"
+                android:paddingBottom="2dp"
                 android:text="@string/transactions_history"
                 android:textColor="#FF9100"
                 android:textSize="34sp" />
