@@ -217,4 +217,12 @@ public class Currency {
     public void setLogo(int logo) {
         this.logo = logo;
     }
+
+    public int getPngLogo() {
+        return pngLogo;
+    }
+
+    public void setPngLogo(int pngLogo) {
+        this.pngLogo = pngLogo;
+    }
 }
