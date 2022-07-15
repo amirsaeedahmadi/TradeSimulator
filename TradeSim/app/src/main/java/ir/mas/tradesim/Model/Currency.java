@@ -61,7 +61,7 @@ public class Currency {
     public static Currency getCurrencyByName(String name) {
         for (Currency currency :
                 currencies) {
-            if (currency.name == name) {
+            if (currency.name.equals(name)) {
                 return currency;
             }
         }
@@ -71,7 +71,7 @@ public class Currency {
     public static Currency getCurrencyByCode(String code) {
         for (Currency currency :
                 currencies) {
-            if (currency.code == code) {
+            if (currency.code.equals(code)) {
                 return currency;
             }
         }

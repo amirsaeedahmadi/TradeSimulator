@@ -1,6 +1,7 @@
 package ir.mas.tradesim;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,6 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
 
         @Override
         public void onClick(View view) {
-            //
         }
     }
 
@@ -101,14 +101,16 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
             holder.rialCreditView.setText(Adad.parse(currency.getRialEquivalent(), mContext));
         } catch (NotAbleToUpdateException e) {
             holder.rialCreditView.setText(R.string.not_able_to_update);
+
         }
 
         //todo: to add onclickListener
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                Intent intent = new Intent(mContext, CurrencyActivity.class);
+                intent.putExtra("currency code", currency.getCode());
+                mContext.startActivity(intent);
             }
         });
     }

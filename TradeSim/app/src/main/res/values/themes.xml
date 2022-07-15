@@ -14,4 +14,13 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/amiri</item>
     </style>
+
+    <style name="Theme.TradeSim.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.TradeSim.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.TradeSim.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
