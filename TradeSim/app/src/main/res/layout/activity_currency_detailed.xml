@@ -46,10 +46,4 @@
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/bitcoin_btc_png" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

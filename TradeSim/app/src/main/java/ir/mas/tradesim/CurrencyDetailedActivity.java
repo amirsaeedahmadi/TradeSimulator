@@ -37,6 +37,7 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         toolBarLayout.setTitle(getTitle());
 
         toolBarLayout.setTitle(currency.toString());
+        toolbar.setLogo(currency.getPngLogo());
         FloatingActionButton fab = binding.fab;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
