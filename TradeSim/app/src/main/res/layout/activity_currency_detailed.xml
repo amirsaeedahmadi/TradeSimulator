@@ -29,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                app:logo="@drawable/bitcoin_btc_png"
                 app:popupTheme="@style/Theme.TradeSim.PopupOverlay" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
