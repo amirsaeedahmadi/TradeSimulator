@@ -13,36 +13,83 @@ public class MainActivity extends AppCompatActivity {
     }
 }*/
 
-        import android.Manifest;
-        import android.animation.AnimatorSet;
-        import android.animation.ObjectAnimator;
+        import android.annotation.SuppressLint;
+        import android.content.SharedPreferences;
         import android.os.Bundle;
+        import android.view.View;
         import android.widget.ImageButton;
         import android.widget.LinearLayout;
 
-        import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
         import androidx.appcompat.app.AppCompatDelegate;
-        import androidx.core.app.ActivityCompat;
         import androidx.fragment.app.FragmentContainerView;
         import androidx.fragment.app.FragmentTransaction;
 
-        import ir.mas.tradesim.Model.Currency;
-
 public class MainActivity extends AppCompatActivity {
-
+    SharedPreferences mPrefs;
     FragmentContainerView fragment;
-    ImageButton setting;
-    ImageButton home;
+    ImageButton settings, statistics, home, history, scoreboard;
     LinearLayout bar;
+    FragmentTransaction transaction;
     public static boolean check = false;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mPrefs = getPreferences(MODE_PRIVATE);
+        String isNightModeOn = mPrefs.getString("DarkMode", "");
+        System.out.println(isNightModeOn);
+        if (isNightModeOn.equals("True")) {
+            setTheme(R.style.Theme_TradeSimNight);
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
 
+        bar = findViewById(R.id.linearLayout);
+        history = findViewById(R.id.historyButton);
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainerView, new TransactionsFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        home = findViewById(R.id.homeButton);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainerView, new HomeFragment());
+                transaction.commit();
+            }
+        });
+
+        settings = findViewById(R.id.settingButton);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainerView, new SettingsFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        scoreboard = findViewById(R.id.scoreboardImageView);
+        scoreboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainerView, new ScoreboardFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
 //        SettingsFragment.mPrefs = getPreferences(MODE_PRIVATE);
 //        String viewMode = SettingsFragment.mPrefs.getString("DarkMode", "False");
@@ -53,15 +100,15 @@ public class MainActivity extends AppCompatActivity {
 //            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        }
 //
-        bar = findViewById(R.id.linearLayout);
-        setting = findViewById(R.id.settingButton);
-        home = findViewById(R.id.homeButton);
-        fragment = findViewById(R.id.fragmentContainerView);
+//        bar = findViewById(R.id.linearLayout);
+//        settings = findViewById(R.id.settingButton);
+//        home = findViewById(R.id.homeButton);
+//        fragment = findViewById(R.id.fragmentContainerView);
 //
 //        ObjectAnimator scaleDownXS = ObjectAnimator.ofFloat(
-//                setting, "scaleX", 0.8f);
+//                settings, "scaleX", 0.8f);
 //        ObjectAnimator scaleDownYS = ObjectAnimator.ofFloat(
-//                setting, "scaleY", 0.8f);
+//                settings, "scaleY", 0.8f);
 //        scaleDownXS.setDuration(800);
 //        scaleDownYS.setDuration(800);
 //        AnimatorSet scaleDownS = new AnimatorSet();
@@ -74,13 +121,13 @@ public class MainActivity extends AppCompatActivity {
 //            transaction.replace(R.id.fragmentContainerView, new SettingsFragment());
 //
 //            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)
-//                    setting.getLayoutParams();
+//                    settings.getLayoutParams();
 //            layoutParams.weight = 3.0f;
 //
-//            setting.setImageResource(R.drawable.setting_icon_filled);
+//            settings.setImageResource(R.drawable.setting_icon_filled);
 //            home.setImageResource(R.drawable.home_icon);
 //
-//            setting.setLayoutParams(layoutParams);
+//            settings.setLayoutParams(layoutParams);
 //            layoutParams = (LinearLayout.LayoutParams)
 //                    home.getLayoutParams();
 //            layoutParams.weight = 1.0f;
@@ -90,18 +137,18 @@ public class MainActivity extends AppCompatActivity {
 //            transaction.commit();
 //
 //        }
-//        setting.setOnClickListener(view -> {
+//        settings.setOnClickListener(view -> {
 //            bar.setBackgroundColor(getResources().getColor(R.color.other_light_grey));
 //            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //            transaction.replace(R.id.fragmentContainerView, new SettingsFragment());
 //
-//            setting.setImageResource(R.drawable.setting_icon_filled);
+//            settings.setImageResource(R.drawable.setting_icon_filled);
 //            home.setImageResource(R.drawable.home_icon);
 //
 //            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)
-//                    setting.getLayoutParams();
+//                    settings.getLayoutParams();
 //            layoutParams.weight = 3.0f;
-//            setting.setLayoutParams(layoutParams);
+//            settings.setLayoutParams(layoutParams);
 //            layoutParams = (LinearLayout.LayoutParams)
 //                    home.getLayoutParams();
 //            layoutParams.weight = 1.0f;
@@ -119,9 +166,9 @@ public class MainActivity extends AppCompatActivity {
 //            AnimatorSet scaleDown = new AnimatorSet();
 //
 //            ObjectAnimator scaleDownX12 = ObjectAnimator.ofFloat(
-//                    setting, "scaleX", 1f);
+//                    settings, "scaleX", 1f);
 //            ObjectAnimator scaleDownY12 = ObjectAnimator.ofFloat(
-//                    setting, "scaleY", 1f);
+//                    settings, "scaleY", 1f);
 //            scaleDownX12.setDuration(800);
 //            scaleDownY12.setDuration(800);
 //            AnimatorSet scaleDown12 = new AnimatorSet();
@@ -137,13 +184,13 @@ public class MainActivity extends AppCompatActivity {
 //            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //            transaction.replace(R.id.fragmentContainerView, new HomeFragment());
 //
-//            setting.setImageResource(R.drawable.setting_icon);
+//            settings.setImageResource(R.drawable.setting_icon);
 //            home.setImageResource(R.drawable.home_icon_filled);
 //
 //            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)
-//                    setting.getLayoutParams();
+//                    settings.getLayoutParams();
 //            layoutParams.weight = 1.0f;
-//            setting.setLayoutParams(layoutParams);
+//            settings.setLayoutParams(layoutParams);
 //            layoutParams = (LinearLayout.LayoutParams)
 //                    home.getLayoutParams();
 //            layoutParams.weight = 3.0f;
@@ -161,9 +208,9 @@ public class MainActivity extends AppCompatActivity {
 //            AnimatorSet scaleDown2 = new AnimatorSet();
 //
 //            ObjectAnimator scaleDownX22 = ObjectAnimator.ofFloat(
-//                    setting, "scaleX", 0.8f);
+//                    settings, "scaleX", 0.8f);
 //            ObjectAnimator scaleDownY22 = ObjectAnimator.ofFloat(
-//                    setting, "scaleY", 0.8f);
+//                    settings, "scaleY", 0.8f);
 //            scaleDownX22.setDuration(800);
 //            scaleDownY22.setDuration(800);
 //            AnimatorSet scaleDown22 = new AnimatorSet();
@@ -174,5 +221,9 @@ public class MainActivity extends AppCompatActivity {
 //            scaleDown2.start();
 //        });
 //    }
+    }
+
+    public SharedPreferences getMPrefs() {
+        return mPrefs;
     }
 }

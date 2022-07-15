@@ -11,9 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.math.BigDecimal;
-
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.Model.Adad;
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.User;
 
@@ -24,6 +23,7 @@ import ir.mas.tradesim.Model.User;
  */
 public class HomeFragment extends Fragment {
 
+    public static boolean changed;
     CurrencyRecyclerViewAdapter adapter;
     RecyclerView currencyRecyclerView;
     TextView totalEquivalentRialTextView, rialCreditTextView;
@@ -83,27 +83,29 @@ public class HomeFragment extends Fragment {
         totalEquivalentRialTextView.setText(R.string.total_equivalent_rial_text);
         String t = (String) totalEquivalentRialTextView.getText();
         try {
-            double x = Currency.getTotalRial()+ User.getInstance().getRialCredit();
-            String xy = new BigDecimal(x).toPlainString();
-            if (xy.length() > 12) {
-                totalEquivalentRialTextView.setText(t+xy.substring(0, 12));
-            } else {
-                totalEquivalentRialTextView.setText(t+xy);
-            }
+            totalEquivalentRialTextView.setText(t+Adad.parse(
+                    Currency.getTotalRial()+ User.getInstance().getRialCredit(), getContext()));
+//            double x = Currency.getTotalRial()+ User.getInstance().getRialCredit();
+//            String xy = new BigDecimal(x).toPlainString();
+//            if (xy.length() > 12) {
+//                totalEquivalentRialTextView.setText(t+xy.substring(0, 12));
+//            } else {
+//                totalEquivalentRialTextView.setText(t+xy);
+//            }
         } catch (NotAbleToUpdateException e) {
             totalEquivalentRialTextView.setText(t+R.string.not_able_to_update);
         }
         rialCreditTextView = root.findViewById(R.id.rialCreditTextView);
         rialCreditTextView.setText(R.string.rial_credit);
         t = (String) rialCreditTextView.getText();
-        double  x1 = User.getInstance().getRialCredit();
-        String x1y = new BigDecimal(x1).toPlainString();
-        if (x1y.length() > 12) {
-            rialCreditTextView.setText(t+x1y.substring(0, 12));
-        } else {
-            rialCreditTextView.setText(t+x1y);
-        }
-
+//        double  x1 = User.getInstance().getRialCredit();
+//        String x1y = new BigDecimal(x1).toPlainString();
+//        if (x1y.length() > 12) {
+//            rialCreditTextView.setText(t+x1y.substring(0, 12));
+//        } else {
+//            rialCreditTextView.setText(t+x1y);
+//        }
+        rialCreditTextView.setText(t+Adad.parse(User.getInstance().getRialCredit(), getContext()));
         return root;
     }
 }

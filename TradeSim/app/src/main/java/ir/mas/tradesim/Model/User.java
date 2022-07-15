@@ -2,16 +2,28 @@ package ir.mas.tradesim.Model;
 
 import java.util.ArrayList;
 
+import ir.mas.tradesim.Exceptions.NotEnoughValueException;
+
 public class User {
-    String username;
-    ArrayList<Currency> currencies = new ArrayList<Currency>();
+    String username = "<USERNAME>";
+    String nickname = "<NICKNAME>";
     double rialCredit = 0;
     double rialEquivalent = 0;
 
 //    public void User(String username, ArrayList<Currency> currencies, rial) {}
 
     private static User instance;
-    private User(){}
+    private User(){}//TODO: to modify and get it from database/sharedPrefs or the server
+
+    public void increaseRialCredit(Double amount) {
+        rialCredit += amount;
+    }
+    public void decreaseRialCredit(Double amount) throws NotEnoughValueException {
+        if (rialCredit >= amount)
+            rialCredit -= amount;
+        else throw new NotEnoughValueException();
+    }
+
     public static User getInstance() {
         if (instance == null) {
             instance = new User();
@@ -32,14 +44,6 @@ public class User {
         this.username = username;
     }
 
-    public ArrayList<Currency> getCurrencies() {
-        return currencies;
-    }
-
-    public void setCurrencies(ArrayList<Currency> currencies) {
-        this.currencies = currencies;
-    }
-
     public double getRialCredit() {
         return rialCredit;
     }
@@ -54,5 +58,13 @@ public class User {
 
     public void setRialEquivalent(double rialEquivalent) {
         this.rialEquivalent = rialEquivalent;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

@@ -4,4 +4,21 @@
     <string name="not_able_to_update">نمی‌توان بروزرساند</string>
     <string name="total_equivalent_rial_text">"معادل تومانی : "</string>
     <string name="rial_credit">"اعتبار تومانی : "</string>
+    <string name="transactions_history">تاریخچه‌ی تراکنش‌ها</string>
+    <string name="settings">تنظیمات</string>
+    <string name="n1">۱</string>
+    <string name="n2">۲</string>
+    <string name="n3">۳</string>
+    <string name="n4">۴</string>
+    <string name="n5">۵</string>
+    <string name="n6">۶</string>
+    <string name="n7">۷</string>
+    <string name="n8">۸</string>
+    <string name="n9">۹</string>
+    <string name="n0">۰</string>
+    <string name="nFloatingPoint">٫</string>
+    <string name="dark_mode">نمای شب</string>
+    <string name="log_out">خروج از حساب</string>
+    <string name="delete_account">حذف حساب</string>
+    <string name="scoreboard">جدول امتیازها</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.Exceptions.NotEnoughValueException;
 import ir.mas.tradesim.R;
 
 public class Currency {
@@ -33,6 +34,16 @@ public class Currency {
 
         currencies.add(this);
 
+    }
+
+    public void increaseCredit(Double amount){
+        this.credit += amount;
+    }
+
+    public void decreaseCredit(Double amount) throws NotEnoughValueException {
+        if (amount > credit) {
+            throw new NotEnoughValueException();
+        } else credit -= amount;
     }
 
     static class DuplicateNameException extends Exception {
@@ -74,22 +85,7 @@ public class Currency {
     /*TODO: to modify it completely, now it is just for simulation and should be modified
       TODO ... to get the data from the server
     */
-    public static void initialize() {
-        try {
-            new Currency("Monero", "XMR", R.drawable.ic_monero_xmr_logo);
-            new Currency("Bitcoin", "BTC", R.drawable.ic_bitcoin_btc_logo);
-            new Currency("Ethereum", "ETH", R.drawable.ic_ethereum_eth_logo);
-            new Currency("Litecoin", "LTC", R.drawable.ic_litecoin_ltc_logo);
-            new Currency("Dogecoin", "DOGE", R.drawable.ic_dogecoin_doge_logo);
-            new Currency("Decentraland Mana", "MANA", R.drawable.ic_decentraland_mana_logo);
-            new Currency("Shiba Inu", "SHIB", R.drawable.ic_shiba_inu_shib_logo);
-            new Currency("The Sandbox", "SAND", R.drawable.ic_the_sandbox_sand_logo);
-            new Currency("Bitcoin Cash", "BCH", R.drawable.ic_bitcoin_cash_bch_logo);
-        } catch (DuplicateNameException e) {
-            e.printStackTrace();
-        } catch (DuplicateCodeException e) {
-            e.printStackTrace();
-        }
+    public static void refresh() {
         currencies.get(0).setPrice(4_017.492_2);// 10000IRR
         currencies.get(1).setPrice(634_425.882_3);
         currencies.get(2).setPrice(34_102.643_3);
@@ -100,6 +96,34 @@ public class Currency {
         currencies.get(1).setCredit(0.000_01);
         currencies.get(2).setCredit(0.001);
         currencies.get(3).setCredit(10);
+    }
+    public static void initialize() {
+        try {
+            currencies = new ArrayList<Currency>();
+            new Currency("Monero", "XMR", R.drawable.ic_monero_xmr_logo);
+            new Currency("Bitcoin", "BTC", R.drawable.ic_bitcoin_btc_logo);
+            new Currency("Ethereum", "ETH", R.drawable.ic_ethereum_eth_logo);
+            new Currency("Litecoin", "LTC", R.drawable.ic_litecoin_ltc_logo);
+            new Currency("Dogecoin", "DOGE", R.drawable.ic_dogecoin_doge_logo);
+            new Currency("Decentraland Mana", "MANA", R.drawable.ic_decentraland_mana_logo);
+            new Currency("Shiba Inu", "SHIB", R.drawable.ic_shiba_inu_shib_logo);
+            new Currency("The Sandbox", "SAND", R.drawable.ic_the_sandbox_sand_logo);
+            new Currency("Bitcoin Cash", "BCH", R.drawable.ic_bitcoin_cash_bch_logo);
+            new Currency("Ethereum Classic", "ETC", R.drawable.ic_ethereum_classic_etc_logo);
+            new Currency("Solana", "SOL", R.drawable.ic_solana_sol_logo);
+            new Currency("Filecoin", "FIL", R.drawable.ic_filecoin_fil_logo);
+            new Currency("Polygon", "MATIC", R.drawable.ic_polygon_matic_logo);
+            new Currency("Wrapped Bitcoin", "WBTC", R.drawable.ic_wrapped_bitcoin_wbtc_logo);
+            new Currency("Floki Inu", "FLOKI", R.drawable.ic_floki_inu_floki_logo);
+            new Currency("HTMLcoin", "HTML", R.drawable.ic_html_coin_html_logo);
+            new Currency("Bitcoin Private", "BTCP", R.drawable.ic_bitcoin_private_btcp_logo);
+            new Currency("Zilliqa", "ZIL", R.drawable.ic_zilliqa_zil_logo);
+        } catch (DuplicateNameException e) {
+            e.printStackTrace();
+        } catch (DuplicateCodeException e) {
+            e.printStackTrace();
+        }
+        refresh();
     }
 
     /**

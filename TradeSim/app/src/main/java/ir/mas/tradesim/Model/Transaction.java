@@ -3,6 +3,8 @@ package ir.mas.tradesim.Model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import ir.mas.tradesim.Exceptions.NotEnoughValueException;
+
 public class Transaction {
     private static int nextId = 1;
     private static ArrayList<Transaction> transactions = new ArrayList<Transaction>();
@@ -33,6 +35,51 @@ public class Transaction {
         this.transactionId = nextId;
         nextId ++;
         transactions.add(this);
+    }
+
+    /**
+     * @author Mahdi Teymoori Anar
+     * This method, performs a transaction.
+     * @throws NotEnoughValueException if the credit is not enough to perform the transaction*/
+    public void perform() throws NotEnoughValueException {
+        if (type == TransactionType.SELL) {
+            try {
+                currency.decreaseCredit(this.currencyAmount);
+                User.getInstance().increaseRialCredit(this.rialAmount);
+            } catch (NotEnoughValueException e) {
+                throw e;
+            }
+        } else {
+            try {
+                User.getInstance().decreaseRialCredit(rialAmount);
+                currency.increaseCredit(this.currencyAmount);
+            } catch (NotEnoughValueException e) {
+                throw e;
+            }
+        }
+    }
+
+
+    /*
+    * TODO : This is already very simple to simulate and should be modified */
+    public static void initialize() {
+        transactions = new ArrayList<Transaction>();
+        new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("BTC"),
+                0.0001, Currency.getCurrencyByCode("BTC").getPrice()*0.0001);
+        new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("XMR"),
+                0.1, Currency.getCurrencyByCode("XMR").getPrice()*0.1);
+        new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("ETH"),
+                0.001, Currency.getCurrencyByCode("ETH").getPrice()*0.001);
+        new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("DOGE"),
+                100, Currency.getCurrencyByCode("DOGE").getPrice()*100);
+        new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("BTC"),
+                0.0001, Currency.getCurrencyByCode("BTC").getPrice()*0.0001);
+        new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("XMR"),
+                0.001, Currency.getCurrencyByCode("XMR").getPrice()*0.001);
+        new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("ETH"),
+                0.0005, Currency.getCurrencyByCode("ETH").getPrice()*0.0005);
+        new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("DOGE"),
+                1, Currency.getCurrencyByCode("DOGE").getPrice()*1);
     }
 
     //getters and setters
