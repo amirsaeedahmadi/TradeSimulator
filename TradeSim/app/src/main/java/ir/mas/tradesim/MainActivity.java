@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
 //            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        }
 //
-//        bar = findViewById(R.id.linearLayout);
-//        setting = findViewById(R.id.settingButton);
-//        home = findViewById(R.id.homeButton);
-//        fragment = findViewById(R.id.fragmentContainerView);
+        bar = findViewById(R.id.linearLayout);
+        setting = findViewById(R.id.settingButton);
+        home = findViewById(R.id.homeButton);
+        fragment = findViewById(R.id.fragmentContainerView);
 //
 //        ObjectAnimator scaleDownXS = ObjectAnimator.ofFloat(
 //                setting, "scaleX", 0.8f);
