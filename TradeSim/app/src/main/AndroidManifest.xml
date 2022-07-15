@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TradeSim">
         <activity
-            android:name=".CurrencyActivity"
+            android:name=".CurrencyDetailedActivity"
             android:exported="false"
-            android:label="@string/title_activity_currency"
+            android:label="@string/title_activity_currency_detailed"
             android:theme="@style/Theme.TradeSim.NoActionBar" />
         <activity
             android:name=".MainActivity"
@@ -21,6 +21,15 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CurrencyActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <!-- category android:name="android.intent.category.LAUNCHER" / -->
             </intent-filter>
         </activity>
 

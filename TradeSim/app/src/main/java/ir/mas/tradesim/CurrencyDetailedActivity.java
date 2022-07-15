@@ -11,17 +11,17 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
-import ir.mas.tradesim.databinding.ActivityCurrencyBinding;
+import ir.mas.tradesim.databinding.ActivityCurrencyDetailedBinding;
 
-public class CurrencyActivity extends AppCompatActivity {
+public class CurrencyDetailedActivity extends AppCompatActivity {
 
-    private ActivityCurrencyBinding binding;
+    private ActivityCurrencyDetailedBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityCurrencyBinding.inflate(getLayoutInflater());
+        binding = ActivityCurrencyDetailedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Toolbar toolbar = binding.toolbar;

@@ -108,7 +108,7 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, CurrencyActivity.class);
+                Intent intent = new Intent(mContext, CurrencyDetailedActivity.class);
                 intent.putExtra("currency code", currency.getCode());
                 mContext.startActivity(intent);
             }
