@@ -36,6 +36,11 @@ public class Currency {
 
     }
 
+    @Override
+    public String toString() {
+        return name+"("+code+")";
+    }
+
     public void increaseCredit(Double amount){
         this.credit += amount;
     }

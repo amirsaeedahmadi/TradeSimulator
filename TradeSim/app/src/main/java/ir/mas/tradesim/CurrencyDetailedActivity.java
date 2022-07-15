@@ -1,5 +1,6 @@
 package ir.mas.tradesim;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -11,11 +12,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
+import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.databinding.ActivityCurrencyDetailedBinding;
 
 public class CurrencyDetailedActivity extends AppCompatActivity {
 
     private ActivityCurrencyDetailedBinding binding;
+    Intent intent;
+    Currency currency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +28,15 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         binding = ActivityCurrencyDetailedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        intent = getIntent();
+        currency = Currency.getCurrencyByCode(intent.getStringExtra("currency code"));
+
         Toolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
 
+        toolBarLayout.setTitle(currency.toString());
         FloatingActionButton fab = binding.fab;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
