@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginHorizontal="5dp"
+    android:foregroundGravity="fill_vertical"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/topUserNicknameTextView"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/amiri"
+        android:foregroundGravity="fill_vertical"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:text="TextView"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:id="@+id/topUserRialTextView"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/amiri"
+        android:foregroundGravity="fill_vertical"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:text="TextView"
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:id="@+id/topUserRankTextView"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/amiri"
+        android:foregroundGravity="fill_vertical"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:text="TextView"
+        android:textAlignment="viewStart" />
+</LinearLayout>

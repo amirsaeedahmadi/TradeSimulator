@@ -52,7 +52,7 @@
             app:srcCompat="@drawable/ic_baseline_history_24" />
 
         <ImageButton
-            android:id="@+id/imageView2"
+            android:id="@+id/scoreboardImageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

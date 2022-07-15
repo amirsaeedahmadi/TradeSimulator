@@ -80,6 +80,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        scoreboard = findViewById(R.id.scoreboardImageView);
+        scoreboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainerView, new ScoreboardFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
 //        SettingsFragment.mPrefs = getPreferences(MODE_PRIVATE);
 //        String viewMode = SettingsFragment.mPrefs.getString("DarkMode", "False");
 //        if (viewMode.equals("True")){

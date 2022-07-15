@@ -7,7 +7,6 @@ import ir.mas.tradesim.Exceptions.NotEnoughValueException;
 public class User {
     String username = "<USERNAME>";
     String nickname = "<NICKNAME>";
-    ArrayList<Currency> currencies = new ArrayList<Currency>();
     double rialCredit = 0;
     double rialEquivalent = 0;
 
@@ -43,14 +42,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public ArrayList<Currency> getCurrencies() {
-        return currencies;
-    }
-
-    public void setCurrencies(ArrayList<Currency> currencies) {
-        this.currencies = currencies;
     }
 
     public double getRialCredit() {

@@ -20,4 +20,5 @@
     <string name="dark_mode">نمای شب</string>
     <string name="log_out">خروج از حساب</string>
     <string name="delete_account">حذف حساب</string>
+    <string name="scoreboard">جدول امتیازها</string>
 </resources>
