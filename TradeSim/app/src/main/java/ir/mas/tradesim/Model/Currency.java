@@ -16,12 +16,14 @@ public class Currency {
     double price;//e.g. 1000000 (IRR) //=-1 if not accessible to update the value
     double credit;//e.g. 0.01
     int logo;//Id of the Logo e.g. R.id.monero
+    int pngLogo;
 
-    public Currency(String name, String code, int logo)
+    private Currency(String name, String code, int logo, int pngLogo)
             throws DuplicateNameException, DuplicateCodeException {
         this.name = name;
         this.code = code;
         this.logo = logo;
+        this.pngLogo = pngLogo;
         this.price = -1;
         this.credit = 0;
 
@@ -34,6 +36,11 @@ public class Currency {
 
         currencies.add(this);
 
+    }
+
+    @Override
+    public String toString() {
+        return name+"("+code+")";
     }
 
     public void increaseCredit(Double amount){
@@ -61,7 +68,7 @@ public class Currency {
     public static Currency getCurrencyByName(String name) {
         for (Currency currency :
                 currencies) {
-            if (currency.name == name) {
+            if (currency.name.equals(name)) {
                 return currency;
             }
         }
@@ -71,7 +78,7 @@ public class Currency {
     public static Currency getCurrencyByCode(String code) {
         for (Currency currency :
                 currencies) {
-            if (currency.code == code) {
+            if (currency.code.equals(code)) {
                 return currency;
             }
         }
@@ -97,27 +104,35 @@ public class Currency {
         currencies.get(2).setCredit(0.001);
         currencies.get(3).setCredit(10);
     }
+
+    /**
+     * <p>This method initializes Currency.currencies.
+     * Creating an instance of Currency is only possible by this method.
+     * To add more currencies, this method should be modified.
+     * To Refactor it can read the data from a file, or from the server, but now it is static
+     * </p>
+     * @author Mahdi Teymoori Anar*/
     public static void initialize() {
         try {
             currencies = new ArrayList<Currency>();
-            new Currency("Monero", "XMR", R.drawable.ic_monero_xmr_logo);
-            new Currency("Bitcoin", "BTC", R.drawable.ic_bitcoin_btc_logo);
-            new Currency("Ethereum", "ETH", R.drawable.ic_ethereum_eth_logo);
-            new Currency("Litecoin", "LTC", R.drawable.ic_litecoin_ltc_logo);
-            new Currency("Dogecoin", "DOGE", R.drawable.ic_dogecoin_doge_logo);
-            new Currency("Decentraland Mana", "MANA", R.drawable.ic_decentraland_mana_logo);
-            new Currency("Shiba Inu", "SHIB", R.drawable.ic_shiba_inu_shib_logo);
-            new Currency("The Sandbox", "SAND", R.drawable.ic_the_sandbox_sand_logo);
-            new Currency("Bitcoin Cash", "BCH", R.drawable.ic_bitcoin_cash_bch_logo);
-            new Currency("Ethereum Classic", "ETC", R.drawable.ic_ethereum_classic_etc_logo);
-            new Currency("Solana", "SOL", R.drawable.ic_solana_sol_logo);
-            new Currency("Filecoin", "FIL", R.drawable.ic_filecoin_fil_logo);
-            new Currency("Polygon", "MATIC", R.drawable.ic_polygon_matic_logo);
-            new Currency("Wrapped Bitcoin", "WBTC", R.drawable.ic_wrapped_bitcoin_wbtc_logo);
-            new Currency("Floki Inu", "FLOKI", R.drawable.ic_floki_inu_floki_logo);
-            new Currency("HTMLcoin", "HTML", R.drawable.ic_html_coin_html_logo);
-            new Currency("Bitcoin Private", "BTCP", R.drawable.ic_bitcoin_private_btcp_logo);
-            new Currency("Zilliqa", "ZIL", R.drawable.ic_zilliqa_zil_logo);
+            new Currency("Monero", "XMR", R.drawable.ic_monero_xmr_logo, R.drawable.monero_xmr_png);
+            new Currency("Bitcoin", "BTC", R.drawable.ic_bitcoin_btc_logo, R.drawable.bitcoin_btc_png);
+            new Currency("Ethereum", "ETH", R.drawable.ic_ethereum_eth_logo, R.drawable.ethereum_eth_png);
+            new Currency("Litecoin", "LTC", R.drawable.ic_litecoin_ltc_logo, R.drawable.litecoin_ltc_png);
+            new Currency("Dogecoin", "DOGE", R.drawable.ic_dogecoin_doge_logo, R.drawable.dogecoin_doge_png);
+            new Currency("Decentraland Mana", "MANA", R.drawable.ic_decentraland_mana_logo, R.drawable.decentraland_mana_png);
+            new Currency("Shiba Inu", "SHIB", R.drawable.ic_shiba_inu_shib_logo, R.drawable.shiba_inu_shib_png);
+            new Currency("The Sandbox", "SAND", R.drawable.ic_the_sandbox_sand_logo, R.drawable.the_sandbox_sand_png);
+            new Currency("Bitcoin Cash", "BCH", R.drawable.ic_bitcoin_cash_bch_logo, R.drawable.bitcoin_cash_bch_png);
+            new Currency("Ethereum Classic", "ETC", R.drawable.ic_ethereum_classic_etc_logo, R.drawable.ethereum_classic_etc_png);
+            new Currency("Solana", "SOL", R.drawable.ic_solana_sol_logo, R.drawable.solana_sol_png);
+            new Currency("Filecoin", "FIL", R.drawable.ic_filecoin_fil_logo, R.drawable.filecoin_fil_png);
+            new Currency("Polygon", "MATIC", R.drawable.ic_polygon_matic_logo, R.drawable.polygon_matic_png);
+            new Currency("Wrapped Bitcoin", "WBTC", R.drawable.ic_wrapped_bitcoin_wbtc_logo, R.drawable.wrapped_bitcoin_wbtc_png);
+            new Currency("Floki Inu", "FLOKI", R.drawable.ic_floki_inu_floki_logo, R.drawable.floki_inu_floki_png);
+            new Currency("HTMLcoin", "HTML", R.drawable.ic_html_coin_html_logo, R.drawable.htmlcoin_html_png);
+            new Currency("Bitcoin Private", "BTCP", R.drawable.ic_bitcoin_private_btcp_logo, R.drawable.bitcoin_private_btcp_png);
+            new Currency("Zilliqa", "ZIL", R.drawable.ic_zilliqa_zil_logo, R.drawable.zilliqa_zil_png);
         } catch (DuplicateNameException e) {
             e.printStackTrace();
         } catch (DuplicateCodeException e) {
@@ -201,5 +216,13 @@ public class Currency {
 
     public void setLogo(int logo) {
         this.logo = logo;
+    }
+
+    public int getPngLogo() {
+        return pngLogo;
+    }
+
+    public void setPngLogo(int pngLogo) {
+        this.pngLogo = pngLogo;
     }
 }
