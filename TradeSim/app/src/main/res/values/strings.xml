@@ -124,4 +124,5 @@
     <string name="prices_refreshed">Prices refreshed successfully</string>
     <string name="your_credit">Your Credit</string>
     <string name="EquivalentRial">Equivalent Touman</string>
+    <string name="not_found_such_currency">Couldn\'t find any currency with such name or code.</string>
 </resources>

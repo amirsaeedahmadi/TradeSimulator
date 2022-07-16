@@ -14,18 +14,28 @@ public class MainActivity extends AppCompatActivity {
 }*/
 
         import android.annotation.SuppressLint;
+        import android.content.Intent;
         import android.content.SharedPreferences;
         import android.os.Bundle;
         import android.view.View;
+        import android.view.WindowInsets;
+        import android.widget.ArrayAdapter;
         import android.widget.ImageButton;
         import android.widget.LinearLayout;
+        import android.widget.ListView;
         import android.widget.SearchView;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
         import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
         import androidx.appcompat.app.AppCompatDelegate;
         import androidx.fragment.app.FragmentContainerView;
         import androidx.fragment.app.FragmentTransaction;
+
+        import java.util.Locale;
+
+        import ir.mas.tradesim.Model.Currency;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences mPrefs;
@@ -34,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout bar;
     FragmentTransaction transaction;
     SearchView searchView;
+    ListView listView;
+    ArrayAdapter adapter;
     public static boolean check = false;
 
     @SuppressLint("WrongViewCast")
@@ -102,6 +114,44 @@ public class MainActivity extends AppCompatActivity {
         //TODO
 
         searchView = findViewById(R.id.searchBar);
+        searchView.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
+            @Override
+            public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
+                System.out.println("OOOOOKKKKK");
+                return null;
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Currency currency1 = Currency.getCurrencyByName(
+                        (s.toCharArray()[0]+"").toUpperCase()+s.toLowerCase().substring(1)),
+                        currency2 = Currency.getCurrencyByCode(s.toUpperCase(Locale.ROOT));
+                if (currency1 != null) {
+                    Intent intent = new Intent(getBaseContext(), CurrencyDetailedActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("currency code", currency1.getCode());
+                    getBaseContext().startActivity(intent);
+                } else if (currency2 != null) {
+                    Intent intent = new Intent(getBaseContext(), CurrencyDetailedActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("currency code", currency2.getCode());
+                    getBaseContext().startActivity(intent);
+                } else {
+//                    Toast toast = new Toast(getBaseContext());
+//                    toast.setText(R.string.not_found_such_currency);
+                    Toast toast = Toast.makeText(getBaseContext(), R.string.not_found_such_currency,
+                            Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
         goTo(home);
 
 //        SettingsFragment.mPrefs = getPreferences(MODE_PRIVATE);

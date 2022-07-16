@@ -28,4 +28,5 @@
     <string name="prices_refreshed">قیمت‌ها به‌روز شدند</string>
     <string name="your_credit">موجودی شما</string>
     <string name="EquivalentRial">معادل تومانی</string>
+    <string name="not_found_such_currency">ارزی با چنین نام یا نمادی یافته نشد.</string>
 </resources>
