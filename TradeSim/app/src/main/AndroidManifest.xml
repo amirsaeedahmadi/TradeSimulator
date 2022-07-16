@@ -25,7 +25,8 @@
             android:theme="@style/Theme.TradeSim.NoActionBar.FullScreen" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
