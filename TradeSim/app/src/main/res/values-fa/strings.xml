@@ -26,4 +26,6 @@
     <string name="selling_price">قیمت فروش</string>
     <string name="buying_price">قیمت خرید</string>
     <string name="prices_refreshed">قیمت‌ها به‌روز شدند</string>
+    <string name="your_credit">موجودی شما</string>
+    <string name="EquivalentRial">معادل تومانی</string>
 </resources>

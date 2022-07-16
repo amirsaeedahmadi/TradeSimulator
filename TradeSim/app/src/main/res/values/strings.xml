@@ -122,4 +122,6 @@
     <string name="selling_price">Price to Sell</string>
     <string name="buying_price">Price to Buy</string>
     <string name="prices_refreshed">Prices refreshed successfully</string>
+    <string name="your_credit">Your Credit</string>
+    <string name="EquivalentRial">Equivalent Touman</string>
 </resources>

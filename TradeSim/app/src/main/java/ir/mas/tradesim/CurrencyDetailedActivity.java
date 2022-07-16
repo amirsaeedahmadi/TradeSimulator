@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.Model.Adad;
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.databinding.ActivityCurrencyDetailedBinding;
@@ -28,13 +29,19 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
     private ActivityCurrencyDetailedBinding binding;
     Intent intent;
     Currency currency;
-    TextView priceToSellView, priceToBuyView;
+    TextView priceToSellView, priceToBuyView, creditView, equivalentRialView;
     Button sellButton, buyButton;
 
     private void setPrices() {
         //TODO: probably it needs modification to update the prices
         priceToSellView.setText(Adad.parse(currency.getPrice(), getBaseContext()));
         priceToBuyView.setText(Adad.parse(currency.getPriceToBuy(), getBaseContext()));
+        creditView.setText(Adad.parse(currency.getCredit(), getBaseContext()));
+        try {
+            equivalentRialView.setText(Adad.parse(currency.getRialEquivalent(), getBaseContext()));
+        } catch (NotAbleToUpdateException e) {
+            equivalentRialView.setText(Adad.parse(-1, getBaseContext()));
+        }
     }
 
     @Override
@@ -48,6 +55,8 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         currency = Currency.getCurrencyByCode(intent.getStringExtra("currency code"));
         priceToSellView = findViewById(R.id.priceToSellTextView);
         priceToBuyView = findViewById(R.id.priceToBuyTextView);
+        creditView = findViewById(R.id.yourCreditTextView);
+        equivalentRialView = findViewById(R.id.equivalentRialTextView);
         setPrices();
 
         Toolbar toolbar = binding.toolbar;
