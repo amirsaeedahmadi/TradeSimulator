@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import java.math.BigDecimal;
 
+import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.R;
 
 /**
@@ -20,7 +21,10 @@ public class Adad {
         this.value = value;
     }
 
-    public static String parse(double value) {
+    public static String parse(double value) throws NotAbleToUpdateException {
+        if (value < 0) {
+            throw new NotAbleToUpdateException();
+        }
         return new Adad(value).toString();
     }
 
@@ -31,7 +35,14 @@ public class Adad {
     }
 
     public static String parse(double value, Context context) {
-        String str = parse(value);
+        String str = null;
+        try {
+            str = parse(value);
+        } catch (NotAbleToUpdateException e) {
+            TextView textView = new TextView(context);
+            textView.setText(R.string.not_able_to_update);
+            return textView.getText().toString();
+        }
         return castLang(str, context);
     }
 
