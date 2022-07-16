@@ -43,12 +43,10 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 //        if (!isShown && include.getY() <= toolbar.getHeight() + confidence) {
 //            toolbar.setLogo(currency.getPngLogo());
 //            isShown = true;
-//            System.out.println(">>>TO SHOW");
 //        }
 //        if (isShown && include.getY() > toolbar.getHeight() + confidence) {
 //            isShown = false;
 //            toolbar.setLogo(null);
-//            System.out.println(">>>TO HIDE");
 //        }
 //    }
 
@@ -66,7 +64,6 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        System.out.println(">>>>DESTROY");
         if (logoSetter != null) {
             logoSetter.cancel(false);
             LogoSetter.toContinue = false;
@@ -78,7 +75,6 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        System.out.println(">>>>STOP");
         if (logoSetter != null) {
             logoSetter.cancel(false);
             LogoSetter.toContinue = false;
@@ -134,7 +130,6 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 //        toolBarLayout.setOnHoverListener(new View.OnHoverListener() {
 //            @Override
 //            public boolean onHover(View view, MotionEvent motionEvent) {
-//                System.out.println(">>>HOVERED!!!");
 //                return false;
 //            }
 //        });
@@ -142,10 +137,6 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 //            @SuppressLint("RestrictedApi")
 //            @Override
 //            public void onClick(View view) {
-//                System.out.println(toolbar.isInLayout());
-//                System.out.println(toolbar.isTitleTruncated());
-//                System.out.println(toolBarLayout.isLaidOut());
-////                System.out.println(this.set);
 //            }
 //        });
 //        while (true) {
@@ -157,7 +148,6 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 //            }
 //        }
         logoSetter = new LogoSetter();
-        System.out.println("LOGOSETER.ISSHOWN = "+LogoSetter.isShown);
         LogoSetter.isShown = false;
         LogoSetter.toContinue = true;
         logoSetter.execute(new CurrencyDetailedActivity[] {this});
@@ -176,7 +166,6 @@ class LogoSetter extends AsyncTask<CurrencyDetailedActivity, Object, Boolean> {
      */
     @Override
     protected Boolean doInBackground(CurrencyDetailedActivity... currencyDetailedActivities) {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         activity = currencyDetailedActivities[0];
 //        isShown = false;
         try {
