@@ -25,4 +25,5 @@
     <string name="sell">فروختن</string>
     <string name="selling_price">قیمت فروش</string>
     <string name="buying_price">قیمت خرید</string>
+    <string name="prices_refreshed">قیمت‌ها به‌روز شدند</string>
 </resources>

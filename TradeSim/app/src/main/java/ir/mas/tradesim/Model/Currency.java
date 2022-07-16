@@ -43,6 +43,11 @@ public class Currency {
         return name+"("+code+")";
     }
 
+    public boolean update() {
+        //TODO: to refresh the price and info
+        return false;//shows if it was successful or not
+    }
+
     public void increaseCredit(Double amount){
         this.credit += amount;
     }
