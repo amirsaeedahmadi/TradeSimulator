@@ -117,4 +117,8 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="selling_price">Price to Sell</string>
+    <string name="buying_price">Price to Buy</string>
 </resources>

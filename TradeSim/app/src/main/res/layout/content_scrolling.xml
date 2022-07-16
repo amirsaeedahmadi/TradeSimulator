@@ -8,11 +8,90 @@
     tools:context=".CurrencyActivity"
     tools:showIn="@layout/activity_currency">
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="40dp"
+            android:clipToPadding="true"
+            android:orientation="horizontal"
+            android:paddingHorizontal="5dp">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FFFFFF"
+                android:text="@string/buying_price"
+                android:textAlignment="viewStart"
+                android:textColor="#008507" />
+
+            <TextView
+                android:id="@+id/priceToBuyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:backgroundTint="#FFFFFF"
+                android:text="TextView"
+                android:textAlignment="viewStart"
+                android:textColor="#008507" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/selling_price"
+                android:textAlignment="viewStart"
+                android:textColor="#C30101" />
+
+            <TextView
+                android:id="@+id/priceToSellTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="TextView"
+                android:textAlignment="viewStart"
+                android:textColor="#C30101" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buyButtonView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#008507"
+                android:text="@string/buy" />
+
+            <Button
+                android:id="@+id/sellButtonView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#C30101"
+                android:text="@string/sell" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/large_text" />
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>

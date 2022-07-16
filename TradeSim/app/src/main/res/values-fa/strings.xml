@@ -21,4 +21,8 @@
     <string name="log_out">خروج از حساب</string>
     <string name="delete_account">حذف حساب</string>
     <string name="scoreboard">جدول امتیازها</string>
+    <string name="buy">خریدن</string>
+    <string name="sell">فروختن</string>
+    <string name="selling_price">قیمت فروش</string>
+    <string name="buying_price">قیمت خرید</string>
 </resources>
