@@ -152,7 +152,9 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#008507"
-                android:text="@string/buy" />
+                android:includeFontPadding="false"
+                android:text="@string/buy"
+                android:textSize="26sp" />
 
             <Button
                 android:id="@+id/sellButtonView"
@@ -161,7 +163,9 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#C30101"
-                android:text="@string/sell" />
+                android:includeFontPadding="false"
+                android:text="@string/sell"
+                android:textSize="26sp" />
         </LinearLayout>
 
         <TextView
