@@ -19,7 +19,9 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fadingEdge="none"
             android:fitsSystemWindows="true"
+            android:foregroundTint="#B10000"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
@@ -41,8 +43,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fab_margin"
+        android:backgroundTint="#4D4D4D"
+        android:tint="#FFF26822"
+        app:backgroundTint="#F26822"
+        app:borderWidth="0dp"
+        app:fabSize="auto"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:rippleColor="#D30000"
+        app:srcCompat="@drawable/ic_refresh" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

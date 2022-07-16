@@ -2,6 +2,8 @@ package ir.mas.tradesim;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -64,6 +66,8 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         });
         toolbar.setLogo(currency.getPngLogo());
         FloatingActionButton fab = binding.fab;
+        fab.setImageTintList( ColorStateList.valueOf(Color.rgb(242, 104, 34))
+        );
         fab.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
             @Override
             public void onSystemUiVisibilityChange(int i) {
