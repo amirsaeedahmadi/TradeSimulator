@@ -23,6 +23,7 @@ import android.widget.TextView;
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.Model.Adad;
 import ir.mas.tradesim.Model.Currency;
+import ir.mas.tradesim.Model.TransactionType;
 import ir.mas.tradesim.databinding.ActivityCurrencyDetailedBinding;
 
 public class CurrencyDetailedActivity extends AppCompatActivity {
@@ -113,6 +114,26 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 
         buyButton = findViewById(R.id.buyButtonView);
         sellButton = findViewById(R.id.sellButtonView);
+        buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getBaseContext(), TransactionPerformActivity.class);
+                intent.putExtra("type", TransactionType.BUY);
+                intent.putExtra("code", currency.getCode());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getBaseContext().startActivity(intent);
+            }
+        });
+        sellButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getBaseContext(), TransactionPerformActivity.class);
+                intent.putExtra("type", TransactionType.SELL);
+                intent.putExtra("code", currency.getCode());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getBaseContext().startActivity(intent);
+            }
+        });
         include = findViewById(R.id.includeView);
 
 
