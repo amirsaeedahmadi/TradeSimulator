@@ -15,4 +15,6 @@
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
     <color name="toolbar">#FFFF7700</color>
+    <color name="darkBar">#E8A203</color>
+    <color name="lightBar">#F5D177</color>
 </resources>

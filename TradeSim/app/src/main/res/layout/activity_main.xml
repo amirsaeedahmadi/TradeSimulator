@@ -32,7 +32,7 @@
             app:srcCompat="@drawable/setting_icon" />
 
         <ImageButton
-            android:id="@+id/imageView3"
+            android:id="@+id/statisticsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         import android.widget.ImageButton;
         import android.widget.LinearLayout;
 
+        import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
         import androidx.appcompat.app.AppCompatDelegate;
         import androidx.fragment.app.FragmentContainerView;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentContainerView, new TransactionsFragment());
                 transaction.addToBackStack(null);
+                goTo(history);
                 transaction.commit();
             }
         });
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentContainerView, new HomeFragment());
+                goTo(home);
                 transaction.commit();
             }
         });
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentContainerView, new SettingsFragment());
                 transaction.addToBackStack(null);
+                goTo(settings);
                 transaction.commit();
             }
         });
@@ -87,10 +91,15 @@ public class MainActivity extends AppCompatActivity {
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragmentContainerView, new ScoreboardFragment());
                 transaction.addToBackStack(null);
+                goTo(scoreboard);
                 transaction.commit();
             }
         });
 
+        statistics = findViewById(R.id.statisticsButton);
+        //TODO
+
+        goTo(home);
 //        SettingsFragment.mPrefs = getPreferences(MODE_PRIVATE);
 //        String viewMode = SettingsFragment.mPrefs.getString("DarkMode", "False");
 //        if (viewMode.equals("True")){
@@ -225,5 +234,15 @@ public class MainActivity extends AppCompatActivity {
 
     public SharedPreferences getMPrefs() {
         return mPrefs;
+    }
+//    @SuppressLint("ResourceAsColor")
+    private void goTo(@NonNull ImageButton imageButton) {
+        home.setBackgroundColor(getResources().getColor(R.color.lightBar));
+        settings.setBackgroundColor(getResources().getColor(R.color.lightBar));
+        history.setBackgroundColor(getResources().getColor(R.color.lightBar));
+        scoreboard.setBackgroundColor(getResources().getColor(R.color.lightBar));
+        statistics.setBackgroundColor(getResources().getColor(R.color.lightBar));
+        imageButton.setBackgroundColor(getResources().getColor(R.color.darkBar));
+//        settings.setBackgroundColor(getResources().getColor(R.color.lightBar));
     }
 }
