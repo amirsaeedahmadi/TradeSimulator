@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -31,6 +32,25 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
     Currency currency;
     TextView priceToSellView, priceToBuyView, creditView, equivalentRialView;
     Button sellButton, buyButton;
+    CollapsingToolbarLayout toolBarLayout;
+    Toolbar toolbar;
+    AsyncTask<CurrencyDetailedActivity, Object, Boolean> logoSetter;
+    View include;
+    boolean isShown = false;
+    int confidence = 10;
+
+//    void perform() {
+//        if (!isShown && include.getY() <= toolbar.getHeight() + confidence) {
+//            toolbar.setLogo(currency.getPngLogo());
+//            isShown = true;
+//            System.out.println(">>>TO SHOW");
+//        }
+//        if (isShown && include.getY() > toolbar.getHeight() + confidence) {
+//            isShown = false;
+//            toolbar.setLogo(null);
+//            System.out.println(">>>TO HIDE");
+//        }
+//    }
 
     private void setPrices() {
         //TODO: probably it needs modification to update the prices
@@ -42,6 +62,29 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         } catch (NotAbleToUpdateException e) {
             equivalentRialView.setText(Adad.parse(-1, getBaseContext()));
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        System.out.println(">>>>DESTROY");
+        if (logoSetter != null) {
+            logoSetter.cancel(false);
+            LogoSetter.toContinue = false;
+//            logoSetter.
+        }
+        LogoSetter.isShown = false;
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        System.out.println(">>>>STOP");
+        if (logoSetter != null) {
+            logoSetter.cancel(false);
+            LogoSetter.toContinue = false;
+        }
+        LogoSetter.isShown = false;
+        super.onStop();
     }
 
     @Override
@@ -59,19 +102,22 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         equivalentRialView = findViewById(R.id.equivalentRialTextView);
         setPrices();
 
-        Toolbar toolbar = binding.toolbar;
+        toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
-        CollapsingToolbarLayout toolBarLayout = binding.toolbarLayout;
+        toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
 
         toolBarLayout.setTitle(currency.toString());
         toolBarLayout.setBackgroundResource(currency.getLogo());
 
-
-        toolbar.setLogo(currency.getPngLogo());
+        toolbar.setLogo(null);
         FloatingActionButton fab = binding.fab;
         fab.setImageTintList( ColorStateList.valueOf(Color.rgb(242, 104, 34))
         );
+
+        buyButton = findViewById(R.id.buyButtonView);
+        sellButton = findViewById(R.id.sellButtonView);
+        include = findViewById(R.id.includeView);
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -102,5 +148,66 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 ////                System.out.println(this.set);
 //            }
 //        });
+//        while (true) {
+//            perform();
+//            try {
+//                Thread.sleep(200);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        logoSetter = new LogoSetter();
+        System.out.println("LOGOSETER.ISSHOWN = "+LogoSetter.isShown);
+        LogoSetter.isShown = false;
+        LogoSetter.toContinue = true;
+        logoSetter.execute(new CurrencyDetailedActivity[] {this});
+    }
+}
+
+class LogoSetter extends AsyncTask<CurrencyDetailedActivity, Object, Boolean> {
+    CurrencyDetailedActivity activity;
+    static boolean isShown = false;
+    int confidence = 10;
+    static boolean toContinue = true;
+
+    /**
+     * @param currencyDetailedActivities
+     * @deprecated
+     */
+    @Override
+    protected Boolean doInBackground(CurrencyDetailedActivity... currencyDetailedActivities) {
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        activity = currencyDetailedActivities[0];
+//        isShown = false;
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        while (!isCancelled() && toContinue) {
+            if (!isShown && activity.include.getY() <= activity.toolbar.getHeight() + confidence) {
+                isShown = true;
+                return true;
+            }
+            else if (isShown && activity.include.getY() > activity.toolbar.getHeight() + confidence) {
+                isShown = false;
+                return false;
+            }
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    @Override
+    protected void onPostExecute(Boolean toShow) {
+        if (isCancelled() || !toContinue) return;
+        if (toShow)
+            activity.toolbar.setLogo(activity.currency.getPngLogo());
+        else activity.toolbar.setLogo(null);
+        if (!isCancelled() && toContinue) new LogoSetter().execute(new CurrencyDetailedActivity[] {activity});
     }
 }
