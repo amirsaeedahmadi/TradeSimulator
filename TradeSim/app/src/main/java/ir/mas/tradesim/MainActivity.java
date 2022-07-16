@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         import android.view.View;
         import android.widget.ImageButton;
         import android.widget.LinearLayout;
+        import android.widget.SearchView;
 
         import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton settings, statistics, home, history, scoreboard;
     LinearLayout bar;
     FragmentTransaction transaction;
+    SearchView searchView;
     public static boolean check = false;
 
     @SuppressLint("WrongViewCast")
@@ -99,7 +101,9 @@ public class MainActivity extends AppCompatActivity {
         statistics = findViewById(R.id.statisticsButton);
         //TODO
 
+        searchView = findViewById(R.id.searchBar);
         goTo(home);
+
 //        SettingsFragment.mPrefs = getPreferences(MODE_PRIVATE);
 //        String viewMode = SettingsFragment.mPrefs.getString("DarkMode", "False");
 //        if (viewMode.equals("True")){
@@ -243,6 +247,17 @@ public class MainActivity extends AppCompatActivity {
         scoreboard.setBackgroundColor(getResources().getColor(R.color.lightBar));
         statistics.setBackgroundColor(getResources().getColor(R.color.lightBar));
         imageButton.setBackgroundColor(getResources().getColor(R.color.darkBar));
+        if (imageButton == home) {
+//            searchView.setActivated(true);
+            searchView.setVisibility(View.VISIBLE);
+        } else {
+//            searchView.setActivated(false);
+            searchView.setVisibility(View.INVISIBLE);
+        }
 //        settings.setBackgroundColor(getResources().getColor(R.color.lightBar));
     }
+}
+
+enum Fragment {
+    HOME, SETTINGS, STATISTICS, HISTORY, SCOREBOARD;
 }
