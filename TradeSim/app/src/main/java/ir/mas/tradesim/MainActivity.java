@@ -114,13 +114,7 @@ public class MainActivity extends AppCompatActivity {
         //TODO
 
         searchView = findViewById(R.id.searchBar);
-        searchView.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
-            @Override
-            public WindowInsets onApplyWindowInsets(View view, WindowInsets windowInsets) {
-                System.out.println("OOOOOKKKKK");
-                return null;
-            }
-        });
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
