@@ -225,4 +225,12 @@ public class Currency {
     public void setPngLogo(int pngLogo) {
         this.pngLogo = pngLogo;
     }
+
+    /**
+     * This method calculates and returns the price to but from the price to sell (price) and the exchange fee
+     * @return double: the price to buy
+     * @author Mahdi Teymoori Anar*/
+    public double getPriceToBuy() {
+        return this.price*1.02;
+    }
 }
