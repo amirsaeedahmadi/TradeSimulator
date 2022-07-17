@@ -157,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         goTo(home);
+        home.callOnClick();
 
 //        SettingsFragment.mPrefs = getPreferences(MODE_PRIVATE);
 //        String viewMode = SettingsFragment.mPrefs.getString("DarkMode", "False");
