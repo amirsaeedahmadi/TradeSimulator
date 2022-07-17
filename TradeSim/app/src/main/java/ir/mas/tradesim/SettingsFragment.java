@@ -26,7 +26,7 @@ public class SettingsFragment extends Fragment {
     public static SharedPreferences mPrefs;
     TextView nicknameView, usernameView;
 
-    Switch darkMode;
+    Switch darkMode, autoDarkMode;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -111,6 +111,42 @@ public class SettingsFragment extends Fragment {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
         });
+
+        /*
+        TODO : This
+        autoDarkMode = root.findViewById(R.id.autoDarkModeSwitch);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            darkMode.setChecked(true);
+        } else {
+            String isAutoNightModeOn = mPrefs.getString("AutoDarkMode", "");
+            System.out.println(isAutoNightModeOn);
+            if (isAutoNightModeOn.equals("True")) {
+                darkMode.setChecked(true);
+            }
+        }
+        darkMode.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (darkMode.isChecked()){
+                HomeFragment.changed = true;
+                MainActivity.check = true;
+                SharedPreferences.Editor prefsEditor = mPrefs.edit();
+                prefsEditor.putString("DarkMode", "True");
+//                prefsEditor.apply();
+                prefsEditor.commit();
+                getActivity().setTheme(R.style.Theme_TradeSimNight);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+            }
+            else{
+                HomeFragment.changed = true;
+                MainActivity.check = true;
+                SharedPreferences.Editor prefsEditor = mPrefs.edit();
+                prefsEditor.putString("DarkMode", "False");
+//                prefsEditor.apply();
+                prefsEditor.commit();
+                getActivity().setTheme(R.style.Theme_TradeSim);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
+        });*/
         return root;
     }
 }

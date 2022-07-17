@@ -15,6 +15,9 @@
         <item name="fontFamily">@font/amiri</item>
     </style>
     <style name="ThemeOverlay.TradeSim.FullscreenContainer" parent="">
+<!--        <item name="colorPrimary">@color/lightBar</item>-->
+<!--        <item name="colorPrimaryVariant">@color/lightBar</item>-->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">@color/lightBar</item>-->
         <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
         <item name="fullscreenTextColor">@color/light_blue_A400</item>
     </style>

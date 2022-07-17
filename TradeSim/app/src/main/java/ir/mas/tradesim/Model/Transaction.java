@@ -8,6 +8,7 @@ import ir.mas.tradesim.Exceptions.NotEnoughValueException;
 public class Transaction {
     private static int nextId = 1;
     private static ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+    private static boolean hasInitialized = false;
     private int transactionId;
     private TransactionType type;
     private Currency currency;
@@ -63,23 +64,26 @@ public class Transaction {
     /*
     * TODO : This is already very simple to simulate and should be modified */
     public static void initialize() {
-        transactions = new ArrayList<Transaction>();
-        new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("BTC"),
-                0.0001, Currency.getCurrencyByCode("BTC").getPrice()*0.0001);
-        new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("XMR"),
-                0.1, Currency.getCurrencyByCode("XMR").getPrice()*0.1);
-        new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("ETH"),
-                0.001, Currency.getCurrencyByCode("ETH").getPrice()*0.001);
-        new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("DOGE"),
-                100, Currency.getCurrencyByCode("DOGE").getPrice()*100);
-        new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("BTC"),
-                0.0001, Currency.getCurrencyByCode("BTC").getPrice()*0.0001);
-        new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("XMR"),
-                0.001, Currency.getCurrencyByCode("XMR").getPrice()*0.001);
-        new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("ETH"),
-                0.0005, Currency.getCurrencyByCode("ETH").getPrice()*0.0005);
-        new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("DOGE"),
-                1, Currency.getCurrencyByCode("DOGE").getPrice()*1);
+        if (!hasInitialized) {
+//            transactions = new ArrayList<Transaction>();
+            new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("BTC"),
+                    0.0001, Currency.getCurrencyByCode("BTC").getPrice() * 0.0001);
+            new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("XMR"),
+                    0.1, Currency.getCurrencyByCode("XMR").getPrice() * 0.1);
+            new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("ETH"),
+                    0.001, Currency.getCurrencyByCode("ETH").getPrice() * 0.001);
+            new Transaction(TransactionType.BUY, Currency.getCurrencyByCode("DOGE"),
+                    100, Currency.getCurrencyByCode("DOGE").getPrice() * 100);
+            new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("BTC"),
+                    0.0001, Currency.getCurrencyByCode("BTC").getPrice() * 0.0001);
+            new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("XMR"),
+                    0.001, Currency.getCurrencyByCode("XMR").getPrice() * 0.001);
+            new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("ETH"),
+                    0.0005, Currency.getCurrencyByCode("ETH").getPrice() * 0.0005);
+            new Transaction(TransactionType.SELL, Currency.getCurrencyByCode("DOGE"),
+                    1, Currency.getCurrencyByCode("DOGE").getPrice() * 1);
+            hasInitialized = true;
+        }
     }
 
     //getters and setters
