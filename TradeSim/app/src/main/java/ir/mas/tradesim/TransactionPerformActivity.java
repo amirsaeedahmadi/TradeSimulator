@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.Model.Adad;
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.TransactionType;
@@ -55,12 +56,34 @@ public class TransactionPerformActivity extends AppCompatActivity {
         currencyView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                if (currencyView.getText().toString().equals(""))
-                    rialView.setText(Adad.parse(0, getBaseContext()));
-                else {rialView.setText(Adad.parse(
-                        currency.getPrice()*Double.parseDouble(currencyView.getText().toString()),
-                        getBaseContext()));
-//                    currencyView.setText(Adad.parse(cu));
+                if (currencyView.getText().toString().equals("")) {
+                        rialView.setText("0");
+                }
+                else {
+                    try {
+                        rialView.setText(Adad.parse(
+                                currency.getPrice()*Double.parseDouble(currencyView.getText().toString())));
+                    } catch (NotAbleToUpdateException e) {
+                        e.printStackTrace();
+                    }
+//                    currencyView.setText(Adad.parse(currencyView.));
+                }
+                return false;
+            }
+        });
+        rialView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                if (rialView.getText().toString().equals(""))
+                    currencyView.setText("0");
+                else {
+                    try {
+                        currencyView.setText(Adad.parse(
+                                Double.parseDouble(rialView.getText().toString())/currency.getPrice()
+                        ));
+                    } catch (NotAbleToUpdateException e) {
+                        e.printStackTrace();
+                    }
                 }
                 return false;
             }

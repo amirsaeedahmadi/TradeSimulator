@@ -98,7 +98,7 @@
         android:ems="10"
         android:fontFamily="@font/amiri"
         android:includeFontPadding="false"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/currencyLogoView"
         app:layout_constraintStart_toEndOf="@+id/currencyLogoView"
         app:layout_constraintTop_toTopOf="@+id/currencyLogoView" />
@@ -111,7 +111,7 @@
         android:ems="10"
         android:fontFamily="@font/amiri"
         android:includeFontPadding="false"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/imageView6"
         app:layout_constraintStart_toEndOf="@+id/imageView6"
         app:layout_constraintTop_toTopOf="@+id/imageView6" />

@@ -99,7 +99,7 @@ public class Adad {
         int j;
         String ans = "";
         for (int i = 0; i < star.length; i++) {
-            if (star[i] != arr[Integer.parseInt(String.valueOf(star[i]))])
+            if (star[i] != arr[10])
                 ans += Integer.parseInt(String.valueOf(star[i]));
             else if (star[i] == arr[10])
                 ans += '.';
