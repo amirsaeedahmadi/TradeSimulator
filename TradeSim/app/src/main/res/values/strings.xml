@@ -128,4 +128,5 @@
     <string name="touman">Touman(T)</string>
     <string name="cancel">Cancel</string>
     <string name="perform">Perform</string>
+    <string name="auto_dark_mode">Auto Dark Mode</string>
 </resources>

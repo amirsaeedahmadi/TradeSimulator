@@ -83,6 +83,18 @@
             android:text="@string/dark_mode"
             android:textAlignment="viewStart" />
 
+        <Switch
+            android:id="@+id/autoDarkModeSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/amiri"
+            android:includeFontPadding="false"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:switchPadding="10dp"
+            android:text="@string/auto_dark_mode"
+            android:textAlignment="viewStart" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -32,4 +32,5 @@
     <string name="touman">تومان(T)</string>
     <string name="cancel">بی خیال</string>
     <string name="perform">انجام</string>
+    <string name="auto_dark_mode">نمای شب خودکار</string>
 </resources>
