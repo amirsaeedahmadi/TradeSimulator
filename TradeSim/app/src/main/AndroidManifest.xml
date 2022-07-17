@@ -11,7 +11,8 @@
         android:theme="@style/Theme.TradeSim">
         <activity
             android:name=".TransactionPerformActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Main" />
         <activity
             android:name=".FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

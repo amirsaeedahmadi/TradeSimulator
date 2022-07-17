@@ -118,7 +118,7 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getBaseContext(), TransactionPerformActivity.class);
-                intent.putExtra("type", TransactionType.BUY);
+                intent.putExtra("type", TransactionType.SELL);
                 intent.putExtra("code", currency.getCode());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getBaseContext().startActivity(intent);
