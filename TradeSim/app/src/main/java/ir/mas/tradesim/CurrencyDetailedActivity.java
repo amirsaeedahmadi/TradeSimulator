@@ -53,9 +53,16 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 
     private void setPrices() {
         //TODO: probably it needs modification to update the prices
-        priceToSellView.setText(Adad.parse(currency.getPrice(), getBaseContext()));
-        priceToBuyView.setText(Adad.parse(currency.getPriceToBuy(), getBaseContext()));
-        creditView.setText(Adad.parse(currency.getCredit(), getBaseContext()));
+        if (priceToSellView == null || priceToBuyView == null) {
+            return;
+        }
+        try {
+            priceToSellView.setText(Adad.parse(currency.getPrice(), getBaseContext()));
+            priceToBuyView.setText(Adad.parse(currency.getPriceToBuy(), getBaseContext()));
+            creditView.setText(Adad.parse(currency.getCredit(), getBaseContext()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         try {
             equivalentRialView.setText(Adad.parse(currency.getRialEquivalent(), getBaseContext()));
         } catch (NotAbleToUpdateException e) {
@@ -65,23 +72,25 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if (logoSetter != null) {
-            logoSetter.cancel(false);
-            LogoSetter.toContinue = false;
-//            logoSetter.
-        }
-        LogoSetter.isShown = false;
+        endTask();
         super.onDestroy();
     }
 
     @Override
     protected void onStop() {
-        if (logoSetter != null) {
-            logoSetter.cancel(false);
-            LogoSetter.toContinue = false;
-        }
-        LogoSetter.isShown = false;
+        endTask();
         super.onStop();
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * Dispatch onPause() to fragments.
+     */
+    @Override
+    protected void onPause() {
+        endTask();
+        super.onPause();
     }
 
     @Override
@@ -131,6 +140,7 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
                 intent.putExtra("type", TransactionType.SELL);
                 intent.putExtra("code", currency.getCode());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                endTask();
                 getBaseContext().startActivity(intent);
             }
         });
@@ -172,6 +182,13 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         LogoSetter.isShown = false;
         LogoSetter.toContinue = true;
         logoSetter.execute(new CurrencyDetailedActivity[] {this});
+    }
+    private void endTask() {
+        if (logoSetter != null) {
+            logoSetter.cancel(true);
+            LogoSetter.toContinue = false;
+        }
+        LogoSetter.isShown = false;
     }
 }
 

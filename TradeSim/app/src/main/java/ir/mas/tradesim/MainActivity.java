@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         import java.util.Locale;
 
+        import ir.mas.tradesim.Model.Adad;
         import ir.mas.tradesim.Model.Currency;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.Theme_TradeSimNight);
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
-
+        System.out.println(Adad.reparse("۱۲", getBaseContext()));
         bar = findViewById(R.id.linearLayout);
         history = findViewById(R.id.historyButton);
         history.setOnClickListener(new View.OnClickListener() {

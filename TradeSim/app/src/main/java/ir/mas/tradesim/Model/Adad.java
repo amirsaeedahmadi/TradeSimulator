@@ -46,6 +46,14 @@ public class Adad {
         return castLang(str, context);
     }
 
+    public static String reparseString(String str, Context context) {
+        return recastLang(str, context);
+    }
+
+    public static Double reparse(String str, Context context) {
+        return Double.parseDouble(recastLang(str, context));
+    }
+
     private static String castLang(String str, Context context) {
         TextView textView = new TextView(context);
         char [] star = str.toCharArray();
@@ -71,6 +79,36 @@ public class Adad {
         }
         return ans;
     }
+
+    private static String recastLang(String str, Context context) {
+        TextView textView = new TextView(context);
+        char [] star = str.toCharArray();
+        String nums = "";
+        textView.setText(R.string.n0);nums+=textView.getText();
+        textView.setText(R.string.n1);nums+=textView.getText();
+        textView.setText(R.string.n2);nums+=textView.getText();
+        textView.setText(R.string.n3);nums+=textView.getText();
+        textView.setText(R.string.n4);nums+=textView.getText();
+        textView.setText(R.string.n5);nums+=textView.getText();
+        textView.setText(R.string.n6);nums+=textView.getText();
+        textView.setText(R.string.n7);nums+=textView.getText();
+        textView.setText(R.string.n8);nums+=textView.getText();
+        textView.setText(R.string.n9);nums+=textView.getText();
+        textView.setText(R.string.nFloatingPoint);nums+=textView.getText();
+        char[] arr = nums.toCharArray();
+        int j;
+        String ans = "";
+        for (int i = 0; i < star.length; i++) {
+            if (star[i] != arr[Integer.parseInt(String.valueOf(star[i]))])
+                ans += Integer.parseInt(String.valueOf(star[i]));
+            else if (star[i] == arr[10])
+                ans += '.';
+            else throw new IllegalArgumentException();
+        }
+        return ans;
+    }
+
+
 
     @Override
     public String toString() {
