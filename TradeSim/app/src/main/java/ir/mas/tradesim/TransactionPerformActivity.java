@@ -64,7 +64,7 @@ public class TransactionPerformActivity extends AppCompatActivity {
                         rialView.setText(Adad.parse(
                                 currency.getPrice()*Double.parseDouble(currencyView.getText().toString())));
                     } catch (NotAbleToUpdateException e) {
-                        e.printStackTrace();
+                        e.makeToast(getBaseContext());
                     }
 //                    currencyView.setText(Adad.parse(currencyView.));
                 }
@@ -82,10 +82,19 @@ public class TransactionPerformActivity extends AppCompatActivity {
                                 Double.parseDouble(rialView.getText().toString())/currency.getPrice()
                         ));
                     } catch (NotAbleToUpdateException e) {
-                        e.printStackTrace();
+                        e.makeToast(getBaseContext());
                     }
                 }
                 return false;
+            }
+        });
+        // cancel button
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getBaseContext().startActivity(intent);
             }
         });
     }

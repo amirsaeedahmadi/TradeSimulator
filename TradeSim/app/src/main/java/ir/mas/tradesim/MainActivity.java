@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter adapter;
     public static boolean check = false;
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        CurrencyDetailedActivity.setLogoSetterIsShownOff();
+    }
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
