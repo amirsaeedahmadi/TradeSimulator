@@ -10,20 +10,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.Model.Adad;
 import ir.mas.tradesim.Model.Currency;
+import ir.mas.tradesim.Model.Transaction;
 import ir.mas.tradesim.Model.TransactionType;
 
+//TODO: IMPORTANT REFACTORINGS ...
 public class TransactionPerformActivity extends AppCompatActivity {
     TransactionType transactionType;
+    InputCurrencyOrRial inputCurrencyOrRial;
     Currency currency;
     Intent intent;
     TextView codeView, typeTextView;
     ImageView typeImageView, currencyImageView;
     EditText currencyView, rialView;
     Button performButton, cancelButton;
+    Double amount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +61,15 @@ public class TransactionPerformActivity extends AppCompatActivity {
         currencyView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                inputCurrencyOrRial = InputCurrencyOrRial.CURRENCY;
                 if (currencyView.getText().toString().equals("")) {
                         rialView.setText("0");
                 }
                 else {
                     try {
+                        amount = Double.parseDouble(currencyView.getText().toString());
                         rialView.setText(Adad.parse(
-                                currency.getPrice()*Double.parseDouble(currencyView.getText().toString())));
+                                currency.getPrice()*amount));
                     } catch (NotAbleToUpdateException e) {
                         e.makeToast(getBaseContext());
                     }
@@ -74,12 +81,14 @@ public class TransactionPerformActivity extends AppCompatActivity {
         rialView.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
+                inputCurrencyOrRial = InputCurrencyOrRial.RIAL;
                 if (rialView.getText().toString().equals(""))
                     currencyView.setText("0");
                 else {
                     try {
+                        amount = Double.parseDouble(rialView.getText().toString());
                         currencyView.setText(Adad.parse(
-                                Double.parseDouble(rialView.getText().toString())/currency.getPrice()
+                                amount/currency.getPrice()
                         ));
                     } catch (NotAbleToUpdateException e) {
                         e.makeToast(getBaseContext());
@@ -97,5 +106,30 @@ public class TransactionPerformActivity extends AppCompatActivity {
                 getBaseContext().startActivity(intent);
             }
         });
+        performButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Transaction transaction;
+                switch (inputCurrencyOrRial) {
+                    case RIAL:
+                        transaction = new Transaction(transactionType, currency,
+                                amount/currency.getPrice(), amount);
+                        break;
+                    case CURRENCY:
+                        transaction = new Transaction(transactionType, currency,
+                                amount, amount*currency.getPrice());
+                        break;
+                    default:
+                        Toast.makeText(getBaseContext(), R.string.not_able_to_update, Toast.LENGTH_SHORT);
+                }
+                intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getBaseContext().startActivity(intent);
+            }
+        });
+    }
+
+    enum InputCurrencyOrRial {
+        CURRENCY, RIAL
     }
 }
