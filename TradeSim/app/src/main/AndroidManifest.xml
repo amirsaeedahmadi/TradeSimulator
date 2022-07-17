@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TradeSim">
         <activity
+            android:name=".StartActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TradeSim.Start">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".TransactionPerformActivity"
             android:exported="false"
             android:theme="@style/Theme.Main" />
@@ -31,7 +41,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
             </intent-filter>
         </activity>
         <activity

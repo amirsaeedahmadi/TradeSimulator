@@ -66,4 +66,10 @@
         <item name="android:windowNoTitle">true</item>
 <!--        <item name="android:windowFullscreen"></item>-->
     </style>
+    <style name="Theme.TradeSim.Start" parent="@style/Theme.TradeSim.NoActionBar">
+        <item name="android:statusBarColor" tools:targetApi="l"> @color/lightBar</item>
+        <item name="android:hideOnContentScroll">false</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>

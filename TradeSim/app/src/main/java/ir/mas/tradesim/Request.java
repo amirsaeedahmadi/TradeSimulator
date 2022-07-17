@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 public class Request {
     private static JSONObject request = new JSONObject();
     private static JSONObject response;
-    private static String token = null;
+    public static String token = null;
 
     public static void getToken() throws JSONException {
         token = response.getString("token");

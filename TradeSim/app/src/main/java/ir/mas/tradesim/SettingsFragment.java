@@ -78,7 +78,7 @@ public class SettingsFragment extends Fragment {
 
 
         darkMode = root.findViewById(R.id.darkModeSwitch);
-        mPrefs = getActivity().getPreferences(MODE_PRIVATE);
+
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
             darkMode.setChecked(true);
         } else {
