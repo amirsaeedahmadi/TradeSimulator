@@ -44,7 +44,8 @@
             android:fontFamily="@font/amiri"
             android:includeFontPadding="false"
             android:text="TextView"
-            android:textAlignment="viewStart" />
+            android:textAlignment="viewStart"
+            android:textSize="10sp" />
 
     </LinearLayout>
 
