@@ -47,6 +47,23 @@
     </style>
 
     <style name="Theme.Main" parent="@style/Theme.TradeSim.NoActionBar">
+<!--        <item name="colorPrimary">@color/purple_200</item>-->
+<!--       <item name="colorPrimaryVariant">@color/darkBar</item>-->
+        <item name="background">@drawable/toolbar</item>
+<!--        <item name="android:windowBackground">@drawable/toolbar</item>-->
+<!--        <item name="android:background">@drawable/toolbar</item>-->
+<!--        <item name="toolbarStyle">@drawable/toolbar</item>-->
+<!--        <item name="android:windowTitleBackgroundStyle">@drawable/toolbar</item>-->
+        <item name="statusBarBackground">@drawable/toolbar</item>
+        <item name="statusBarForeground">@drawable/toolbar</item>
+<!--        <item name="android:statusBarColor">#00FFFFFF</item>-->
+        <item name="android:statusBarColor" tools:targetApi="l"> @color/lightBar</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">true</item>
+        <item name="android:hideOnContentScroll">false</item>
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
+<!--        <item name="android:windowLightStatusBar">false</item>-->
         <item name="android:windowNoTitle">true</item>
+<!--        <item name="android:windowFullscreen"></item>-->
     </style>
 </resources>
