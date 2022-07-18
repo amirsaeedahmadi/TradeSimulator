@@ -45,7 +45,6 @@ public class ScoreboardFragment extends Fragment {
             Request.sendToServer();
 
             // you can get message that server returns with this method and show that in ui:
-            Request.getMessage();
 
 
         } catch (JSONException e) {
