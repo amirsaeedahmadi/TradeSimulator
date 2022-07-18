@@ -133,4 +133,5 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="private_key">Private Key</string>
+    <string name="nickname">Nickname</string>
 </resources>

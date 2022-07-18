@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import ir.mas.tradesim.LogInFragment;
 import ir.mas.tradesim.R;
+import ir.mas.tradesim.SignUpFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -29,7 +31,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        switch (position) {
+            case 1:
+                return new SignUpFragment();
+            default:
+                return new LogInFragment();
+        }
+//        return PlaceholderFragment.newInstance(position + 1);
     }
 
     @Nullable

@@ -36,4 +36,5 @@
     <string name="sign_in">ورود</string>
     <string name="sign_up">عضویت</string>
     <string name="private_key">کلید خصوصی</string>
+    <string name="nickname">نام مستعار</string>
 </resources>

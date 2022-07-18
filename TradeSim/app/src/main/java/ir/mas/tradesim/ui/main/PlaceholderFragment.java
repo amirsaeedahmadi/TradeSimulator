@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import ir.mas.tradesim.HomeFragment;
+import ir.mas.tradesim.Model.Transaction;
 import ir.mas.tradesim.R;
 import ir.mas.tradesim.databinding.FragmentSignInBinding;
 
@@ -24,6 +26,8 @@ public class PlaceholderFragment extends Fragment {
 
     private PageViewModel pageViewModel;
     private FragmentSignInBinding binding;
+    View innerFragment;
+    Transaction transaction;
 
     public static PlaceholderFragment newInstance(int index) {
         PlaceholderFragment fragment = new PlaceholderFragment();
@@ -52,13 +56,19 @@ public class PlaceholderFragment extends Fragment {
         binding = FragmentSignInBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.sectionLabel;
-        pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+//        innerFragment = root.findViewById(R.id.registerationFragmentContainerView);
+//        transaction =
+//        transaction.replace(R.id.fragmentContainerView, new HomeFragment());
+//        goTo(home);
+//        transaction.commit();
+
+//        final TextView textView = binding.sectionLabel;
+//        pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
         return root;
     }
 
