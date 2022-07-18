@@ -1,5 +1,7 @@
 package ir.mas.tradesim;
 
+import android.net.wifi.WifiManager;
+
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Views;
 import ir.mas.tradesim.enums.Regexes;
@@ -12,14 +14,37 @@ import org.json.JSONObject;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+
+import android.annotation.SuppressLint;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class Request {
     private static JSONObject request = new JSONObject();
     private static JSONObject response;
     public static String token = null;
+    public static Thread Thread1 = null;
 
     public static void getToken() throws JSONException {
         token = response.getString("token");
@@ -58,27 +83,40 @@ public class Request {
 
 
     public static void sendToServer() {
-        try {
-            // TODO: after preparing registration uncomment next line
-//            Request.setToken();
-            Socket socket = null;
 
-            socket = new Socket("localhost", 7755);
+        Thread1 = new Thread(new Thread1());
+        Thread1.start();
+
+    }
+
+
+    static class Thread1 implements Runnable {
+        public void run() {
+            try {
+                // TODO: after preparing registration uncomment next line
+//            Request.setToken();
+
+                Socket socket = null;
+
+                socket = new Socket("192.168.1.50", 7755);
 
 //            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
-            DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-            DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
-            dataOutputStream.writeUTF(request.toString());
-            dataOutputStream.flush();
-            String result = dataInputStream.readUTF();
-            response = new JSONObject(result);
-            dataOutputStream.close();
-            socket.close();
-            clear();
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
+                DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
+                DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
+                dataOutputStream.writeUTF(request.toString());
+                dataOutputStream.flush();
+                String result = dataInputStream.readUTF();
+                System.out.println(result);
+                response = new JSONObject(result);
+                dataOutputStream.close();
+                socket.close();
+                clear();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
+
 
     public static JSONObject getResponse() {
         return response;
