@@ -14,8 +14,7 @@ import org.json.JSONException;
 
 import ir.mas.tradesim.Model.TopUser;
 import ir.mas.tradesim.enums.CommandTags;
-import ir.mas.tradesim.enums.Menus;
-import ir.mas.tradesim.enums.Strings;
+import ir.mas.tradesim.enums.Views;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +38,7 @@ public class ScoreboardFragment extends Fragment {
         // TODO: revise this method
         try {
             Request.setCommandTag(CommandTags.SHOW_SCOREBOARD);
-            Request.setCurrentMenu(Menus.SCOREBOARD_MENU);
+            Request.setCurrentMenu(Views.SCOREBOARD_VIEW);
             // TODO: next two lines are appropriate for login menu, remove them in final version!
 //            Request.addData(Strings.USERNAME.getLabel(), userUsername);
 //            Request.addData(Strings.PASSWORD.getLabel(), passwordUsername);
