@@ -33,6 +33,7 @@
     <string name="cancel">بی خیال</string>
     <string name="perform">انجام</string>
     <string name="auto_dark_mode">نمای شب خودکار</string>
-    <string name="tab_text_1">ورود</string>
-    <string name="tab_text_2">عضویت</string>
+    <string name="sign_in">ورود</string>
+    <string name="sign_up">عضویت</string>
+    <string name="private_key">کلید خصوصی</string>
 </resources>

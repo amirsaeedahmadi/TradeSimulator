@@ -130,6 +130,7 @@
     <string name="perform">Perform</string>
     <string name="auto_dark_mode">Auto Dark Mode</string>
     <string name="title_activity_sign_in">SignInActivity</string>
-    <string name="tab_text_1">Sign In</string>
-    <string name="tab_text_2">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="private_key">Private Key</string>
 </resources>
