@@ -78,7 +78,7 @@ public class SettingsFragment extends Fragment {
 
 
         darkMode = root.findViewById(R.id.darkModeSwitch);
-
+        mPrefs = StartActivity.mPrefs;
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
             darkMode.setChecked(true);
         } else {
@@ -113,23 +113,19 @@ public class SettingsFragment extends Fragment {
         });
 
         /*
-        TODO : This
+        TODO: This
         autoDarkMode = root.findViewById(R.id.autoDarkModeSwitch);
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
-            darkMode.setChecked(true);
-        } else {
-            String isAutoNightModeOn = mPrefs.getString("AutoDarkMode", "");
-            System.out.println(isAutoNightModeOn);
-            if (isAutoNightModeOn.equals("True")) {
-                darkMode.setChecked(true);
-            }
+        String isAutoNightModeOn = mPrefs.getString("AutoDarkMode", "");
+        System.out.println(isAutoNightModeOn);
+        if (isAutoNightModeOn.equals("True")) {
+            autoDarkMode.setChecked(true);
         }
-        darkMode.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (darkMode.isChecked()){
+        autoDarkMode.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (autoDarkMode.isChecked()){
                 HomeFragment.changed = true;
                 MainActivity.check = true;
                 SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                prefsEditor.putString("DarkMode", "True");
+                prefsEditor.putString("AutoDarkMode", "True");
 //                prefsEditor.apply();
                 prefsEditor.commit();
                 getActivity().setTheme(R.style.Theme_TradeSimNight);
