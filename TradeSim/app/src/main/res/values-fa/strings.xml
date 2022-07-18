@@ -33,4 +33,6 @@
     <string name="cancel">بی خیال</string>
     <string name="perform">انجام</string>
     <string name="auto_dark_mode">نمای شب خودکار</string>
+    <string name="tab_text_1">ورود</string>
+    <string name="tab_text_2">عضویت</string>
 </resources>
