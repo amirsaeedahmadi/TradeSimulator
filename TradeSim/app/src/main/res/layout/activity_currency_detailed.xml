@@ -13,6 +13,7 @@
         android:layout_height="@dimen/app_bar_height"
         android:background="@drawable/toolbar2"
         android:fitsSystemWindows="true"
+        android:layoutDirection="rtl"
         android:theme="@style/Theme.TradeSim.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            android:layoutDirection="rtl"
             app:contentScrim="@drawable/toolbar2"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
@@ -29,6 +31,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:layoutDirection="rtl"
                 app:layout_collapseMode="pin"
                 app:logo="@drawable/bitcoin_btc_png"
                 app:popupTheme="@style/Theme.TradeSim.PopupOverlay" />
@@ -38,7 +41,8 @@
 
     <include
         android:id="@+id/includeView"
-        layout="@layout/content_scrolling" />
+        layout="@layout/content_scrolling"
+        android:layoutDirection="rtl" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -46,8 +50,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fab_margin"
         android:backgroundTint="#4D4D4D"
-        app:borderWidth="0dp"
+        android:layoutDirection="inherit"
         app:backgroundTint="#F26822"
+        app:borderWidth="0dp"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@drawable/ic_refresh" />

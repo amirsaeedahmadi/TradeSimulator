@@ -77,6 +77,7 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/toolbar"
+        android:layoutDirection="inherit"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,6 +92,7 @@
         android:foregroundGravity="center_vertical|center"
         android:gravity="center"
         android:includeFontPadding="false"
+        android:layoutDirection="rtl"
         android:text="@string/app_name"
         android:textColor="#FF9100"
         android:textSize="24sp"
@@ -101,9 +103,10 @@
 
     <SearchView
         android:id="@+id/searchBar"
-        android:layout_width="137dp"
+        android:layout_width="140dp"
         android:layout_height="40dp"
         android:commitIcon="@drawable/ic_baseline_search_24"
+        android:layoutDirection="rtl"
         app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView"
         app:layout_constraintEnd_toEndOf="@+id/toolbar2"
         app:layout_constraintTop_toTopOf="@+id/toolbar2" />
@@ -113,6 +116,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="5dp"
+        android:layoutDirection="rtl"
         android:textAlignment="center"
         app:flow_verticalAlign="center"
         app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView"
