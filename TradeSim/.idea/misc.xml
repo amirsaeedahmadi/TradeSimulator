@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Jamal/ketab/uni/MobileProgramming/TradeSimulatorProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_main.xml" value="0.209375" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/drawable-anydpi/home_icon_bg.xml" value="0.2935" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/drawable-anydpi/setting_icon.xml" value="0.2935" />
+        <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout-land/activity_transaction_perform.xml" value="0.22" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.1" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.1" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_currency.xml" value="0.13333333333333333" />
@@ -13,6 +13,8 @@
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_currency_details.xml" value="0.3333333333333333" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_fullscreen.xml" value="0.20833333333333334" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_sign_in.xml" value="0.1828125" />
+        <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_start.xml" value="0.22" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_transaction_perform.xml" value="0.3333333333333333" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/content_scrolling.xml" value="0.21526479750778815" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/currency_linear_layout.xml" value="0.3333333333333333" />
@@ -21,6 +23,7 @@
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/fragment_home.xml" value="0.18385416666666668" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/fragment_scoreboard.xml" value="0.3333333333333333" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/fragment_settings.xml" value="0.3458333333333333" />
+        <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/fragment_sign_in.xml" value="0.16979166666666667" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/fragment_transactions.xml" value="0.33611111111111114" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/top_user_linear_layout.xml" value="0.2" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/layout/transaction_linear_layout.xml" value="0.33611111111111114" />

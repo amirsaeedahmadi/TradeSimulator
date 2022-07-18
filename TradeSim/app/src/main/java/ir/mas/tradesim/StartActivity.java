@@ -22,7 +22,7 @@ public class StartActivity extends AppCompatActivity {
         Request.token = mPrefs.getString("token", "");
         if (Request.token.equals("")) {
             // TODO : go to the sign up/in menu
-            intent = new Intent(getBaseContext(), MainActivity.class);
+            intent = new Intent(getBaseContext(), SignInActivity.class);
             new MyTimer().execute(intent);
         } else {
             User.getInstance().setUsername(mPrefs.getString("username", "<USERNAME>"));
