@@ -1,12 +1,12 @@
 package ir.mas.tradesim.enums;
 
-public enum Menus {
-    REGISTER_MENU("Register Menu"),
-    PROFILE_MENU("Profile Menu"),
-    MAIN_MENU("Main menu");
+public enum Strings {
+    USERNAME("Register Menu"),
+    PASSWORD("Profile Menu"),
+    NICKNAME("Main Menu");
     public final String label;
 
-    Menus(String label) {
+    Strings(String label) {
         this.label = label;
     }
 

@@ -1,6 +1,7 @@
 package ir.mas.tradesim;
 
 import ir.mas.tradesim.enums.CommandTags;
+import ir.mas.tradesim.enums.Views;
 import ir.mas.tradesim.enums.Regexes;
 import ir.mas.tradesim.enums.Responses;
 
@@ -36,6 +37,10 @@ public class Request {
         request.put("command", commandTag.getLabel());
     }
 
+    public static void setCurrentMenu(Views currentMenu) throws JSONException {
+        request.put("view", currentMenu.getLabel());
+    }
+
     public static void setOption(String command, String option) throws JSONException { // extract option if available
         addBooleanData(option, command.contains("--" + option));
     }
@@ -54,7 +59,8 @@ public class Request {
 
     public static void sendToServer() {
         try {
-            Request.setToken();
+            // TODO: after preparing registration uncomment next line
+//            Request.setToken();
             Socket socket = null;
 
             socket = new Socket("localhost", 7755);

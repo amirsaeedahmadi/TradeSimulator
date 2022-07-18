@@ -1,8 +1,12 @@
 package ir.mas.tradesim.enums;
 
 public enum Responses {
-    MENU_ENTER_NOT_ALLOWED("please login first"),
-    INVALID_COMMAND("invalid command"), SUCCESS("Successful");
+
+    SUCCESS("Successful"),
+    ERROR("Error"),
+    REGISTER_SUCCESSFUL("You registered successfully!"),
+    LOGIN_SUCCESSFUL("user logged in successfully!"),
+    SUCCESSFUL("It's been successful!");
 
 
     public final String label;

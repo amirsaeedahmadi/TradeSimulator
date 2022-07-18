@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         import androidx.fragment.app.FragmentContainerView;
         import androidx.fragment.app.FragmentTransaction;
 
+        import org.json.JSONException;
+
         import java.util.Locale;
 
         import ir.mas.tradesim.Model.Adad;
