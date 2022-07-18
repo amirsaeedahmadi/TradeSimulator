@@ -1,4 +1,4 @@
-package ir.mas.tradesim.server.enums;
+package ir.mas.tradesim.enums;
 
 public enum Views {
     REGISTER_VIEW("Register View"),

@@ -10,7 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.json.JSONException;
+
 import ir.mas.tradesim.Model.TopUser;
+import ir.mas.tradesim.enums.CommandTags;
+import ir.mas.tradesim.enums.Menus;
+import ir.mas.tradesim.enums.Strings;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +35,24 @@ public class ScoreboardFragment extends Fragment {
     private String mParam2;
 
     public ScoreboardFragment() {
-        // Required empty public constructor
+        // get data from server
+        // TODO: revise this method
+        try {
+            Request.setCommandTag(CommandTags.SHOW_SCOREBOARD);
+            Request.setCurrentMenu(Menus.SCOREBOARD_MENU);
+            // TODO: next two lines are appropriate for login menu, remove them in final version!
+//            Request.addData(Strings.USERNAME.getLabel(), userUsername);
+//            Request.addData(Strings.PASSWORD.getLabel(), passwordUsername);
+            Request.sendToServer();
+
+            // you can get message that server returns with this method and show that in ui:
+            Request.getMessage();
+
+
+        } catch (JSONException e) {
+            // TODO: handle upcoming errors in client
+            e.printStackTrace();
+        }
     }
 
     /**
