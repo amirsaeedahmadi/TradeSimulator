@@ -105,12 +105,8 @@ public class LogInFragment extends Fragment {
             Request.setCurrentMenu(Views.REGISTER_VIEW);
             Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
             Request.sendToServer();
-            String response = Request.getMessage();
-            if (response.equals("failure"))
-                valid = false;
-            else {
-                valid = true;
-            }
+//            String response = Request.getMessage();
+            valid = Request.isSuccessful();
         } catch (Exception e) {
             Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
             e.printStackTrace();
