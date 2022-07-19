@@ -1,5 +1,7 @@
 package ir.mas.tradesim;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import ir.mas.tradesim.Model.Currency;
+import ir.mas.tradesim.Model.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +22,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class LogInFragment extends Fragment {
+
+    EditText privateKeyView;
+    Button signInButton;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +70,43 @@ public class LogInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_log_in, container, false);
+        View root = inflater.inflate(R.layout.fragment_log_in, container, false);
+        privateKeyView = root.findViewById(R.id.PrivateKeyForLoginView);
+        signInButton = root.findViewById(R.id.signInButton);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String privateKey = privateKeyView.getText().toString();
+                if (privateKey.equals("")) {
+                    Toast.makeText(getContext(), R.string.empty_input, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                login(privateKey);
+            }
+        });
+        return root;
+    }
+
+    //TODO: make it as an async task!
+    private void login(String key) {
+        // TODO: It should request to the server and ...
+        // if valid
+        boolean valid = true;//TODO to get from the server
+        // to set the values
+        if (valid) {
+            User.getInstance().setUsername(key);
+            User.getInstance().setNickname("<NICKNAME>");//TODO: get it from the server
+            User.getInstance().setRialCredit(100_000);//TODO: get from the server
+            Currency.initialize();
+            SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
+            prefsEditor.putString("Token", key);
+//                prefsEditor.apply();
+            prefsEditor.commit();
+            Intent intent = new Intent(getContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getContext().startActivity(intent);
+        } else {
+            Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
+        }
     }
 }

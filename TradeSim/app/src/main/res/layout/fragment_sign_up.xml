@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/editTextTextMultiLine"
+            android:id="@+id/PrivateKeyForLoginView"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginHorizontal="20dp"
@@ -58,7 +58,7 @@
             android:includeFontPadding="false"
             android:inputType="textPersonName"
             android:paddingHorizontal="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
+            app:layout_constraintBottom_toTopOf="@+id/PrivateKeyForLoginView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

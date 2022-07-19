@@ -19,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
         mPrefs = this.getPreferences(MODE_PRIVATE);
-        Request.token = mPrefs.getString("token", "");
+        Request.token = mPrefs.getString("Token", "");
         if (Request.token.equals("")) {
             // TODO : go to the sign up/in menu
             intent = new Intent(getBaseContext(), SignInActivity.class);

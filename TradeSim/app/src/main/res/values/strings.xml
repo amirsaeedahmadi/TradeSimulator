@@ -134,4 +134,6 @@
     <string name="sign_up">Sign Up</string>
     <string name="private_key">Private Key</string>
     <string name="nickname">Nickname</string>
+    <string name="empty_input">Empty Input</string>
+    <string name="invalid">Invalid</string>
 </resources>
