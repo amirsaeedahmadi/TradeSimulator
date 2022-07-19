@@ -4,10 +4,12 @@ import java.util.Locale;
 
 public enum CommandTags {
 
-    SHOW_SCOREBOARD("show scoreboard"),
+    SHOW_SCOREBOARD("show_scoreboard"),
     LOGIN("login"),
     REGISTER("register"),
-    LOGOUT("logout");
+    LOGOUT("logout"),
+    GET_PRICE("get_price"),
+    GET_CREDIT("get_credit");
 
     public final String label;
 

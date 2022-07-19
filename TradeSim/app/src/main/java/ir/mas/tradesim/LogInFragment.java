@@ -118,7 +118,8 @@ public class LogInFragment extends Fragment {
             User.getInstance().setRialCredit(100_000);//TODO: get from the server
             Currency.initialize();
             SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
-            prefsEditor.putString("Token", key);
+            prefsEditor.putString("Token", key);// TODO: modify: key -> token given by the server
+            //TODO: setCurrencyValues
 //                prefsEditor.apply();
             prefsEditor.commit();
             Intent intent = new Intent(getContext(), MainActivity.class);
