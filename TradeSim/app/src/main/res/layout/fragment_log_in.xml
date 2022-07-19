@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/PrivateKeyForLoginView"
+            android:id="@+id/PrivateKeyForSignInView"
             android:layout_width="0dp"
             android:layout_height="200dp"
             android:layout_marginHorizontal="20dp"

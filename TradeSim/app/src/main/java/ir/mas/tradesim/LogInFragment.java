@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONException;
-
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.User;
 import ir.mas.tradesim.enums.CommandTags;
@@ -76,7 +74,7 @@ public class LogInFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_log_in, container, false);
-        privateKeyView = root.findViewById(R.id.PrivateKeyForLoginView);
+        privateKeyView = root.findViewById(R.id.PrivateKeyForSignInView);
         signInButton = root.findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
