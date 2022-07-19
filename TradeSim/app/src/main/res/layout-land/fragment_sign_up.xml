@@ -41,6 +41,7 @@
             android:includeFontPadding="false"
             android:paddingHorizontal="40dp"
             android:text="@string/sign_up"
+            android:textAllCaps="false"
             android:textSize="34sp"
             app:cornerRadius="40dp"
             app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName"

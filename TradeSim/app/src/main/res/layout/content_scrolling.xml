@@ -154,7 +154,9 @@
                 android:backgroundTint="#008507"
                 android:includeFontPadding="false"
                 android:text="@string/buy"
-                android:textSize="26sp" />
+                android:textAllCaps="false"
+                android:textSize="26sp"
+                app:cornerRadius="40dp" />
 
             <Button
                 android:id="@+id/sellButtonView"
@@ -165,7 +167,9 @@
                 android:backgroundTint="#C30101"
                 android:includeFontPadding="false"
                 android:text="@string/sell"
-                android:textSize="26sp" />
+                android:textAllCaps="false"
+                android:textSize="26sp"
+                app:cornerRadius="40dp" />
         </LinearLayout>
 
         <TextView
