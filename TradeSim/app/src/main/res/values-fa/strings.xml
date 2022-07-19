@@ -41,4 +41,5 @@
     <string name="invalid">نامعتبر</string>
     <string name="too_short_private_key">کلید خصوصی بسیار کوتاه بود - کلید خصوصی به دلایل امنیتی باید دست کم ۱۰۰ کارکتر بدارد</string>
     <string name="connection_error">اتّصال به سرور میسّر نبود</string>
+    <string name="generate_random_key">ساختن کلید تصادفی</string>
 </resources>

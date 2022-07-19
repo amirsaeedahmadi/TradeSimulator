@@ -11,26 +11,43 @@
         android:layout_height="match_parent"
         android:layoutDirection="inherit">
 
+        <Button
+            android:id="@+id/generateRandomKeyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#00B0FF"
+            android:includeFontPadding="false"
+            android:text="@string/generate_random_key"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:cornerRadius="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/signUpButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nicknameInputView" />
+
         <EditText
             android:id="@+id/privateKeyForSignUpView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/roundangle"
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/private_key"
             android:includeFontPadding="false"
             android:inputType="textVisiblePassword|textMultiLine"
-            android:layoutDirection="ltr"
+            android:layoutDirection="inherit"
             android:padding="20dp"
             android:textDirection="ltr"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/nicknameInputView"
+            app:layout_constraintEnd_toStartOf="@+id/generateRandomKeyButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,6 +55,7 @@
             android:id="@+id/signUpButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="#1B9700"
             android:includeFontPadding="false"
             android:paddingHorizontal="40dp"
@@ -46,23 +64,22 @@
             android:textSize="34sp"
             app:cornerRadius="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/nicknameInputView"
-            app:layout_constraintStart_toStartOf="@+id/nicknameInputView"
-            app:layout_constraintTop_toBottomOf="@+id/nicknameInputView" />
+            app:layout_constraintEnd_toEndOf="@+id/generateRandomKeyButton"
+            app:layout_constraintStart_toStartOf="@+id/generateRandomKeyButton" />
 
         <EditText
             android:id="@+id/nicknameInputView"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/roundanglelong"
             android:ems="10"
             android:hint="@string/nickname"
             android:includeFontPadding="false"
             android:inputType="textPersonName"
             android:paddingHorizontal="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/generateRandomKeyButton"
+            app:layout_constraintStart_toStartOf="@+id/generateRandomKeyButton"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

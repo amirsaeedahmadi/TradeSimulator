@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
+import java.util.Random;
+
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
@@ -29,7 +31,7 @@ public class SignUpFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     EditText nicknameView, privateKeyView;
-    Button signUpButton;
+    Button signUpButton, generateRandomKeyButton;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -74,6 +76,7 @@ public class SignUpFragment extends Fragment {
         privateKeyView = root.findViewById(R.id.privateKeyForSignUpView);
         nicknameView = root.findViewById(R.id.nicknameInputView);
         signUpButton = root.findViewById(R.id.signUpButton);
+        generateRandomKeyButton = root.findViewById(R.id.generateRandomKeyButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +87,22 @@ public class SignUpFragment extends Fragment {
                 else if (privateKey.length() < 100)
                     Toast.makeText(getContext(), R.string.too_short_private_key, Toast.LENGTH_LONG).show();
                 else signUp(nickname, privateKey);
+            }
+        });
+        generateRandomKeyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Random random = new Random();
+                StringBuilder key = new StringBuilder();
+                int character;
+                char[] chars =
+                        "1234567890wertyuiop[]asdfghjkl;'zxcvbnm,./\\!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:ZXCVBNM<>?-=     \t".
+                                toCharArray();
+                for (int i = 0; i < 256; i++) {
+                    character = random.nextInt(chars.length-1);
+                    key.append(chars[character]);
+                }
+                privateKeyView.setText(key.toString());
             }
         });
         return root;
