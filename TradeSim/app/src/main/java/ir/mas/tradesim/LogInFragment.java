@@ -13,8 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.User;
+import ir.mas.tradesim.enums.CommandTags;
+import ir.mas.tradesim.enums.Strings;
+import ir.mas.tradesim.enums.Views;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,6 +86,10 @@ public class LogInFragment extends Fragment {
                     Toast.makeText(getContext(), R.string.empty_input, Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (privateKey.length() < 100) {
+                    Toast.makeText(getContext(), R.string.too_short_private_key, Toast.LENGTH_LONG).show();
+                    return;
+                }
                 login(privateKey);
             }
         });
@@ -89,9 +98,25 @@ public class LogInFragment extends Fragment {
 
     //TODO: make it as an async task!
     private void login(String key) {
-        // TODO: It should request to the server and ...
-        // if valid
         boolean valid = true;//TODO to get from the server
+        // TODO: It should request to the server and ...
+        try {
+            Request.setCommandTag(CommandTags.LOGIN);
+            Request.setCurrentMenu(Views.REGISTER_VIEW);
+            Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
+            Request.sendToServer();
+            String response = Request.getMessage();
+            if (response.equals("failure"))
+                valid = false;
+            else {
+                valid = true;
+            }
+        } catch (Exception e) {
+            Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+            return;
+        }
+        // if valid
         // to set the values
         if (valid) {
             User.getInstance().setUsername(key);
