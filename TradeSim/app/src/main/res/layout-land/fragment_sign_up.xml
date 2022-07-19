@@ -69,7 +69,7 @@
 
         <EditText
             android:id="@+id/nicknameInputView"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/roundanglelong"
