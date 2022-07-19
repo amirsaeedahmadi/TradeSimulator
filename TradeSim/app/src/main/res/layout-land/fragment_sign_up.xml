@@ -35,10 +35,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/signInButton"
+            android:id="@+id/signUpButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="100dp"
             android:backgroundTint="#1B9700"
             android:includeFontPadding="false"
             android:paddingHorizontal="40dp"
@@ -48,7 +47,8 @@
             app:cornerRadius="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/nicknameInputView"
-            app:layout_constraintStart_toStartOf="@+id/nicknameInputView" />
+            app:layout_constraintStart_toStartOf="@+id/nicknameInputView"
+            app:layout_constraintTop_toBottomOf="@+id/nicknameInputView" />
 
         <EditText
             android:id="@+id/nicknameInputView"

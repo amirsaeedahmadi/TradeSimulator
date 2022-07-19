@@ -73,7 +73,7 @@ public class SignUpFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_sign_up, container, false);
         privateKeyView = root.findViewById(R.id.privateKeyForSignUpView);
         nicknameView = root.findViewById(R.id.nicknameInputView);
-        signUpButton = root.findViewById(R.id.signUputton);
+        signUpButton = root.findViewById(R.id.signUpButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
