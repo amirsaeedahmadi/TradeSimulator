@@ -42,7 +42,7 @@ public class Transaction {
      * @author Mahdi Teymoori Anar
      * This method, performs a transaction.
      * @throws NotEnoughValueException if the credit is not enough to perform the transaction*/
-    public void perform() throws NotEnoughValueException {
+    public void perform() throws NotEnoughValueException {//TODO: send to the server
         if (type == TransactionType.SELL) {
             try {
                 currency.decreaseCredit(this.currencyAmount);
@@ -62,7 +62,7 @@ public class Transaction {
 
 
     /*
-    * TODO : This is already very simple to simulate and should be modified */
+    * TODO : get from the server */
     public static void initialize() {
         if (!hasInitialized) {
 //            transactions = new ArrayList<Transaction>();
