@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.Exceptions.NotEnoughValueException;
 import ir.mas.tradesim.Model.Adad;
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.Transaction;
@@ -114,10 +115,20 @@ public class TransactionPerformActivity extends AppCompatActivity {
                     case RIAL:
                         transaction = new Transaction(transactionType, currency,
                                 amount/currency.getPrice(), amount);
+                        try {
+                            transaction.perform();
+                        } catch (NotEnoughValueException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case CURRENCY:
                         transaction = new Transaction(transactionType, currency,
                                 amount, amount*currency.getPrice());
+                        try {
+                            transaction.perform();
+                        } catch (NotEnoughValueException e) {
+                            e.printStackTrace();
+                        }
                         break;
                     default:
                         Toast.makeText(getBaseContext(), R.string.not_able_to_update, Toast.LENGTH_SHORT);

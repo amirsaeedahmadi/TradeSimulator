@@ -6,7 +6,8 @@ public enum Strings {
 //    NICKNAME("Main Menu");
     PRIVATE_KEY("PrivateKey"),
     NICKNAME("Nickname"),
-    RIAL_CREDIT("Rial Credit");
+    RIAL_CREDIT("RialCredit"),
+    CURRENCY_CODE("CurrencyCode");
 
 
     public final String label;

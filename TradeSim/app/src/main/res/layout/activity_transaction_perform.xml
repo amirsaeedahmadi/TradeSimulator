@@ -6,181 +6,204 @@
     android:layout_height="match_parent"
     tools:context=".TransactionPerformActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/mainToolbar"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:background="@drawable/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <ImageView
-        android:id="@+id/transactionTypeTextView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="5dp"
-        android:layoutDirection="rtl"
-        android:textAlignment="center"
-        app:circularflow_angles="40"
-        app:flow_verticalAlign="center"
-        app:layout_constraintBottom_toBottomOf="@+id/mainToolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mainToolbar"
-        app:srcCompat="@mipmap/ic_launcher_foreground2" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:fontFamily="@font/amiri"
-        android:foregroundGravity="center_vertical|center"
-        android:gravity="center"
-        android:includeFontPadding="false"
-        android:layoutDirection="rtl"
-        android:text="@string/app_name"
-        android:textColor="#FF9100"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/transactionTypeTextView"
-        app:layout_constraintStart_toEndOf="@+id/transactionTypeTextView"
-        app:layout_constraintTop_toTopOf="@+id/transactionTypeTextView" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/transactionTypeImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainToolbar"
-        app:srcCompat="@drawable/ic_down" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/mainToolbar"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/toolbar"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/typeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/amiri"
-        android:includeFontPadding="false"
-        android:text="TextView"
-        android:textColor="#FF9100"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/transactionTypeImageView"
-        app:layout_constraintStart_toEndOf="@+id/transactionTypeImageView"
-        app:layout_constraintTop_toTopOf="@+id/transactionTypeImageView" />
+                <ImageView
+                    android:id="@+id/transactionTypeTextView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:layoutDirection="rtl"
+                    android:textAlignment="center"
+                    app:circularflow_angles="40"
+                    app:flow_verticalAlign="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/mainToolbar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/mainToolbar"
+                    app:srcCompat="@mipmap/ic_launcher_foreground2" />
 
-    <ImageView
-        android:id="@+id/currencyLogoView"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transactionTypeImageView"
-        app:srcCompat="@drawable/ic_monero_xmr_logo" />
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/amiri"
+                    android:foregroundGravity="center_vertical|center"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:layoutDirection="rtl"
+                    android:text="@string/app_name"
+                    android:textColor="#FF9100"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/transactionTypeTextView"
+                    app:layout_constraintStart_toEndOf="@+id/transactionTypeTextView"
+                    app:layout_constraintTop_toTopOf="@+id/transactionTypeTextView" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currencyLogoView"
-        app:srcCompat="@drawable/irr" />
+                <ImageView
+                    android:id="@+id/transactionTypeImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mainToolbar"
+                    app:srcCompat="@drawable/ic_down" />
 
-    <EditText
-        android:id="@+id/CurrencyEditTextNumber"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:ems="10"
-        android:fontFamily="@font/amiri"
-        android:includeFontPadding="false"
-        android:inputType="number|numberDecimal"
-        app:layout_constraintBottom_toBottomOf="@+id/currencyLogoView"
-        app:layout_constraintStart_toEndOf="@+id/currencyLogoView"
-        app:layout_constraintTop_toTopOf="@+id/currencyLogoView" />
+                <TextView
+                    android:id="@+id/typeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/amiri"
+                    android:includeFontPadding="false"
+                    android:text="TextView"
+                    android:textColor="#FF9100"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/transactionTypeImageView"
+                    app:layout_constraintStart_toEndOf="@+id/transactionTypeImageView"
+                    app:layout_constraintTop_toTopOf="@+id/transactionTypeImageView" />
 
-    <EditText
-        android:id="@+id/RialEditTextNumber"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:ems="10"
-        android:fontFamily="@font/amiri"
-        android:includeFontPadding="false"
-        android:inputType="number|numberDecimal"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+                <ImageView
+                    android:id="@+id/currencyLogoView"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/transactionTypeImageView"
+                    app:srcCompat="@drawable/ic_monero_xmr_logo" />
 
-    <TextView
-        android:id="@+id/codeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/amiri"
-        android:includeFontPadding="false"
-        android:text="TextView"
-        android:textColor="#FF9100"
-        app:layout_constraintBottom_toBottomOf="@+id/CurrencyEditTextNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/CurrencyEditTextNumber"
-        app:layout_constraintTop_toTopOf="@+id/CurrencyEditTextNumber" />
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/currencyLogoView"
+                    app:srcCompat="@drawable/irr" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:fontFamily="@font/amiri"
-        android:includeFontPadding="false"
-        android:text="@string/touman"
-        android:textColor="#FF9100"
-        app:layout_constraintBottom_toBottomOf="@+id/RialEditTextNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/RialEditTextNumber"
-        app:layout_constraintTop_toTopOf="@+id/RialEditTextNumber" />
+                <EditText
+                    android:id="@+id/CurrencyEditTextNumber"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:ems="10"
+                    android:fontFamily="@font/amiri"
+                    android:includeFontPadding="false"
+                    android:inputType="number|numberDecimal"
+                    app:layout_constraintBottom_toBottomOf="@+id/currencyLogoView"
+                    app:layout_constraintStart_toEndOf="@+id/currencyLogoView"
+                    app:layout_constraintTop_toTopOf="@+id/currencyLogoView" />
 
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="#EA0000"
-        android:foregroundGravity="center_vertical"
-        android:gravity="center_vertical"
-        android:includeFontPadding="false"
-        android:text="@string/cancel"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/performButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RialEditTextNumber"
-        app:layout_constraintVertical_bias="0.92" />
+                <EditText
+                    android:id="@+id/RialEditTextNumber"
+                    android:layout_width="260dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:ems="10"
+                    android:fontFamily="@font/amiri"
+                    android:includeFontPadding="false"
+                    android:inputType="number|numberDecimal"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                    app:layout_constraintStart_toEndOf="@+id/imageView6"
+                    app:layout_constraintTop_toTopOf="@+id/imageView6" />
 
-    <Button
-        android:id="@+id/performButton"
-        android:layout_width="180dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="100dp"
-        android:backgroundTint="#01D16C"
-        android:foregroundGravity="center_vertical"
-        android:gravity="center_vertical"
-        android:includeFontPadding="false"
-        android:text="@string/perform"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                <TextView
+                    android:id="@+id/codeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/amiri"
+                    android:includeFontPadding="false"
+                    android:text="TextView"
+                    android:textColor="#FF9100"
+                    app:layout_constraintBottom_toBottomOf="@+id/CurrencyEditTextNumber"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/CurrencyEditTextNumber"
+                    app:layout_constraintTop_toTopOf="@+id/CurrencyEditTextNumber" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/amiri"
+                    android:includeFontPadding="false"
+                    android:text="@string/touman"
+                    android:textColor="#FF9100"
+                    app:layout_constraintBottom_toBottomOf="@+id/RialEditTextNumber"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/RialEditTextNumber"
+                    app:layout_constraintTop_toTopOf="@+id/RialEditTextNumber" />
+
+                <Button
+                    android:id="@+id/cancelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="#EA0000"
+                    android:foregroundGravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="@string/cancel"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    app:cornerRadius="40dp"
+                    app:layout_constraintBottom_toTopOf="@+id/performButton"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/RialEditTextNumber"
+                    app:layout_constraintVertical_bias="0.92" />
+
+                <Button
+                    android:id="@+id/performButton"
+                    android:layout_width="180dp"
+                    android:layout_height="70dp"
+                    android:layout_marginBottom="100dp"
+                    android:backgroundTint="#01D16C"
+                    android:foregroundGravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="@string/perform"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    app:cornerRadius="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,7 +46,8 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/darkBar" />
+            app:tabIndicatorColor="@color/darkBar"
+            app:tabTextColor="#FF9100" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager

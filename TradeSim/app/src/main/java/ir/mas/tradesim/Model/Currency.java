@@ -2,11 +2,18 @@ package ir.mas.tradesim.Model;
 
 import androidx.annotation.Nullable;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
+import java.util.Locale;
 
 import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.Exceptions.NotEnoughValueException;
 import ir.mas.tradesim.R;
+import ir.mas.tradesim.Request;
+import ir.mas.tradesim.enums.CommandTags;
+import ir.mas.tradesim.enums.Strings;
+import ir.mas.tradesim.enums.Views;
 
 public class Currency {
     static ArrayList<Currency> currencies = new ArrayList<Currency>();
@@ -44,8 +51,48 @@ public class Currency {
     }
 
     public boolean update() {
-        //TODO: to refresh the price and info
-        return false;//shows if it was successful or not
+        //refreshes the price and info
+        if (updatePrice())
+            return true;
+        else if (updateCredit())
+            return true;
+        return false;
+
+    }
+
+    private boolean updateCredit() {
+        try {
+            Request.setCommandTag(CommandTags.GET_CREDIT);
+            Request.setCurrentMenu(Views.SOME_VIEW);
+            Request.addData(Strings.CURRENCY_CODE.getLabel(), code.toUpperCase());
+            Request.addData(Strings.PRIVATE_KEY.getLabel(), User.getInstance().getUsername());
+            Request.sendToServer();
+            if (!Request.isSuccessful()) {
+                return false;
+            } else {
+                credit = Double.parseDouble(Request.getMessage());
+                return true;
+            }
+        } catch (JSONException e) {
+            return false;
+        }
+    }
+
+    private boolean updatePrice() {
+        try {
+            Request.setCommandTag(CommandTags.GET_PRICE);
+            Request.setCurrentMenu(Views.SOME_VIEW);
+            Request.addData(Strings.CURRENCY_CODE.getLabel(), code.toUpperCase());
+            Request.sendToServer();
+            if (!Request.isSuccessful()) {
+                return false;
+            } else {
+                price = Double.parseDouble(Request.getMessage());
+                return true;//shows if it was successful or not
+            }
+        } catch (JSONException e) {
+            return false;
+        }
     }
 
     public void increaseCredit(Double amount){
@@ -71,9 +118,10 @@ public class Currency {
 
     }
     public static Currency getCurrencyByName(String name) {
+        name = name.toLowerCase();
         for (Currency currency :
                 currencies) {
-            if (currency.name.equals(name)) {
+            if (currency.name.toLowerCase().equals(name)) {
                 return currency;
             }
         }
@@ -81,9 +129,10 @@ public class Currency {
     }
 
     public static Currency getCurrencyByCode(String code) {
+        code = code.toUpperCase();
         for (Currency currency :
                 currencies) {
-            if (currency.code.equals(code)) {
+            if (currency.code.toUpperCase().equals(code)) {
                 return currency;
             }
         }
@@ -94,10 +143,13 @@ public class Currency {
         return currencies;
     }
 
-    /*TODO: to modify it completely, now it is just for simulation and should be modified
-      TODO ... to get the data from the server
-    */
+
     public static void refresh() {
+        for (Currency currency :
+                currencies) {
+            currency.update();
+        }
+        /*
         currencies.get(0).setPrice(4_017.492_2);// 10000IRR
         currencies.get(1).setPrice(634_425.882_3);
         currencies.get(2).setPrice(34_102.643_3);
@@ -107,7 +159,7 @@ public class Currency {
         currencies.get(0).setCredit(0.5);
         currencies.get(1).setCredit(0.000_01);
         currencies.get(2).setCredit(0.001);
-        currencies.get(3).setCredit(10);
+        currencies.get(3).setCredit(10);*/
     }
 
     /**
@@ -197,7 +249,10 @@ public class Currency {
     }
 
     public double getPrice() {
-        return price;
+        if (updatePrice())
+            return price;
+        price = -1;
+        return -1;
     }
 
     public void setPrice(double price) {
@@ -208,6 +263,7 @@ public class Currency {
     }
 
     public double getCredit() {
+        updateCredit();
         return credit;
     }
 
