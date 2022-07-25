@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.User;
@@ -98,14 +99,14 @@ public class LogInFragment extends Fragment {
 
     //TODO: make it as an async task!
     private void login(String key) {
-        boolean valid = true;//TODO to get from the server
+        boolean valid = false;//TODO to get from the server
         // TODO: It should request to the server and ...
         try {
             Request.setCommandTag(CommandTags.LOGIN);
             Request.setCurrentMenu(Views.REGISTER_VIEW);
             Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
             Request.sendToServer();
-//            String response = Request.getMessage();
+//            String message = Request.getMessage();
             valid = Request.isSuccessful();
         } catch (Exception e) {
             Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
@@ -114,20 +115,25 @@ public class LogInFragment extends Fragment {
         }
         // if valid
         // to set the values
-        if (valid) {
-            User.getInstance().setUsername(key);
-            User.getInstance().setNickname("<NICKNAME>");//TODO: get it from the server
-            User.getInstance().setRialCredit(100_000);//TODO: get from the server
-            Currency.initialize();
-            SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
-            prefsEditor.putString("Token", key);
+        try {
+            if (valid) {
+                User.getInstance().setUsername(key);
+                User.getInstance().setNickname(Request.getResponse().getString(Strings.NICKNAME.getLabel()));//TODO: get it from the server
+                User.getInstance().setRialCredit(Double.parseDouble(Request.getResponse().getString(Strings.RIAL_CREDIT.getLabel())));//TODO: get from the server
+                Currency.initialize();
+                SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
+                prefsEditor.putString("Token", key);
 //                prefsEditor.apply();
-            prefsEditor.commit();
-            Intent intent = new Intent(getContext(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            getContext().startActivity(intent);
-        } else {
-            Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
+                prefsEditor.commit();
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            } else {
+                Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
     }
 }
