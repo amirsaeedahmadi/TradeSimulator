@@ -123,6 +123,7 @@ public class SignUpFragment extends Fragment {
         }
         if (valid) {
             ;//TODO
+
         } else {
             Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_SHORT).show();
         }

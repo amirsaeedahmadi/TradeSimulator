@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.User;
 import ir.mas.tradesim.enums.CommandTags;
@@ -84,7 +86,7 @@ public class LogInFragment extends Fragment {
                     Toast.makeText(getContext(), R.string.empty_input, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (privateKey.length() < 100) {
+                if (privateKey.length() < 5) {
                     Toast.makeText(getContext(), R.string.too_short_private_key, Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -103,7 +105,7 @@ public class LogInFragment extends Fragment {
             Request.setCurrentMenu(Views.REGISTER_VIEW);
             Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
             Request.sendToServer();
-//            String response = Request.getMessage();
+//            String message = Request.getMessage();
             valid = Request.isSuccessful();
         } catch (Exception e) {
             Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
@@ -112,21 +114,30 @@ public class LogInFragment extends Fragment {
         }
         // if valid
         // to set the values
-        if (valid) {
-            User.getInstance().setUsername(key);
-            User.getInstance().setNickname("<NICKNAME>");//TODO: get it from the server
-            User.getInstance().setRialCredit(100_000);//TODO: get from the server
-            Currency.initialize();
-            SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
-            prefsEditor.putString("Token", key);// TODO: modify: key -> token given by the server
-            //TODO: setCurrencyValues
+        try {
+            if (valid) {
+                User.getInstance().setUsername(key);
+                User.getInstance().setNickname(Request.getResponse().getString(Strings.NICKNAME.getLabel()));
+                User.getInstance().setRialCredit(Double.parseDouble(Request.getResponse().getString(Strings.RIAL_CREDIT.getLabel())));
+//                Currency.initialize();
+                SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
+                prefsEditor.putString("Token", key);// TODO: modify: key -> token given by the server
+                //TODO: setCurrencyValues
+
+                System.out.println(Request.getResponse().getString("currencies"));
+
+
 //                prefsEditor.apply();
-            prefsEditor.commit();
-            Intent intent = new Intent(getContext(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            getContext().startActivity(intent);
-        } else {
-            Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
+                prefsEditor.commit();
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            } else {
+                Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            Toast.makeText(getContext(), R.string.response_error, Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
     }
 }

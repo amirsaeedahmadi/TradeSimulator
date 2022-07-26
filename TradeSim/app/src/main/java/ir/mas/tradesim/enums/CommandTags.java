@@ -6,6 +6,7 @@ public enum CommandTags {
 
     SHOW_SCOREBOARD("show_scoreboard"),
     LOGIN("login"),
+    GET_CURRENCIES("get_currencies"),
     REGISTER("register"),
     LOGOUT("logout"),
     GET_PRICE("get_price"),

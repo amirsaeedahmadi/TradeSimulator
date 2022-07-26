@@ -138,5 +138,6 @@
     <string name="invalid">Invalid</string>
     <string name="too_short_private_key">Too Short Private Key - Private Key Should Have at Least, 100 Characters for security issues.</string>
     <string name="connection_error">Could not Connect to the Server</string>
+    <string name="response_error">Could not find this object in response</string>
     <string name="generate_random_key">Generate Random Key</string>
 </resources>

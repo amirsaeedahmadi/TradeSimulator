@@ -8,8 +8,13 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import org.json.JSONException;
+
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.User;
+import ir.mas.tradesim.enums.CommandTags;
+import ir.mas.tradesim.enums.Strings;
+import ir.mas.tradesim.enums.Views;
 
 public class StartActivity extends AppCompatActivity {
     public static SharedPreferences mPrefs;
@@ -25,10 +30,30 @@ public class StartActivity extends AppCompatActivity {
             intent = new Intent(getBaseContext(), SignInActivity.class);
             new MyTimer().execute(intent);
         } else {
+
             User.getInstance().setUsername(mPrefs.getString("username", "<USERNAME>"));
             User.getInstance().setNickname(mPrefs.getString("nickname", "<NICKNAME>"));
             User.getInstance().setRialCredit(Double.parseDouble(mPrefs.getString("rialCredit", "0")));
-            Currency.initialize();
+
+            try {
+                Request.setCommandTag(CommandTags.GET_CURRENCIES);
+                Request.setCurrentMenu(Views.REGISTER_VIEW);
+                Request.sendToServer();
+
+                if (Request.isSuccessful()) {
+                    System.out.println(Request.getResponse().getString("currencies"));
+                    
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+//            Currency.initialize();
+
+
+
+
             intent = new Intent(getBaseContext(), MainActivity.class);
             new MyTimer().execute(intent);
         }

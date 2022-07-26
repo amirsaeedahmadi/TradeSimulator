@@ -98,7 +98,7 @@ public class Request {
 
                 Socket socket = null;
 
-                socket = new Socket("192.168.1.50", 7755);
+                socket = new Socket("192.168.1.52", 7755);
 
 //            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
@@ -109,6 +109,7 @@ public class Request {
                 System.out.println(result);
                 response = new JSONObject(result);
                 dataOutputStream.close();
+                System.out.println("server job finished");
                 socket.close();
                 clear();
             } catch (IOException | JSONException e) {
