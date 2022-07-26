@@ -42,9 +42,9 @@ import java.nio.ByteOrder;
 
 public class Request {
     private static JSONObject request = new JSONObject();
-    private static JSONObject response;
+    public static JSONObject response;
     public static String token = null;
-    public static Thread Thread1 = null;
+    public static Thread thread1 = null;
 
     public static void getToken() throws JSONException {
         token = response.getString("token");
@@ -84,8 +84,8 @@ public class Request {
 
     public static void sendToServer() {
 
-        Thread1 = new Thread(new Thread1());
-        Thread1.start();
+        thread1 = new Thread(new Thread1());
+        thread1.start();
 
     }
 
@@ -98,13 +98,14 @@ public class Request {
 
                 Socket socket = null;
 
-                socket = new Socket("192.168.1.50", 7755);
+                socket = new Socket("192.168.1.6", 5000);
 
 //            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
                 DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
                 dataOutputStream.writeUTF(request.toString());
                 dataOutputStream.flush();
+                System.out.println("WAITING");
                 String result = dataInputStream.readUTF();
                 System.out.println(result);
                 response = new JSONObject(result);

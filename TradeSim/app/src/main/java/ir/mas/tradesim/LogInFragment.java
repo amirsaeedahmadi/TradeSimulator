@@ -104,7 +104,11 @@ public class LogInFragment extends Fragment {
             Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
             Request.sendToServer();
 //            String response = Request.getMessage();
+            while (Request.response == null){
+                System.out.println("waiting");
+            }
             valid = Request.isSuccessful();
+
         } catch (Exception e) {
             Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
             e.printStackTrace();

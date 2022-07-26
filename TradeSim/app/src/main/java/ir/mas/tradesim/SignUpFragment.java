@@ -116,7 +116,7 @@ public class SignUpFragment extends Fragment {
             Request.addData(Strings.PRIVATE_KEY.getLabel(), privateKey);
             Request.addData(Strings.NICKNAME.getLabel(), nickname);
             Request.sendToServer();
-            valid = Request.isSuccessful();
+            //valid = Request.isSuccessful();
         } catch (JSONException e) {
             Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
             return;
