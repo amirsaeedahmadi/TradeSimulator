@@ -1,11 +1,11 @@
 package ir.mas.tradesim.enums;
 
 public enum Views {
-    REGISTER_VIEW("Register Menu"),
-    PROFILE_VIEW("Profile Menu"),
-    MAIN_VIEW("Main Menu"),
+    REGISTER_VIEW("Register View"),
+    PROFILE_VIEW("Profile View"),
+    MAIN_VIEW("Main View"),
     SOME_VIEW("Some View"),
-    SCOREBOARD_VIEW("Scoreboard Menu");
+    SCOREBOARD_VIEW("Scoreboard View");
     public final String label;
 
     Views(String label) {

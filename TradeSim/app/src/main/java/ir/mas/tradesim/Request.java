@@ -41,13 +41,17 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class Request {
-    private static JSONObject request = new JSONObject();
-    private static JSONObject response;
+    public static JSONObject request = new JSONObject();
+    public static JSONObject response;
     public static String token = null;
     public static Thread Thread1 = null;
 
     public static void getToken() throws JSONException {
         token = response.getString("token");
+    }
+
+    public static JSONObject getRequest() {
+        return request;
     }
 
     public static String giveToken() {
@@ -84,39 +88,60 @@ public class Request {
 
     public static void sendToServer() {
 
-        Thread1 = new Thread(new Thread1());
-        Thread1.start();
-
-    }
-
-
-    static class Thread1 implements Runnable {
-        public void run() {
-            try {
-                // TODO: after preparing registration uncomment next line
+        try {
+            // TODO: after preparing registration uncomment next line
 //            Request.setToken();
 
-                Socket socket = null;
+            Socket socket = null;
 
-                socket = new Socket("192.168.1.52", 7755);
+            socket = new Socket("192.168.1.52", 7755);
 
 //            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
-                DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
-                dataOutputStream.writeUTF(request.toString());
-                dataOutputStream.flush();
-                String result = dataInputStream.readUTF();
-                System.out.println(result);
-                response = new JSONObject(result);
-                dataOutputStream.close();
-                System.out.println("server job finished");
-                socket.close();
-                clear();
-            } catch (IOException | JSONException e) {
-                e.printStackTrace();
-            }
+            DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
+            DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
+            dataOutputStream.writeUTF(request.toString());
+            dataOutputStream.flush();
+            String result = dataInputStream.readUTF();
+            System.out.println(result);
+            response = new JSONObject(result);
+            dataOutputStream.close();
+            System.out.println("server job finished");
+            socket.close();
+            clear();
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
         }
+
     }
+
+
+//    static class SendToServer implements Runnable {
+//        public void run() {
+//            try {
+//                // TODO: after preparing registration uncomment next line
+////            Request.setToken();
+//
+//                Socket socket = null;
+//
+//                socket = new Socket("192.168.1.52", 7755);
+//
+////            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
+//                DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
+//                DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
+//                dataOutputStream.writeUTF(request.toString());
+//                dataOutputStream.flush();
+//                String result = dataInputStream.readUTF();
+//                System.out.println(result);
+//                response = new JSONObject(result);
+//                dataOutputStream.close();
+//                System.out.println("server job finished");
+//                socket.close();
+//                clear();
+//            } catch (IOException | JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 
     public static JSONObject getResponse() {

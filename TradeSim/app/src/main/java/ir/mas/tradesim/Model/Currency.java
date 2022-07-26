@@ -16,23 +16,32 @@ import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
 
 public class Currency {
+
     static ArrayList<Currency> currencies = new ArrayList<Currency>();
 
-    String name;//e.g. Monero
-    String code;//e.g. XMR
+    static double rialExchange = 27760.1;
+    // TODO: GET LIVE DOLLAR PRICE FROM IRANIAN SITES
+    String name;
+    String code;
+    String color;
+    int rank;
+    double change;
+    String sparkData;
     double price;//e.g. 1000000 (IRR) //=-1 if not accessible to update the value
     double credit;//e.g. 0.01
-    int logo;//Id of the Logo e.g. R.id.monero
-    int pngLogo;
+    String logo;//Id of the Logo e.g. R.id.monero
 
-    private Currency(String name, String code, int logo, int pngLogo)
+    public Currency(String name, String code, String color, String logo, int rank, double change, String sparkData, double price)
             throws DuplicateNameException, DuplicateCodeException {
         this.name = name;
+        this.price = price;
         this.code = code;
         this.logo = logo;
-        this.pngLogo = pngLogo;
-        this.price = -1;
+        this.rank = rank;
+        this.change = change;
+        this.sparkData = sparkData;
         this.credit = 0;
+        this.color = color;
 
         if (getCurrencyByName(name) != null) {
             throw new DuplicateNameException(name);
@@ -79,20 +88,7 @@ public class Currency {
     }
 
     private boolean updatePrice() {
-        try {
-            Request.setCommandTag(CommandTags.GET_PRICE);
-            Request.setCurrentMenu(Views.SOME_VIEW);
-            Request.addData(Strings.CURRENCY_CODE.getLabel(), code.toUpperCase());
-            Request.sendToServer();
-            if (!Request.isSuccessful()) {
-                return false;
-            } else {
-                price = Double.parseDouble(Request.getMessage());
-                return true;//shows if it was successful or not
-            }
-        } catch (JSONException e) {
-            return false;
-        }
+        return false;
     }
 
     public void increaseCredit(Double amount){
@@ -170,31 +166,31 @@ public class Currency {
      * </p>
      * @author Mahdi Teymoori Anar*/
     public static void initialize() {
-        try {
-            currencies = new ArrayList<Currency>();
-            new Currency("Monero", "XMR", R.drawable.ic_monero_xmr_logo, R.drawable.monero_xmr_png);
-            new Currency("Bitcoin", "BTC", R.drawable.ic_bitcoin_btc_logo, R.drawable.bitcoin_btc_png);
-            new Currency("Ethereum", "ETH", R.drawable.ic_ethereum_eth_logo, R.drawable.ethereum_eth_png);
-            new Currency("Litecoin", "LTC", R.drawable.ic_litecoin_ltc_logo, R.drawable.litecoin_ltc_png);
-            new Currency("Dogecoin", "DOGE", R.drawable.ic_dogecoin_doge_logo, R.drawable.dogecoin_doge_png);
-            new Currency("Decentraland Mana", "MANA", R.drawable.ic_decentraland_mana_logo, R.drawable.decentraland_mana_png);
-            new Currency("Shiba Inu", "SHIB", R.drawable.ic_shiba_inu_shib_logo, R.drawable.shiba_inu_shib_png);
-            new Currency("The Sandbox", "SAND", R.drawable.ic_the_sandbox_sand_logo, R.drawable.the_sandbox_sand_png);
-            new Currency("Bitcoin Cash", "BCH", R.drawable.ic_bitcoin_cash_bch_logo, R.drawable.bitcoin_cash_bch_png);
-            new Currency("Ethereum Classic", "ETC", R.drawable.ic_ethereum_classic_etc_logo, R.drawable.ethereum_classic_etc_png);
-            new Currency("Solana", "SOL", R.drawable.ic_solana_sol_logo, R.drawable.solana_sol_png);
-            new Currency("Filecoin", "FIL", R.drawable.ic_filecoin_fil_logo, R.drawable.filecoin_fil_png);
-            new Currency("Polygon", "MATIC", R.drawable.ic_polygon_matic_logo, R.drawable.polygon_matic_png);
-            new Currency("Wrapped Bitcoin", "WBTC", R.drawable.ic_wrapped_bitcoin_wbtc_logo, R.drawable.wrapped_bitcoin_wbtc_png);
-            new Currency("Floki Inu", "FLOKI", R.drawable.ic_floki_inu_floki_logo, R.drawable.floki_inu_floki_png);
-            new Currency("HTMLcoin", "HTML", R.drawable.ic_html_coin_html_logo, R.drawable.htmlcoin_html_png);
-            new Currency("Bitcoin Private", "BTCP", R.drawable.ic_bitcoin_private_btcp_logo, R.drawable.bitcoin_private_btcp_png);
-            new Currency("Zilliqa", "ZIL", R.drawable.ic_zilliqa_zil_logo, R.drawable.zilliqa_zil_png);
-        } catch (DuplicateNameException e) {
-            e.printStackTrace();
-        } catch (DuplicateCodeException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            currencies = new ArrayList<Currency>();
+//            new Currency("Monero", "XMR", R.drawable.ic_monero_xmr_logo, R.drawable.monero_xmr_png);
+//            new Currency("Bitcoin", "BTC", R.drawable.ic_bitcoin_btc_logo, R.drawable.bitcoin_btc_png);
+//            new Currency("Ethereum", "ETH", R.drawable.ic_ethereum_eth_logo, R.drawable.ethereum_eth_png);
+//            new Currency("Litecoin", "LTC", R.drawable.ic_litecoin_ltc_logo, R.drawable.litecoin_ltc_png);
+//            new Currency("Dogecoin", "DOGE", R.drawable.ic_dogecoin_doge_logo, R.drawable.dogecoin_doge_png);
+//            new Currency("Decentraland Mana", "MANA", R.drawable.ic_decentraland_mana_logo, R.drawable.decentraland_mana_png);
+//            new Currency("Shiba Inu", "SHIB", R.drawable.ic_shiba_inu_shib_logo, R.drawable.shiba_inu_shib_png);
+//            new Currency("The Sandbox", "SAND", R.drawable.ic_the_sandbox_sand_logo, R.drawable.the_sandbox_sand_png);
+//            new Currency("Bitcoin Cash", "BCH", R.drawable.ic_bitcoin_cash_bch_logo, R.drawable.bitcoin_cash_bch_png);
+//            new Currency("Ethereum Classic", "ETC", R.drawable.ic_ethereum_classic_etc_logo, R.drawable.ethereum_classic_etc_png);
+//            new Currency("Solana", "SOL", R.drawable.ic_solana_sol_logo, R.drawable.solana_sol_png);
+//            new Currency("Filecoin", "FIL", R.drawable.ic_filecoin_fil_logo, R.drawable.filecoin_fil_png);
+//            new Currency("Polygon", "MATIC", R.drawable.ic_polygon_matic_logo, R.drawable.polygon_matic_png);
+//            new Currency("Wrapped Bitcoin", "WBTC", R.drawable.ic_wrapped_bitcoin_wbtc_logo, R.drawable.wrapped_bitcoin_wbtc_png);
+//            new Currency("Floki Inu", "FLOKI", R.drawable.ic_floki_inu_floki_logo, R.drawable.floki_inu_floki_png);
+//            new Currency("HTMLcoin", "HTML", R.drawable.ic_html_coin_html_logo, R.drawable.htmlcoin_html_png);
+//            new Currency("Bitcoin Private", "BTCP", R.drawable.ic_bitcoin_private_btcp_logo, R.drawable.bitcoin_private_btcp_png);
+//            new Currency("Zilliqa", "ZIL", R.drawable.ic_zilliqa_zil_logo, R.drawable.zilliqa_zil_png);
+//        } catch (DuplicateNameException e) {
+//            e.printStackTrace();
+//        } catch (DuplicateCodeException e) {
+//            e.printStackTrace();
+//        }
         refresh();
     }
 
@@ -271,21 +267,21 @@ public class Currency {
         this.credit = credit;
     }
 
-    public int getLogo() {
+    public String getLogo() {
         return logo;
     }
 
-    public void setLogo(int logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
     }
 
-    public int getPngLogo() {
-        return pngLogo;
-    }
-
-    public void setPngLogo(int pngLogo) {
-        this.pngLogo = pngLogo;
-    }
+//    public int getPngLogo() {
+//        return pngLogo;
+//    }
+//
+//    public void setPngLogo(int pngLogo) {
+//        this.pngLogo = pngLogo;
+//    }
 
     /**
      * This method calculates and returns the price to but from the price to sell (price) and the exchange fee

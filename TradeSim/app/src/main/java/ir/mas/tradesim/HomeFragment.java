@@ -74,7 +74,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         //
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        Currency.initialize();
+//        Currency.initialize();
         currencyRecyclerView = root.findViewById(R.id.CurrencyRecyclerView);
         currencyRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new CurrencyRecyclerViewAdapter(getContext());
