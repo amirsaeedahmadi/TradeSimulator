@@ -2,6 +2,7 @@ package ir.mas.tradesim;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -35,6 +36,8 @@ public class LogInFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static String key;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -96,10 +99,12 @@ public class LogInFragment extends Fragment {
         return root;
     }
 
-    //TODO: make it as an async task!
+
     private void login(String key) {
-        boolean valid = true;//TODO to get from the server
-        // TODO: It should request to the server and ...
+
+        boolean valid = true;
+        LogInFragment.key = key;
+
         try {
             Request.setCommandTag(CommandTags.LOGIN);
             Request.setCurrentMenu(Views.REGISTER_VIEW);
@@ -138,6 +143,52 @@ public class LogInFragment extends Fragment {
         } catch (JSONException e) {
             Toast.makeText(getContext(), R.string.response_error, Toast.LENGTH_SHORT).show();
             e.printStackTrace();
+        }
+    }
+
+    class GetDataFromServer extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+
+            try {
+                Request.setCommandTag(CommandTags.LOGIN);
+                Request.setCurrentMenu(Views.REGISTER_VIEW);
+                Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
+                Request.sendToServer();
+
+//                valid = Request.isSuccessful();
+            } catch (Exception e) {
+                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+//                return;
+            }
+
+            try {
+                Request.setCommandTag(CommandTags.GET_CURRENCIES);
+                Request.setCurrentMenu(Views.REGISTER_VIEW);
+                Request.sendToServer();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            super.onPostExecute(unused);
+            try {
+                if (Request.isSuccessful()) {
+                    System.out.println(Request.getResponse().getString("currencies"));
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 }
