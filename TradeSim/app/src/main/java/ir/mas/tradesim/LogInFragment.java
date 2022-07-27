@@ -102,7 +102,6 @@ public class LogInFragment extends Fragment {
 
     private void login(String key) {
 
-        boolean valid = true;
         LogInFragment.key = key;
 
 

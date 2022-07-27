@@ -14,10 +14,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.Random;
 
+import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.User;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
@@ -38,21 +43,14 @@ public class SignUpFragment extends Fragment {
     Button signUpButton, generateRandomKeyButton;
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static String privateKey;
+    private static String nickname;
 
     public SignUpFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SignUpFragment.
-     */
+
     // TODO: Rename and change types and number of parameters
     public static SignUpFragment newInstance(String param1, String param2) {
         SignUpFragment fragment = new SignUpFragment();
@@ -67,8 +65,8 @@ public class SignUpFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            privateKey = getArguments().getString(ARG_PARAM1);
+            nickname = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -114,27 +112,14 @@ public class SignUpFragment extends Fragment {
 
     private void signUp(String nickname, String privateKey) {
         boolean valid = true;
-        try {
-            Request.setCommandTag(CommandTags.REGISTER);
-            Request.setCurrentMenu(Views.REGISTER_VIEW);
-            Request.addData(Strings.PRIVATE_KEY.getLabel(), privateKey);
-            Request.addData(Strings.NICKNAME.getLabel(), nickname);
-            Request.sendToServer();
-            //valid = Request.isSuccessful();
-        } catch (JSONException e) {
-            Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (valid) {
-            ;//TODO
+        SignUpFragment.privateKey = privateKey;
+        SignUpFragment.nickname = nickname;
 
-        } else {
-            Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_SHORT).show();
-        }
+        new GetDataFromServerSignUp().execute();
 
     }
 
-    class GetDataFromServer extends AsyncTask<Void, Void, String> {
+    class GetDataFromServerSignUp extends AsyncTask<Void, Void, String> {
 
         boolean checker = false;
 
@@ -142,9 +127,10 @@ public class SignUpFragment extends Fragment {
         protected String doInBackground(Void... voids) {
 
             try {
-                Request.setCommandTag(CommandTags.LOGIN);
+                Request.setCommandTag(CommandTags.REGISTER);
                 Request.setCurrentMenu(Views.REGISTER_VIEW);
-//                Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
+                Request.addData(Strings.PRIVATE_KEY.getLabel(), privateKey);
+                Request.addData(Strings.NICKNAME.getLabel(), nickname);
                 Request.sendToServer();
 
             } catch (Exception e) {
@@ -182,7 +168,11 @@ public class SignUpFragment extends Fragment {
 //                    prefsEditor.putString("Token", key);// TODO: modify: key -> token given by the server
                     //TODO: setCurrencyValues
 
-                    System.out.println(Request.getResponse().getString("currencies"));
+                    System.out.println(Request.getMessage());
+
+                    Currency.currencies = new Gson().fromJson(Request.getMessage(), new TypeToken<ArrayList<Currency>>() {
+                    }.getType());
+                    System.out.println(Currency.currencies);
 
 
 //                prefsEditor.apply();
