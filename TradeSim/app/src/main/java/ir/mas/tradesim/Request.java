@@ -115,33 +115,33 @@ public class Request {
     }
 
 
-//    static class SendToServer implements Runnable {
-//        public void run() {
-//            try {
-//                // TODO: after preparing registration uncomment next line
-////            Request.setToken();
-//
-//                Socket socket = null;
-//
-//                socket = new Socket("192.168.1.52", 7755);
-//
-////            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
-//                DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
-//                DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
-//                dataOutputStream.writeUTF(request.toString());
-//                dataOutputStream.flush();
-//                String result = dataInputStream.readUTF();
-//                System.out.println(result);
-//                response = new JSONObject(result);
-//                dataOutputStream.close();
-//                System.out.println("server job finished");
-//                socket.close();
-//                clear();
-//            } catch (IOException | JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    static class SendToServer implements Runnable {
+        public void run() {
+            try {
+                // TODO: after preparing registration uncomment next line
+//            Request.setToken();
+
+                Socket socket = null;
+
+                socket = new Socket("192.168.1.52", 7755);
+
+//            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
+                DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
+                DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
+                dataOutputStream.writeUTF(request.toString());
+                dataOutputStream.flush();
+                String result = dataInputStream.readUTF();
+                System.out.println(result);
+                response = new JSONObject(result);
+                dataOutputStream.close();
+                System.out.println("server job finished");
+                socket.close();
+                clear();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
     public static JSONObject getResponse() {

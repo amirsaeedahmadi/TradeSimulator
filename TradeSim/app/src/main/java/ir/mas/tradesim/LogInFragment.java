@@ -105,52 +105,16 @@ public class LogInFragment extends Fragment {
         boolean valid = true;
         LogInFragment.key = key;
 
-        try {
-            Request.setCommandTag(CommandTags.LOGIN);
-            Request.setCurrentMenu(Views.REGISTER_VIEW);
-            Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
-            Request.sendToServer();
-//            String message = Request.getMessage();
-            valid = Request.isSuccessful();
-        } catch (Exception e) {
-            Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-            return;
-        }
-        // if valid
-        // to set the values
-        try {
-            if (valid) {
-                User.getInstance().setUsername(key);
-                User.getInstance().setNickname(Request.getResponse().getString(Strings.NICKNAME.getLabel()));
-                User.getInstance().setRialCredit(Double.parseDouble(Request.getResponse().getString(Strings.RIAL_CREDIT.getLabel())));
-//                Currency.initialize();
-                SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
-                prefsEditor.putString("Token", key);// TODO: modify: key -> token given by the server
-                //TODO: setCurrencyValues
 
-                System.out.println(Request.getResponse().getString("currencies"));
-
-
-//                prefsEditor.apply();
-                prefsEditor.commit();
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getContext().startActivity(intent);
-            } else {
-                Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
-            }
-        } catch (JSONException e) {
-            Toast.makeText(getContext(), R.string.response_error, Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
+        new GetDataFromServer().execute();
     }
 
-    class GetDataFromServer extends AsyncTask<Void, Void, Void> {
+    class GetDataFromServer extends AsyncTask<Void, Void, String> {
+
+        boolean checker = false;
 
         @Override
-        protected Void doInBackground(Void... voids) {
-
+        protected String doInBackground(Void... voids) {
 
             try {
                 Request.setCommandTag(CommandTags.LOGIN);
@@ -158,34 +122,54 @@ public class LogInFragment extends Fragment {
                 Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
                 Request.sendToServer();
 
-//                valid = Request.isSuccessful();
             } catch (Exception e) {
-                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+                String message = getString(R.string.connection_error);
+                System.out.println(message);
                 e.printStackTrace();
-//                return;
+                return message;
             }
 
-            try {
-                Request.setCommandTag(CommandTags.GET_CURRENCIES);
-                Request.setCurrentMenu(Views.REGISTER_VIEW);
-                Request.sendToServer();
+            String message = getString(R.string.connection_success);
+            System.out.println(message);
+            checker = true;
+            return message;
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            return null;
         }
 
         @Override
-        protected void onPostExecute(Void unused) {
-            super.onPostExecute(unused);
+        protected void onPostExecute(String message) {
+            super.onPostExecute(message);
+            System.out.println(message);
+
+            if (!checker) {
+                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             try {
                 if (Request.isSuccessful()) {
+                    User.getInstance().setUsername(key);
+                    User.getInstance().setNickname(Request.getResponse().getString(Strings.NICKNAME.getLabel()));
+                    User.getInstance().setRialCredit(Double.parseDouble(Request.getResponse().getString(Strings.RIAL_CREDIT.getLabel())));
+//                Currency.initialize();
+                    SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
+                    prefsEditor.putString("Token", key);// TODO: modify: key -> token given by the server
+                    //TODO: setCurrencyValues
+
                     System.out.println(Request.getResponse().getString("currencies"));
 
+
+//                prefsEditor.apply();
+                    prefsEditor.commit();
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getContext().startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
+                Toast.makeText(getContext(), R.string.response_error, Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
 

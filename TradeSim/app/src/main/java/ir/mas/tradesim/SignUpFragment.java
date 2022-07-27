@@ -1,5 +1,8 @@
 package ir.mas.tradesim;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +18,7 @@ import org.json.JSONException;
 
 import java.util.Random;
 
+import ir.mas.tradesim.Model.User;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
@@ -128,5 +132,72 @@ public class SignUpFragment extends Fragment {
             Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    class GetDataFromServer extends AsyncTask<Void, Void, String> {
+
+        boolean checker = false;
+
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                Request.setCommandTag(CommandTags.LOGIN);
+                Request.setCurrentMenu(Views.REGISTER_VIEW);
+//                Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
+                Request.sendToServer();
+
+            } catch (Exception e) {
+//                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+                String message = getString(R.string.connection_error);
+                System.out.println(message);
+                e.printStackTrace();
+                return message;
+            }
+
+            String message = getString(R.string.connection_success);
+            System.out.println(message);
+            checker = true;
+            return message;
+
+        }
+
+        @Override
+        protected void onPostExecute(String message) {
+            super.onPostExecute(message);
+            System.out.println(message);
+
+            if (!checker) {
+                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+                if (Request.isSuccessful()) {
+//                    User.getInstance().setUsername(key);
+                    User.getInstance().setNickname(Request.getResponse().getString(Strings.NICKNAME.getLabel()));
+                    User.getInstance().setRialCredit(Double.parseDouble(Request.getResponse().getString(Strings.RIAL_CREDIT.getLabel())));
+//                Currency.initialize();
+                    SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
+//                    prefsEditor.putString("Token", key);// TODO: modify: key -> token given by the server
+                    //TODO: setCurrencyValues
+
+                    System.out.println(Request.getResponse().getString("currencies"));
+
+
+//                prefsEditor.apply();
+                    prefsEditor.commit();
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getContext().startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
+                }
+            } catch (JSONException e) {
+                Toast.makeText(getContext(), R.string.response_error, Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+
+        }
     }
 }

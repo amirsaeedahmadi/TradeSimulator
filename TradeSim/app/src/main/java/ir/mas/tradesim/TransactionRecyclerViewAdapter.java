@@ -63,7 +63,7 @@ public class TransactionRecyclerViewAdapter extends RecyclerView.Adapter<Transac
 
         //todo: to add other attributes ...
         Transaction transaction = Transaction.getTransactions().get(position);
-        holder.logoView.setImageResource(transaction.getCurrency().getLogo());
+//        holder.logoView.setImageResource(transaction.getCurrency().getLogo());
         holder.nameView.setText(transaction.getCurrency().getName());
         holder.dateView.setText(transaction.getDate().toString());
         if (transaction.getType() == TransactionType.BUY) {

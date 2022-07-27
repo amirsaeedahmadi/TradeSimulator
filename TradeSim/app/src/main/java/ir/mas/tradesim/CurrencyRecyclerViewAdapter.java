@@ -61,7 +61,7 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
 //        }
         Currency currency = Currency.getCurrencies().get(position);
         String x = new BigDecimal(currency.getCredit()).toPlainString();
-        holder.logoView.setImageResource(currency.getLogo());
+//        holder.logoView.setImageResource(currency.getLogo());
         holder.nameView.setText(currency.getName());
         holder.codeView.setText(currency.getCode());
         if ((currency.getPrice() == -1)) {

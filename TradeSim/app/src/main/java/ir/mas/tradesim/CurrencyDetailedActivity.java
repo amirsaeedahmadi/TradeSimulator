@@ -114,7 +114,7 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         toolBarLayout.setTitle(getTitle());
 
         toolBarLayout.setTitle(currency.toString());
-        toolBarLayout.setBackgroundResource(currency.getLogo());
+//        toolBarLayout.setBackgroundResource(currency.getLogo());
 
         toolbar.setLogo(null);
         FloatingActionButton fab = binding.fab;
@@ -237,9 +237,9 @@ class LogoSetter extends AsyncTask<CurrencyDetailedActivity, Object, Boolean> {
     @Override
     protected void onPostExecute(Boolean toShow) {
         if (isCancelled() || !toContinue) return;
-        if (toShow)
-            activity.toolbar.setLogo(activity.currency.getPngLogo());
-        else activity.toolbar.setLogo(null);
+//        if (toShow)
+////            activity.toolbar.setLogo(activity.currency.getPngLogo());
+//        else activity.toolbar.setLogo(null);
         if (!isCancelled() && toContinue) new LogoSetter().execute(new CurrencyDetailedActivity[] {activity});
     }
 }

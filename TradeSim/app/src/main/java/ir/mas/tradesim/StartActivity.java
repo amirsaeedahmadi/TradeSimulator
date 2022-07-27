@@ -8,6 +8,9 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +18,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import ir.mas.tradesim.Model.Currency;
 import ir.mas.tradesim.Model.User;
@@ -74,7 +78,11 @@ public class StartActivity extends AppCompatActivity {
             super.onPostExecute(unused);
             try {
                 if (Request.isSuccessful()) {
-                    System.out.println(Request.getResponse().getString("currencies"));
+                    System.out.println(Request.getMessage());
+
+                    Currency.currencies = new Gson().fromJson(Request.getMessage(), new TypeToken<ArrayList<Currency>>() {
+                    }.getType());
+                    System.out.println(Currency.currencies);
 
                 }
             } catch (JSONException e) {

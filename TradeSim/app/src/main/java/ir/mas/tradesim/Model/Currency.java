@@ -17,7 +17,7 @@ import ir.mas.tradesim.enums.Views;
 
 public class Currency {
 
-    static ArrayList<Currency> currencies = new ArrayList<Currency>();
+    public static ArrayList<Currency> currencies = new ArrayList<Currency>();
 
     static double rialExchange = 27760.1;
     // TODO: GET LIVE DOLLAR PRICE FROM IRANIAN SITES
@@ -53,6 +53,7 @@ public class Currency {
         currencies.add(this);
 
     }
+
 
     @Override
     public String toString() {
