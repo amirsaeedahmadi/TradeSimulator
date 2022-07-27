@@ -14,22 +14,16 @@ public class MainActivity extends AppCompatActivity {
 }*/
 
         import android.annotation.SuppressLint;
-        import android.app.ActionBar;
         import android.content.Intent;
         import android.content.SharedPreferences;
-        import android.os.Build;
         import android.os.Bundle;
         import android.view.View;
-        import android.view.WindowInsets;
-        import android.view.WindowManager;
         import android.widget.ArrayAdapter;
         import android.widget.ImageButton;
         import android.widget.LinearLayout;
         import android.widget.ListView;
         import android.widget.SearchView;
-        import android.widget.TextView;
         import android.widget.Toast;
-        import android.widget.Toolbar;
 
         import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
@@ -37,12 +31,9 @@ public class MainActivity extends AppCompatActivity {
         import androidx.fragment.app.FragmentContainerView;
         import androidx.fragment.app.FragmentTransaction;
 
-        import org.json.JSONException;
-
         import java.util.Locale;
 
-        import ir.mas.tradesim.Model.Adad;
-        import ir.mas.tradesim.Model.Currency;
+        import ir.mas.tradesim.model.Currency;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences mPrefs;

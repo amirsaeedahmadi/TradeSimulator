@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import org.json.JSONException;
 
-import ir.mas.tradesim.Model.TopUser;
+import ir.mas.tradesim.model.TopUser;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Views;
 

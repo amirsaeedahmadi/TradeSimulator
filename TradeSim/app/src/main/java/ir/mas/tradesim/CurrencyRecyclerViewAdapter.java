@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.math.BigDecimal;
 
-import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
-import ir.mas.tradesim.Model.Adad;
-import ir.mas.tradesim.Model.Currency;
+import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.model.Adad;
+import ir.mas.tradesim.model.Currency;
 
 public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRecyclerViewAdapter.ViewHolder> {
     private LayoutInflater inflater;

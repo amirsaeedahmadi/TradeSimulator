@@ -22,8 +22,8 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import ir.mas.tradesim.Model.Currency;
-import ir.mas.tradesim.Model.User;
+import ir.mas.tradesim.model.Currency;
+import ir.mas.tradesim.model.User;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;

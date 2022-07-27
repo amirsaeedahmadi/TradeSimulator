@@ -1,7 +1,5 @@
 package ir.mas.tradesim;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -14,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import ir.mas.tradesim.Model.User;
+import ir.mas.tradesim.model.User;
 
 /**
  * A simple {@link Fragment} subclass.

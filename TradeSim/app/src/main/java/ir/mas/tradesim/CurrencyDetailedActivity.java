@@ -14,16 +14,14 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.DragEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
-import ir.mas.tradesim.Model.Adad;
-import ir.mas.tradesim.Model.Currency;
-import ir.mas.tradesim.Model.TransactionType;
+import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.model.Adad;
+import ir.mas.tradesim.model.Currency;
+import ir.mas.tradesim.model.TransactionType;
 import ir.mas.tradesim.databinding.ActivityCurrencyDetailedBinding;
 
 public class CurrencyDetailedActivity extends AppCompatActivity {

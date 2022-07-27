@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import ir.mas.tradesim.Model.Transaction;
+import ir.mas.tradesim.model.Transaction;
 
 /**
  * A simple {@link Fragment} subclass.

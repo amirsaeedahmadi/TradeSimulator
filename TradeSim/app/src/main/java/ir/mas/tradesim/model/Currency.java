@@ -1,15 +1,11 @@
-package ir.mas.tradesim.Model;
-
-import androidx.annotation.Nullable;
+package ir.mas.tradesim.model;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
-import ir.mas.tradesim.Exceptions.NotEnoughValueException;
-import ir.mas.tradesim.R;
+import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.exceptions.NotEnoughValueException;
 import ir.mas.tradesim.Request;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;

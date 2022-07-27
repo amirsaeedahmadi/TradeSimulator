@@ -12,12 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
-import ir.mas.tradesim.Exceptions.NotEnoughValueException;
-import ir.mas.tradesim.Model.Adad;
-import ir.mas.tradesim.Model.Currency;
-import ir.mas.tradesim.Model.Transaction;
-import ir.mas.tradesim.Model.TransactionType;
+import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.exceptions.NotEnoughValueException;
+import ir.mas.tradesim.model.Adad;
+import ir.mas.tradesim.model.Currency;
+import ir.mas.tradesim.model.Transaction;
+import ir.mas.tradesim.model.TransactionType;
 
 //TODO: IMPORTANT REFACTORINGS ...
 public class TransactionPerformActivity extends AppCompatActivity {

@@ -10,13 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.math.BigDecimal;
-
-import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
-import ir.mas.tradesim.Model.Adad;
-import ir.mas.tradesim.Model.Currency;
-import ir.mas.tradesim.Model.Transaction;
-import ir.mas.tradesim.Model.TransactionType;
+import ir.mas.tradesim.model.Adad;
+import ir.mas.tradesim.model.Transaction;
+import ir.mas.tradesim.model.TransactionType;
 
 public class TransactionRecyclerViewAdapter extends RecyclerView.Adapter<TransactionRecyclerViewAdapter.ViewHolder> {
     private LayoutInflater inflater;

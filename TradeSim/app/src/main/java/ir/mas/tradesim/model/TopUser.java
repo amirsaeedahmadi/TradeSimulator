@@ -1,8 +1,8 @@
-package ir.mas.tradesim.Model;
+package ir.mas.tradesim.model;
 
 import java.util.ArrayList;
 
-import ir.mas.tradesim.Exceptions.TooMuchTopUsersException;
+import ir.mas.tradesim.exceptions.TooMuchTopUsersException;
 
 public class TopUser {
     String nickname;

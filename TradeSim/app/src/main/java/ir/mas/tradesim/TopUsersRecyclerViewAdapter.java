@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ir.mas.tradesim.Model.Adad;
-import ir.mas.tradesim.Model.TopUser;
+import ir.mas.tradesim.model.Adad;
+import ir.mas.tradesim.model.TopUser;
 
 public class TopUsersRecyclerViewAdapter extends RecyclerView.Adapter<TopUsersRecyclerViewAdapter.ViewHolder> {
     private LayoutInflater inflater;

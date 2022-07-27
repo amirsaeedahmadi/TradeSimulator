@@ -1,9 +1,9 @@
-package ir.mas.tradesim.Model;
+package ir.mas.tradesim.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-import ir.mas.tradesim.Exceptions.NotEnoughValueException;
+import ir.mas.tradesim.exceptions.NotEnoughValueException;
 
 public class Transaction {
     private static int nextId = 1;

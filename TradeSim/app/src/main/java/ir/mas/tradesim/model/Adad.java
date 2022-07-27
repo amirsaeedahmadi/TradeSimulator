@@ -1,11 +1,11 @@
-package ir.mas.tradesim.Model;
+package ir.mas.tradesim.model;
 
 import android.content.Context;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
 
-import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.R;
 
 /**

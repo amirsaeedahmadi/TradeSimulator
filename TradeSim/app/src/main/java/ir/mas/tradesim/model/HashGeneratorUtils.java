@@ -1,10 +1,10 @@
-package ir.mas.tradesim.Model;
+package ir.mas.tradesim.model;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import ir.mas.tradesim.Exceptions.HashGenerationException;
+import ir.mas.tradesim.exceptions.HashGenerationException;
 
 /**
  * Hash functions utility class.

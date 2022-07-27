@@ -1,4 +1,4 @@
-package ir.mas.tradesim.Exceptions;
+package ir.mas.tradesim.exceptions;
 
 public class NotEnoughValueException extends Exception{
     public NotEnoughValueException() {

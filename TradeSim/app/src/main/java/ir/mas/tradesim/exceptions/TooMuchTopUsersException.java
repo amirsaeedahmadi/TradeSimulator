@@ -1,4 +1,4 @@
-package ir.mas.tradesim.Exceptions;
+package ir.mas.tradesim.exceptions;
 
 public class TooMuchTopUsersException extends Exception {
 }

@@ -2,7 +2,6 @@ package ir.mas.tradesim;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -12,18 +11,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
 import java.util.ArrayList;
 
-import ir.mas.tradesim.Model.Currency;
-import ir.mas.tradesim.Model.User;
+import ir.mas.tradesim.model.Currency;
+import ir.mas.tradesim.model.User;
 import ir.mas.tradesim.enums.CommandTags;
-import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
 
 public class StartActivity extends AppCompatActivity {

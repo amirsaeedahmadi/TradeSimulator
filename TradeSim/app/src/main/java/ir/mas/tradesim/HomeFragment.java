@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import ir.mas.tradesim.Exceptions.NotAbleToUpdateException;
-import ir.mas.tradesim.Model.Adad;
-import ir.mas.tradesim.Model.Currency;
-import ir.mas.tradesim.Model.User;
+import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
+import ir.mas.tradesim.model.Adad;
+import ir.mas.tradesim.model.Currency;
+import ir.mas.tradesim.model.User;
 
 /**
  * A simple {@link Fragment} subclass.
