@@ -86,7 +86,7 @@ public class SignUpFragment extends Fragment {
                 String nickname = nicknameView.getText().toString();
                 if (privateKey.equals("")||nickname.equals(""))
                     Toast.makeText(getContext(), R.string.empty_input, Toast.LENGTH_SHORT).show();
-                else if (privateKey.length() < 100)
+                else if (privateKey.length() < 5)
                     Toast.makeText(getContext(), R.string.too_short_private_key, Toast.LENGTH_LONG).show();
                 else signUp(nickname, privateKey);
             }
