@@ -10,6 +10,7 @@ import android.os.Bundle;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.robinhood.spark.SparkView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -35,6 +36,7 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
     Toolbar toolbar;
     AsyncTask<CurrencyDetailedActivity, Object, Boolean> logoSetter;
     View include;
+    SparkView sparkView;
     boolean isShown = false;
     int confidence = 10;
 
@@ -104,13 +106,16 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         priceToBuyView = findViewById(R.id.priceToBuyTextView);
         creditView = findViewById(R.id.yourCreditTextView);
         equivalentRialView = findViewById(R.id.equivalentRialTextView);
+        sparkView = findViewById(R.id.sparkView);
+        //sparkView.setBaseLineColor();
+        sparkView.setAdapter(new CurrencySparkAdapter(Currency.getSparkDataByCurrency(
+                intent.getStringExtra("currency code"))));
         setPrices();
 
         toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
-
         toolBarLayout.setTitle(currency.toString());
 //        toolBarLayout.setBackgroundResource(currency.getLogo());
 

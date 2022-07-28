@@ -60,8 +60,8 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
 //        }
         System.out.println("we are in currencyRecyclerViewAdapter");
         Currency currency = Currency.getCurrencies().get(position);
-        String x = new BigDecimal(currency.getCredit()).toPlainString();
-//        holder.logoView.setImageResource(currency.getLogo());
+       // String x = new BigDecimal(currency.getCredit()).toPlainString();
+        holder.logoView.setImageResource(currency.getLogo());
         holder.nameView.setText(currency.getName());
         holder.codeView.setText(currency.getCode());
         if ((currency.getPrice() == -1)) {

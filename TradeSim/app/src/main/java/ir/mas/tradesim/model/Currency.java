@@ -1,13 +1,12 @@
 package ir.mas.tradesim.model;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import ir.mas.tradesim.R;
@@ -15,7 +14,6 @@ import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
 import ir.mas.tradesim.Request;
 import ir.mas.tradesim.enums.CommandTags;
-import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
 
 public class Currency {
@@ -59,6 +57,11 @@ public class Currency {
 
     }
 
+    public static float[] getSparkDataByCurrency(String code){
+        Currency currency = getCurrencyByCode(code);
+        Type type = new TypeToken<float[]>() {}.getType();
+        return new Gson().fromJson(currency.sparkData, type);
+    }
 
     @Override
     public String toString() {
@@ -328,8 +331,27 @@ public class Currency {
         this.credit = credit;
     }
 
-    public String getLogo() {
-        return logo;
+    public int getLogo() {
+        if (this.name.equals("Bitcoin")){
+            return R.drawable.ic_bitcoin_btc_logo;
+        }
+        else if (this.name.equals("Ethereum")){
+            return R.drawable.ic_ethereum_eth_logo;
+        }
+        else if (this.name.equals("Solana")){
+            return R.drawable.ic_solana_sol_logo;
+        }
+        else if (this.name.equals("Dogecoin")){
+            return R.drawable.dogecoin_doge_png;
+        }
+        else if (this.name.equals("Polygon")){
+            return R.drawable.ic_polygon_matic_logo;
+        }
+        else if (this.name.equals("SHIBA INU")){
+            return R.drawable.ic_shiba_inu_shib_logo;
+        }
+
+        return R.drawable.ic_shiba_inu_shib_logo;
     }
 
     public void setLogo(String logo) {
