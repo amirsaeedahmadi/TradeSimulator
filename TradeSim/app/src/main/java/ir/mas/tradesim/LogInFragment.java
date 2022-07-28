@@ -154,6 +154,7 @@ public class LogInFragment extends Fragment {
                     StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
                             User.getInstance().getNickname(), User.getInstance().getRialCredit(),
                             User.getInstance().getRialEquivalent()));
+                    StartActivity.userList = StartActivity.userDao.getAllUsers();
 
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

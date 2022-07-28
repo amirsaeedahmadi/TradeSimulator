@@ -1,5 +1,6 @@
 package ir.mas.tradesim;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -20,7 +22,7 @@ public class SettingsFragment extends Fragment {
 
     public static SharedPreferences mPrefs;
     TextView nicknameView, usernameView;
-
+    Button logoutButton;
     Switch darkMode, autoDarkMode;
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,10 +61,19 @@ public class SettingsFragment extends Fragment {
         nicknameView = root.findViewById(R.id.nicknameTextView);
         usernameView.setText(User.getInstance().getAuthToken());
         nicknameView.setText(User.getInstance().getNickname());
+        logoutButton = root.findViewById(R.id.logout_button);
         //TODO: to set the avatar image
         //TODO: to add the functionality of buttons
 
-
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StartActivity.userDao.deleteUsers();
+                Intent intent = new Intent(getContext(), StartActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+            }
+        });
         darkMode = root.findViewById(R.id.darkModeSwitch);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
             darkMode.setChecked(true);

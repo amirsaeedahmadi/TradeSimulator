@@ -178,7 +178,7 @@ public class SignUpFragment extends Fragment {
                     StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
                             User.getInstance().getNickname(), User.getInstance().getRialCredit(),
                             User.getInstance().getRialEquivalent()));
-
+                    StartActivity.userList = StartActivity.userDao.getAllUsers();
 
                     System.out.println(Request.getMessage());
                     System.out.println(Currency.currencies);
