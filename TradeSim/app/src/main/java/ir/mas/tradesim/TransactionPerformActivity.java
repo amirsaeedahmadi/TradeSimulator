@@ -107,6 +107,7 @@ public class TransactionPerformActivity extends AppCompatActivity {
                 getBaseContext().startActivity(intent);
             }
         });
+
         performButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

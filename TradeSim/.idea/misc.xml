@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Jamal/ketab/uni/MobileProgramming/TradeSimulatorProject/TradeSimulator/TradeSim/app/src/main/res/drawable/ic_monero_xmr_logo.xml" value="0.1885" />
+        <entry key="..\:/Jamal/ketab/uni/MobileProgramming/TradeSimulatorProject/TradeSimulator/TradeSim/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.195703125" />
+        <entry key="..\:/Jamal/ketab/uni/MobileProgramming/TradeSimulatorProject/TradeSimulator/TradeSim/app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.15703125" />
+        <entry key="..\:/Jamal/ketab/uni/MobileProgramming/TradeSimulatorProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_currency_detailed.xml" value="0.209375" />
+        <entry key="..\:/Jamal/ketab/uni/MobileProgramming/TradeSimulatorProject/TradeSimulator/TradeSim/app/src/main/res/layout/activity_transaction_perform.xml" value="0.209375" />
+        <entry key="..\:/Jamal/ketab/uni/MobileProgramming/TradeSimulatorProject/TradeSimulator/TradeSim/app/src/main/res/layout/content_scrolling.xml" value="0.209375" />
+        <entry key="..\:/Jamal/ketab/uni/MobileProgramming/TradeSimulatorProject/TradeSimulator/TradeSim/app/src/main/res/layout/fragment_currency_details.xml" value="0.209375" />
         <entry key="..\:/Jamal/ketab/uni/MobileProgramming/TradeSimulatorProject/TradeSimulator/TradeSim/app/src/main/res/layout/fragment_sign_up.xml" value="0.209375" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/drawable-anydpi/home_icon_bg.xml" value="0.2935" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/drawable-anydpi/setting_icon.xml" value="0.2935" />

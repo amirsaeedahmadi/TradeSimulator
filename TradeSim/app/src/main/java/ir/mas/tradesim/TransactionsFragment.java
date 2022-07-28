@@ -69,7 +69,7 @@ public class TransactionsFragment extends Fragment {
         System.out.println(":)");
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_transactions, container, false);
-        Transaction.initialize();
+//        Transaction.initialize();
         System.out.println(">>> "+Transaction.getTransactions().size());
         transactionRecyclerView = root.findViewById(R.id.TransactionsRecyclerView);
         transactionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
