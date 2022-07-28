@@ -1,51 +1,43 @@
 package ir.mas.tradesim;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.Toast;
+import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONException;
-
-import java.util.ArrayList;
-
+import ir.mas.tradesim.database.MyRoomDatabase;
+import ir.mas.tradesim.database.UserDao;
+import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.User;
-import ir.mas.tradesim.enums.CommandTags;
-import ir.mas.tradesim.enums.Views;
+
 
 public class StartActivity extends AppCompatActivity {
-    public static SharedPreferences mPrefs;
+
+    public static UserDao userDao;
+    public static List<UserDb> userList;
+
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        mPrefs = this.getPreferences(MODE_PRIVATE);
-        Request.token = mPrefs.getString("Token", "");
-        if (Request.token.equals("")) {
-            // TODO : go to the sign up/in menu
+
+        MyRoomDatabase database = MyRoomDatabase.getInstance(getBaseContext());
+        userDao = database.userDao();
+
+        userList = userDao.getAllUsers();
+
+        if (userList.isEmpty()) {
             intent = new Intent(getBaseContext(), SignInActivity.class);
             new MyTimer().execute(intent);
-        } else {
-
-            User.getInstance().setUsername(mPrefs.getString("username", "<USERNAME>"));
-            User.getInstance().setNickname(mPrefs.getString("nickname", "<NICKNAME>"));
-            User.getInstance().setRialCredit(Double.parseDouble(mPrefs.getString("rialCredit", "0")));
-
-
-//            Currency.initialize();
-
-
-
+        }
+        else {
+            UserDb userDb = userDao.getAllUsers().get(0);
+            User.setInstance(new User(userDb.getAuthToken(), userDb.getNickname(),
+                    userDb.getRialCredit(),userDb.getRialEquivalent()));
             Currency.refresh();
-
 
             intent = new Intent(getBaseContext(), MainActivity.class);
             new MyTimer().execute(intent);

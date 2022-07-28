@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.User;
 
 
@@ -63,13 +64,11 @@ public class SettingsFragment extends Fragment {
 
 
         darkMode = root.findViewById(R.id.darkModeSwitch);
-        mPrefs = StartActivity.mPrefs;
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
             darkMode.setChecked(true);
         } else {
-            String isNightModeOn = mPrefs.getString("DarkMode", "");
-            System.out.println(isNightModeOn);
-            if (isNightModeOn.equals("True")) {
+            boolean isNightModeOn = StartActivity.userList.get(0).isDarkMode();
+            if (isNightModeOn) {
                 darkMode.setChecked(true);
             }
         }
@@ -78,6 +77,12 @@ public class SettingsFragment extends Fragment {
                 HomeFragment.changed = true;
                 MainActivity.check = true;
                 User.getInstance().setDarkMode(true);
+                StartActivity.userDao.deleteUsers();
+                UserDb user = new UserDb(User.getInstance().getAuthToken(),
+                        User.getInstance().getNickname(), User.getInstance().getRialCredit(),
+                        User.getInstance().getRialEquivalent());
+                user.setDarkMode(true);
+                StartActivity.userDao.insert(user);
                 getActivity().setTheme(R.style.Theme_TradeSimNight);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
@@ -86,6 +91,12 @@ public class SettingsFragment extends Fragment {
                 HomeFragment.changed = true;
                 MainActivity.check = true;
                 User.getInstance().setDarkMode(false);
+                StartActivity.userDao.deleteUsers();
+                UserDb user = new UserDb(User.getInstance().getAuthToken(),
+                        User.getInstance().getNickname(), User.getInstance().getRialCredit(),
+                        User.getInstance().getRialEquivalent());
+                user.setDarkMode(false);
+                StartActivity.userDao.insert(user);
                 getActivity().setTheme(R.style.Theme_TradeSim);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }

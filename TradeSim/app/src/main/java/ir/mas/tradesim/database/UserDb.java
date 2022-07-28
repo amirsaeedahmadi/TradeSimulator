@@ -11,11 +11,12 @@ public class UserDb {
 
     @PrimaryKey
     @NonNull
+
     private String authToken;
-    String nickname;
-    double rialCredit;
-    double rialEquivalent;
-    boolean darkMode;
+    private String nickname;
+    private double rialCredit;
+    private double rialEquivalent;
+    private boolean darkMode;
 
 
     public UserDb(@NonNull String authToken, String nickname, double rialCredit, double rialEquivalent) {

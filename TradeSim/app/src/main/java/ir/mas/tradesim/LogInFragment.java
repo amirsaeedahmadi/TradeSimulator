@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
+import ir.mas.tradesim.database.UserDb;
+import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.User;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
@@ -64,7 +66,7 @@ public class LogInFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View root = inflater.inflate(R.layout.fragment_log_in, container, false);
         privateKeyView = root.findViewById(R.id.PrivateKeyForSignInView);
         signInButton = root.findViewById(R.id.signInButton);
@@ -135,19 +137,24 @@ public class LogInFragment extends Fragment {
 
             try {
                 if (Request.isSuccessful()) {
-                    User.getInstance().setUsername(key);
-                    User.getInstance().setNickname(Request.getResponse().getString(Strings.NICKNAME.getLabel()));
-                    User.getInstance().setRialCredit(Double.parseDouble(Request.getResponse().getString(Strings.RIAL_CREDIT.getLabel())));
-//                Currency.initialize();
-                    SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
-                    prefsEditor.putString("Token", key);// TODO: modify: key -> token given by the server
-                    //TODO: setCurrencyValues
+                    Currency.refresh();
+                    String authToken = key;
+                    String nickname = Request.getResponse().getString(Strings.NICKNAME
+                                    .getLabel());
+                    String rial_credit = Request.getResponse()
+                            .getString(Strings.RIAL_CREDIT.getLabel());
+
+                    User.setInstance(new User(authToken, nickname, Double.parseDouble(rial_credit)
+                            , 0));
 
                     System.out.println(Request.getResponse().getString("currencies"));
 
 
-//                prefsEditor.apply();
-                    prefsEditor.commit();
+                    StartActivity.userDao.deleteUsers();
+                    StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
+                            User.getInstance().getNickname(), User.getInstance().getRialCredit(),
+                            User.getInstance().getRialEquivalent()));
+
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     getContext().startActivity(intent);

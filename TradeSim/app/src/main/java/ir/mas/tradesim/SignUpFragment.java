@@ -162,6 +162,8 @@ public class SignUpFragment extends Fragment {
 
             try {
                 if (Request.isSuccessful()) {
+                    Currency.refresh();
+
                     String authToken = Request.getResponse().getString(Strings.PRIVATE_KEY
                             .getLabel());
                     String nickname = Request.getResponse().getString(Strings.NICKNAME
@@ -172,20 +174,13 @@ public class SignUpFragment extends Fragment {
                     User.setInstance(new User(authToken, nickname, Double.parseDouble(rial_credit),
                             0));
 
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            StartActivity.userDao.deleteUsers();
-                            StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
-                                    User.getInstance().getNickname(), User.getInstance().getRialCredit(),
-                                    User.getInstance().getRialEquivalent()));
-                            System.out.println(StartActivity.userDao.getAllUsers().getValue());
-                        }
-                    }).start();
+                    StartActivity.userDao.deleteUsers();
+                    StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
+                            User.getInstance().getNickname(), User.getInstance().getRialCredit(),
+                            User.getInstance().getRialEquivalent()));
+
 
                     System.out.println(Request.getMessage());
-
-                    Currency.refresh();
                     System.out.println(Currency.currencies);
 
                     Intent intent = new Intent(getContext(), MainActivity.class);
