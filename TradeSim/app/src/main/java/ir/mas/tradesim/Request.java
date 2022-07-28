@@ -94,7 +94,7 @@ public class Request {
 
             Socket socket = null;
 
-            socket = new Socket("192.168.1.52", 7755);
+            socket = new Socket("192.168.1.52", 8080);
 
 //            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());

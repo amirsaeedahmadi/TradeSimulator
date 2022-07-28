@@ -58,6 +58,7 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
 //            return;
 //
 //        }
+        System.out.println("we are in currencyRecyclerViewAdapter");
         Currency currency = Currency.getCurrencies().get(position);
         String x = new BigDecimal(currency.getCredit()).toPlainString();
 //        holder.logoView.setImageResource(currency.getLogo());
@@ -114,11 +115,7 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
         });
     }
 
-    /**
-     * Returns the total number of items in the data set held by the adapter.
-     *
-     * @return The total number of items in this adapter.
-     */
+
     @Override
     public int getItemCount() {
         return Currency.getCurrencies().size();

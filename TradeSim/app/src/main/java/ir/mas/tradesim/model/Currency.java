@@ -1,9 +1,16 @@
 package ir.mas.tradesim.model;
 
+import android.os.AsyncTask;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONException;
 
 import java.util.ArrayList;
 
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
 import ir.mas.tradesim.Request;
@@ -26,6 +33,8 @@ public class Currency {
     double price;//e.g. 1000000 (IRR) //=-1 if not accessible to update the value
     double credit;//e.g. 0.01
     String logo;//Id of the Logo e.g. R.id.monero
+
+    static public boolean updateChecker;
 
     public Currency(String name, String code, String color, String logo, int rank, double change, String sparkData, double price)
             throws DuplicateNameException, DuplicateCodeException {
@@ -56,37 +65,63 @@ public class Currency {
         return name+"("+code+")";
     }
 
-    public boolean update() {
-        //refreshes the price and info
-        if (updatePrice())
-            return true;
-        else if (updateCredit())
-            return true;
-        return false;
+//    public boolean update() {
+//        //refreshes the price and info
+//        if (updatePrice())
+//            return true;
+//        else if (updateCredit())
+//            return true;
+//        return false;
+//
+//    }
 
-    }
+//    private boolean updateCredit() {
+//
+//        updateChecker = false;
+//        new UpdateCreditForUser().execute();
+//        return updateChecker;
+//    }
 
-    private boolean updateCredit() {
-        try {
-            Request.setCommandTag(CommandTags.GET_CREDIT);
-            Request.setCurrentMenu(Views.SOME_VIEW);
-            Request.addData(Strings.CURRENCY_CODE.getLabel(), code.toUpperCase());
-            Request.addData(Strings.PRIVATE_KEY.getLabel(), User.getInstance().getUsername());
-            Request.sendToServer();
-            if (!Request.isSuccessful()) {
-                return false;
-            } else {
-                credit = Double.parseDouble(Request.getMessage());
-                return true;
-            }
-        } catch (JSONException e) {
-            return false;
-        }
-    }
+//    class UpdateCreditForUser extends AsyncTask<Void, Void, Boolean> {
+//
+//        @Override
+//        protected Boolean doInBackground(Void... voids) {
+//
+//            try {
+//                Request.setCommandTag(CommandTags.GET_CREDIT);
+//                Request.setCurrentMenu(Views.MAIN_VIEW);
+//                Request.addData(Strings.CURRENCY_CODE.getLabel(), code.toUpperCase());
+//                Request.addData(Strings.PRIVATE_KEY.getLabel(), User.getInstance().getUsername());
+//                Request.sendToServer();
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//                return false;
+//            }
+//
+//            return true;
+//        }
+//
+//        @Override
+//        protected void onPostExecute(Boolean connectChecker) {
+//            super.onPostExecute(connectChecker);
+//            try {
+//                if (Request.isSuccessful() && connectChecker) {
+//                    credit = Double.parseDouble(Request.getMessage());
+//                    updateChecker = true;
+//
+//                } else {
+//                    updateChecker = false;
+//                }
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
+//    }
 
-    private boolean updatePrice() {
-        return false;
-    }
+
 
     public void increaseCredit(Double amount){
         this.credit += amount;
@@ -137,22 +172,53 @@ public class Currency {
     }
 
 
-    public static void refresh() {
-        for (Currency currency :
-                currencies) {
-            currency.update();
-        }
-        /*
-        currencies.get(0).setPrice(4_017.492_2);// 10000IRR
-        currencies.get(1).setPrice(634_425.882_3);
-        currencies.get(2).setPrice(34_102.643_3);
-        currencies.get(3).setPrice(1_540);
-        currencies.get(4).setPrice(1.962_4);
+    public static boolean refresh() {
+        new UpdateCurrencies().execute();
+        return updateChecker;
+    }
 
-        currencies.get(0).setCredit(0.5);
-        currencies.get(1).setCredit(0.000_01);
-        currencies.get(2).setCredit(0.001);
-        currencies.get(3).setCredit(10);*/
+    static class UpdateCurrencies extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+
+            try {
+                Request.setCommandTag(CommandTags.GET_CURRENCIES);
+                Request.setCurrentMenu(Views.REGISTER_VIEW);
+                Request.sendToServer();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            }
+
+            return true;
+        }
+
+
+        @Override
+        protected void onPostExecute(Boolean connectChecker) {
+            super.onPostExecute(connectChecker);
+            try {
+                if (Request.isSuccessful() & connectChecker) {
+
+                    System.out.println(Request.getMessage());
+
+                    Currency.currencies = new Gson().fromJson(Request.getMessage(), new TypeToken<ArrayList<Currency>>() {
+                    }.getType());
+                    System.out.println(Currency.currencies);
+
+                    updateChecker = true;
+
+                } else {
+                    updateChecker = false;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                updateChecker = false;
+            }
+
+        }
     }
 
     /**
@@ -242,10 +308,7 @@ public class Currency {
     }
 
     public double getPrice() {
-        if (updatePrice())
-            return price;
-        price = -1;
-        return -1;
+        return this.price;
     }
 
     public void setPrice(double price) {
@@ -256,7 +319,6 @@ public class Currency {
     }
 
     public double getCredit() {
-        updateCredit();
         return credit;
     }
 
