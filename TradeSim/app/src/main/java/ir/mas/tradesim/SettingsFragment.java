@@ -14,11 +14,7 @@ import android.widget.TextView;
 
 import ir.mas.tradesim.model.User;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SettingsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SettingsFragment extends Fragment {
 
     public static SharedPreferences mPrefs;
@@ -35,15 +31,6 @@ public class SettingsFragment extends Fragment {
     public SettingsFragment() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SettingsFragment.
-     */
     public static SettingsFragment newInstance(String param1, String param2) {
         SettingsFragment fragment = new SettingsFragment();
         Bundle args = new Bundle();
@@ -69,7 +56,7 @@ public class SettingsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
         usernameView = root.findViewById(R.id.usernameTextView);
         nicknameView = root.findViewById(R.id.nicknameTextView);
-        usernameView.setText(User.getInstance().getUsername());
+        usernameView.setText(User.getInstance().getAuthToken());
         nicknameView.setText(User.getInstance().getNickname());
         //TODO: to set the avatar image
         //TODO: to add the functionality of buttons
@@ -90,10 +77,7 @@ public class SettingsFragment extends Fragment {
             if (darkMode.isChecked()){
                 HomeFragment.changed = true;
                 MainActivity.check = true;
-                SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                prefsEditor.putString("DarkMode", "True");
-//                prefsEditor.apply();
-                prefsEditor.commit();
+                User.getInstance().setDarkMode(true);
                 getActivity().setTheme(R.style.Theme_TradeSimNight);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
@@ -101,10 +85,7 @@ public class SettingsFragment extends Fragment {
             else{
                 HomeFragment.changed = true;
                 MainActivity.check = true;
-                SharedPreferences.Editor prefsEditor = mPrefs.edit();
-                prefsEditor.putString("DarkMode", "False");
-//                prefsEditor.apply();
-                prefsEditor.commit();
+                User.getInstance().setDarkMode(false);
                 getActivity().setTheme(R.style.Theme_TradeSim);
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }

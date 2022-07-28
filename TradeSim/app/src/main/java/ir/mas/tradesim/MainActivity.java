@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mPrefs = getPreferences(MODE_PRIVATE);
@@ -55,56 +54,42 @@ public class MainActivity extends AppCompatActivity {
         }
         bar = findViewById(R.id.linearLayout);
         history = findViewById(R.id.historyButton);
-        history.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentContainerView, new TransactionsFragment());
-                transaction.addToBackStack(null);
-                goTo(history);
-                transaction.commit();
-            }
+        history.setOnClickListener(view -> {
+            transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragmentContainerView, new TransactionsFragment());
+            transaction.addToBackStack(null);
+            goTo(history);
+            transaction.commit();
         });
 
         home = findViewById(R.id.homeButton);
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentContainerView, new HomeFragment());
-                goTo(home);
-                transaction.commit();
-            }
+        home.setOnClickListener(view -> {
+            transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragmentContainerView, new HomeFragment());
+            goTo(home);
+            transaction.commit();
         });
 
         settings = findViewById(R.id.settingButton);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentContainerView, new SettingsFragment());
-                transaction.addToBackStack(null);
-                goTo(settings);
-                transaction.commit();
-            }
+        settings.setOnClickListener(view -> {
+            transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragmentContainerView, new SettingsFragment());
+            transaction.addToBackStack(null);
+            goTo(settings);
+            transaction.commit();
         });
 
         scoreboard = findViewById(R.id.scoreboardImageView);
-        scoreboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragmentContainerView, new ScoreboardFragment());
-                transaction.addToBackStack(null);
-                goTo(scoreboard);
-                transaction.commit();
-            }
+        scoreboard.setOnClickListener(view -> {
+            transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragmentContainerView, new ScoreboardFragment());
+            transaction.addToBackStack(null);
+            goTo(scoreboard);
+            transaction.commit();
         });
 
         statistics = findViewById(R.id.statisticsButton);
         //TODO
-
-
 
 
         searchView = findViewById(R.id.searchBar);

@@ -5,59 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1d28b9-cfb4-4e0b-af63-ea7fd3b517d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/Core.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/Exceptions/NotAbleToUpdateException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/Exceptions/NotEnoughValueException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/Exceptions/TooMuchTopUsersException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/ServerResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/TaskBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/ThreadPool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/TokenGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/controller/ServerMainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/controller/ServerRegistrationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/controller/ServerScoreBoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/controller/ServerTransactionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/enums/CommandTags.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/enums/Responses.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/enums/Views.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/model/Currency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/model/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/model/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/model/TransactionType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/server/model/Wallet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/Views.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/CommandTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/CommandTags.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/Menus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/Regexes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/Regexes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/Responses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/Responses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/Core.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/Exceptions/NotAbleToUpdateException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/Exceptions/NotEnoughValueException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/Exceptions/TooMuchTopUsersException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/Server.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/ServerResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/TaskBlock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/ThreadPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/TokenGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/controller/ServerMainController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/controller/ServerRegistrationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/controller/ServerScoreBoardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/controller/ServerTransactionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/enums/CommandTags.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/enums/Responses.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/enums/Views.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/model/Currency.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/model/Database.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/model/Transaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/model/TransactionType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/server/model/Wallet.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/CurrencyConverters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/DateConverters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/MyRoomDatabase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/TransactionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/TransactionTypeConverters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/LogInFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/LogInFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/SignUpFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/SignUpFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +47,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3b1d28b9-cfb4-4e0b-af63-ea7fd3b517d2" name="Default Changelist" comment="" />

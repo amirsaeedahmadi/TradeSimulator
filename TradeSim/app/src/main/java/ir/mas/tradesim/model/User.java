@@ -1,17 +1,31 @@
 package ir.mas.tradesim.model;
 
+
+
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
 
-public class User {
-    String username = "<USERNAME>";
-    String nickname = "<NICKNAME>";
-    double rialCredit = 0;
-    double rialEquivalent = 0;
 
-//    public void User(String username, ArrayList<Currency> currencies, rial) {}
+public class User {
 
     private static User instance;
-    private User(){}//TODO: to modify and get it from database/sharedPrefs or the server
+    private String authToken;
+    String nickname;
+    double rialCredit;
+    double rialEquivalent;
+    boolean darkMode;
+
+
+    public User( String authToken, String nickname, double rialCredit, double rialEquivalent) {
+        this.authToken = authToken;
+        this.nickname = nickname;
+        this.rialCredit = rialCredit;
+        this.rialEquivalent = rialEquivalent;
+        this.darkMode = false;
+    }
 
     public void increaseRialCredit(Double amount) {
         rialCredit += amount;
@@ -24,22 +38,36 @@ public class User {
 
     public static User getInstance() {
         if (instance == null) {
-            instance = new User();
+            instance = new User ("AUTH TOKEN","NICKNAME", 0, 0);
         }
         return instance;
     }
+
     public static void deleteInstance() {
         instance = null;
     }
 
     //getters and setters
 
-    public String getUsername() {
-        return username;
+    public boolean isDarkMode() {
+        return darkMode;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setDarkMode(boolean darkMode) {
+        this.darkMode = darkMode;
+    }
+
+    @NonNull
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(@NonNull String authToken) {
+        this.authToken = authToken;
+    }
+
+    public static void setInstance(User instance) {
+        User.instance = instance;
     }
 
     public double getRialCredit() {
@@ -62,7 +90,7 @@ public class User {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
+    public void setNickname(@NonNull String nickname) {
         this.nickname = nickname;
     }
 }

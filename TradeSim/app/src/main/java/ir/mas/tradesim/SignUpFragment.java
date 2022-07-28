@@ -1,7 +1,6 @@
 package ir.mas.tradesim;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -22,6 +21,9 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import ir.mas.tradesim.database.MyRoomDatabase;
+import ir.mas.tradesim.database.UserDao;
+import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.User;
 import ir.mas.tradesim.enums.CommandTags;
@@ -33,6 +35,7 @@ import ir.mas.tradesim.enums.Views;
  * Use the {@link SignUpFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class SignUpFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -111,7 +114,6 @@ public class SignUpFragment extends Fragment {
     }
 
     private void signUp(String nickname, String privateKey) {
-        boolean valid = true;
         SignUpFragment.privateKey = privateKey;
         SignUpFragment.nickname = nickname;
 
@@ -160,26 +162,36 @@ public class SignUpFragment extends Fragment {
 
             try {
                 if (Request.isSuccessful()) {
-//                    User.getInstance().setUsername(key);
-                    User.getInstance().setNickname(Request.getResponse().getString(Strings.NICKNAME.getLabel()));
-                    User.getInstance().setRialCredit(Double.parseDouble(Request.getResponse().getString(Strings.RIAL_CREDIT.getLabel())));
-//                Currency.initialize();
-                    SharedPreferences.Editor prefsEditor = StartActivity.mPrefs.edit();
-//                    prefsEditor.putString("Token", key);// TODO: modify: key -> token given by the server
-                    //TODO: setCurrencyValues
+                    String authToken = Request.getResponse().getString(Strings.PRIVATE_KEY
+                            .getLabel());
+                    String nickname = Request.getResponse().getString(Strings.NICKNAME
+                            .getLabel());
+                    String rial_credit = Request.getResponse()
+                            .getString(Strings.RIAL_CREDIT.getLabel());
+
+                    User.setInstance(new User(authToken, nickname, Double.parseDouble(rial_credit),
+                            0));
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            StartActivity.userDao.deleteUsers();
+                            StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
+                                    User.getInstance().getNickname(), User.getInstance().getRialCredit(),
+                                    User.getInstance().getRialEquivalent()));
+                            System.out.println(StartActivity.userDao.getAllUsers().getValue());
+                        }
+                    }).start();
 
                     System.out.println(Request.getMessage());
 
-                    Currency.currencies = new Gson().fromJson(Request.getMessage(), new TypeToken<ArrayList<Currency>>() {
-                    }.getType());
+                    Currency.refresh();
                     System.out.println(Currency.currencies);
 
-
-//                prefsEditor.apply();
-                    prefsEditor.commit();
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     getContext().startActivity(intent);
+
                 } else {
                     Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
                 }

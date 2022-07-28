@@ -1,22 +1,41 @@
 package ir.mas.tradesim.model;
 
+
+
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
 import java.util.ArrayList;
 import java.util.Date;
 
+import ir.mas.tradesim.database.CurrencyConverters;
+import ir.mas.tradesim.database.DateConverters;
+import ir.mas.tradesim.database.TransactionTypeConverters;
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
 
+@Entity(tableName = "transaction_table")
 public class Transaction {
     private static int nextId = 1;
     private static ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private static boolean hasInitialized = false;
+    @PrimaryKey
+    @NonNull
     private int transactionId;
+    @TypeConverters(TransactionTypeConverters.class)
     private TransactionType type;
+    @TypeConverters(CurrencyConverters.class)
     private Currency currency;
     private double currencyAmount;
     private double rialAmount;
+    @TypeConverters(DateConverters.class)
     private Date date;
 
-    public Transaction(TransactionType type, Currency currency, double currencyAmount, double rialAmount, Date date) {
+    @Ignore
+    public Transaction(TransactionType type, Currency currency, double currencyAmount,
+                       double rialAmount, Date date) {
         this.type = type;
         this.currency = currency;
         this.currencyAmount = currencyAmount;
