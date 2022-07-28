@@ -2,26 +2,26 @@ package ir.mas.tradesim;
 
 
 import android.annotation.SuppressLint;
-        import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.ArrayAdapter;
-        import android.widget.ImageButton;
-        import android.widget.LinearLayout;
-        import android.widget.ListView;
-        import android.widget.SearchView;
-        import android.widget.Toast;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
-        import androidx.annotation.NonNull;
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.appcompat.app.AppCompatDelegate;
-        import androidx.fragment.app.FragmentContainerView;
-        import androidx.fragment.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentTransaction;
 
-        import java.util.Locale;
+import java.util.Locale;
 
-        import ir.mas.tradesim.model.Currency;
+import ir.mas.tradesim.model.Currency;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences mPrefs;

@@ -200,18 +200,20 @@ public class Currency {
         protected void onPostExecute(Boolean connectChecker) {
             super.onPostExecute(connectChecker);
             try {
-                if (Request.isSuccessful() & connectChecker) {
+                if (Request.response != null){
+                    if (Request.isSuccessful() & connectChecker) {
 
-                    System.out.println(Request.getMessage());
+                        System.out.println(Request.getMessage());
 
-                    Currency.currencies = new Gson().fromJson(Request.getMessage(), new TypeToken<ArrayList<Currency>>() {
-                    }.getType());
-                    System.out.println(Currency.currencies);
+                        Currency.currencies = new Gson().fromJson(Request.getMessage(), new TypeToken<ArrayList<Currency>>() {
+                        }.getType());
+                        System.out.println(Currency.currencies);
 
-                    updateChecker = true;
+                        updateChecker = true;
 
-                } else {
-                    updateChecker = false;
+                    } else {
+                        updateChecker = false;
+                    }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
