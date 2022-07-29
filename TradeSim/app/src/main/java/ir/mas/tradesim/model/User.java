@@ -3,12 +3,18 @@ package ir.mas.tradesim.model;
 
 
 import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+
+import java.util.LinkedList;
 
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
 
 
+/*StartActivity.userDao.deleteUsers();
+        StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
+        User.getInstance().getNickname(), User.getInstance().getRialCredit(),
+        User.getInstance().getRialEquivalent(),
+        new Gson().toJson(User.getInstance().throughTime)));
+        StartActivity.userList = StartActivity.userDao.getAllUsers();*/
 public class User {
 
     private static User instance;
@@ -17,6 +23,8 @@ public class User {
     double rialCredit;
     double rialEquivalent;
     boolean darkMode;
+    public LinkedList<String> throughTime;
+
 
 
     public User( String authToken, String nickname, double rialCredit, double rialEquivalent) {
@@ -25,6 +33,8 @@ public class User {
         this.rialCredit = rialCredit;
         this.rialEquivalent = rialEquivalent;
         this.darkMode = false;
+        this.throughTime = new LinkedList<>();
+        this.throughTime.add(rialCredit + "");
     }
 
     public void increaseRialCredit(Double amount) {

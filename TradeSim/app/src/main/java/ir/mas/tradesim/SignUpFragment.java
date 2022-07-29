@@ -14,15 +14,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONException;
 
-import java.util.ArrayList;
 import java.util.Random;
-
-import ir.mas.tradesim.database.MyRoomDatabase;
-import ir.mas.tradesim.database.UserDao;
 import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.User;
@@ -30,11 +24,6 @@ import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SignUpFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 
 public class SignUpFragment extends Fragment {
 
@@ -177,7 +166,8 @@ public class SignUpFragment extends Fragment {
                     StartActivity.userDao.deleteUsers();
                     StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
                             User.getInstance().getNickname(), User.getInstance().getRialCredit(),
-                            User.getInstance().getRialEquivalent()));
+                            User.getInstance().getRialEquivalent(),
+                            new Gson().toJson(User.getInstance().throughTime)));
                     StartActivity.userList = StartActivity.userDao.getAllUsers();
 
                     System.out.println(Request.getMessage());

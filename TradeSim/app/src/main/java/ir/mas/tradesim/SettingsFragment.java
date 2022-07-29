@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.User;
 
@@ -91,7 +93,10 @@ public class SettingsFragment extends Fragment {
                 StartActivity.userDao.deleteUsers();
                 UserDb user = new UserDb(User.getInstance().getAuthToken(),
                         User.getInstance().getNickname(), User.getInstance().getRialCredit(),
-                        User.getInstance().getRialEquivalent());
+                        User.getInstance().getRialEquivalent(),
+                        new Gson().toJson(User.getInstance().throughTime));
+
+
                 user.setDarkMode(true);
                 StartActivity.userDao.insert(user);
                 getActivity().setTheme(R.style.Theme_TradeSimNight);
@@ -105,7 +110,8 @@ public class SettingsFragment extends Fragment {
                 StartActivity.userDao.deleteUsers();
                 UserDb user = new UserDb(User.getInstance().getAuthToken(),
                         User.getInstance().getNickname(), User.getInstance().getRialCredit(),
-                        User.getInstance().getRialEquivalent());
+                        User.getInstance().getRialEquivalent(),
+                        new Gson().toJson(User.getInstance().throughTime));
                 user.setDarkMode(false);
                 StartActivity.userDao.insert(user);
                 getActivity().setTheme(R.style.Theme_TradeSim);

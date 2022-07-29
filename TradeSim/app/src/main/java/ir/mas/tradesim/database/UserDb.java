@@ -17,14 +17,17 @@ public class UserDb {
     private double rialCredit;
     private double rialEquivalent;
     private boolean darkMode;
+    public String throughTime;
 
 
-    public UserDb(@NonNull String authToken, String nickname, double rialCredit, double rialEquivalent) {
+    public UserDb(@NonNull String authToken, String nickname, double rialCredit,
+                  double rialEquivalent, String throughTime) {
         this.authToken = authToken;
         this.nickname = nickname;
         this.rialCredit = rialCredit;
         this.rialEquivalent = rialEquivalent;
         this.darkMode = false;
+        this.throughTime = "";
     }
 
 
@@ -67,5 +70,13 @@ public class UserDb {
 
     public void setDarkMode(boolean darkMode) {
         this.darkMode = darkMode;
+    }
+
+    public String getThroughTime() {
+        return throughTime;
+    }
+
+    public void setThroughTime(String throughTime) {
+        this.throughTime = throughTime;
     }
 }

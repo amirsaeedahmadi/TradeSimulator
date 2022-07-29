@@ -27,10 +27,6 @@
             app:contentScrim="@drawable/toolbar2"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
-            <com.robinhood.spark.SparkView
-                android:id="@+id/sparkView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -47,7 +43,8 @@
     <include
         android:id="@+id/includeView"
         layout="@layout/content_scrolling"
-        android:layoutDirection="rtl" />
+        android:layoutDirection="rtl"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

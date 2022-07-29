@@ -25,6 +25,8 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         Currency.refresh();
 
+        Currency.refresh();
+
         MyRoomDatabase database = MyRoomDatabase.getInstance(getBaseContext());
         userDao = database.userDao();
 

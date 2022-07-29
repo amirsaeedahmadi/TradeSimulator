@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
@@ -24,6 +23,7 @@ import ir.mas.tradesim.model.Adad;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.TransactionType;
 import ir.mas.tradesim.databinding.ActivityCurrencyDetailedBinding;
+import ir.mas.tradesim.model.User;
 
 public class CurrencyDetailedActivity extends AppCompatActivity {
 
@@ -107,9 +107,15 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         creditView = findViewById(R.id.yourCreditTextView);
         equivalentRialView = findViewById(R.id.equivalentRialTextView);
         sparkView = findViewById(R.id.sparkView);
-        //sparkView.setBaseLineColor();
+        if (User.getInstance().isDarkMode()){
+            sparkView.setBaseLineColor(getResources().getColor(R.color.white));;
+        }
+        else{
+            sparkView.setBaseLineColor(getResources().getColor(R.color.black));
+        }
         sparkView.setAdapter(new CurrencySparkAdapter(Currency.getSparkDataByCurrency(
                 intent.getStringExtra("currency code"))));
+        sparkView.setScrubEnabled(true);
         setPrices();
 
         toolbar = binding.toolbar;
@@ -117,10 +123,7 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
         toolBarLayout.setTitle(currency.toString());
-        //toolBarLayout.setBackgroundResource(currency.getLogo());
-        //new DownloadImageTask(toolBarLayout)
-          //      .execute(currency.logo);
-
+        toolBarLayout.setBackgroundResource(currency.getLogo());
         toolbar.setLogo(null);
         FloatingActionButton fab = binding.fab;
         fab.setImageTintList( ColorStateList.valueOf(Color.rgb(242, 104, 34))

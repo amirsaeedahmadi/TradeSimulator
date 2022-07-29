@@ -1,7 +1,6 @@
 package ir.mas.tradesim;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -14,7 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
+
+import java.util.LinkedList;
 
 import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.Currency;
@@ -146,23 +149,15 @@ public class LogInFragment extends Fragment {
 
                     User.setInstance(new User(authToken, nickname, Double.parseDouble(rial_credit)
                             , 0));
-
+                    User.getInstance().throughTime = new LinkedList<>();
+                    User.getInstance().throughTime.add("0");
                     System.out.println(Request.getResponse().getString("currencies"));
-
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            StartActivity.userDao.deleteUsers();
-                            StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
-                                    User.getInstance().getNickname(), User.getInstance().getRialCredit(),
-                                    User.getInstance().getRialEquivalent()));
-                        }
-                    }).start();
 
                     StartActivity.userDao.deleteUsers();
                     StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
                             User.getInstance().getNickname(), User.getInstance().getRialCredit(),
-                            User.getInstance().getRialEquivalent()));
+                            User.getInstance().getRialEquivalent(),
+                            new Gson().toJson(User.getInstance().throughTime)));
                     StartActivity.userList = StartActivity.userDao.getAllUsers();
 
                     Intent intent = new Intent(getContext(), MainActivity.class);

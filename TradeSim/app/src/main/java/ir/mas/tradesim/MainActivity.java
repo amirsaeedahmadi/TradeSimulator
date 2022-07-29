@@ -89,13 +89,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         statistics = findViewById(R.id.statisticsButton);
-        /*statistics.setOnClickListener(view -> {
+        statistics.setOnClickListener(view -> {
             transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragmentContainerView, new ScoreboardFragment());
+            transaction.replace(R.id.fragmentContainerView, new StatsFragment());
             transaction.addToBackStack(null);
-            goTo(scoreboard);
+            goTo(statistics);
             transaction.commit();
-        });*/
+        });
 
 
         searchView = findViewById(R.id.searchBar);
