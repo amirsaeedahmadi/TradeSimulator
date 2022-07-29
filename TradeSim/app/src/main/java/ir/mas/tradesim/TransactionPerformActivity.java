@@ -2,6 +2,7 @@ package ir.mas.tradesim;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -30,11 +31,16 @@ public class TransactionPerformActivity extends AppCompatActivity {
     EditText currencyView, rialView;
     Button performButton, cancelButton;
     Double amount;
+    public static Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_perform);
         //getting the data from the intent
+
+        context = getBaseContext();
+
         intent = getIntent();
         transactionType = (TransactionType) intent.getSerializableExtra("type");
         currency = Currency.getCurrencyByCode(intent.getStringExtra("code"));

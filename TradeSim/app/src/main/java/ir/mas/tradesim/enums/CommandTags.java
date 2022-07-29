@@ -5,6 +5,9 @@ import java.util.Locale;
 public enum CommandTags {
 
     SHOW_SCOREBOARD("show_scoreboard"),
+    TRANSACTION("transaction"),
+    SELL("sell"),
+    BUY("buy"),
     LOGIN("login"),
     GET_CURRENCIES("get_currencies"),
     REGISTER("register"),

@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b1d28b9-cfb4-4e0b-af63-ea7fd3b517d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/CurrencyConverters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/DateConverters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/MyRoomDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/TransactionDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/TransactionTypeConverters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/TradeSimulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/TradeSimulator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/LogInFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/LogInFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/SignUpFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/SignUpFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/MyRoomDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/MyRoomDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/database/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/CommandTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/CommandTags.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/Views.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/enums/Views.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/model/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ir/mas/tradesim/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +43,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

@@ -7,6 +7,10 @@ public enum Strings {
     PRIVATE_KEY("PrivateKey"),
     NICKNAME("Nickname"),
     RIAL_CREDIT("RialCredit"),
+    CURRENCY_AMOUNT("currency_amount"),
+    RIAL_AMOUNT("rial_amount"),
+    TRANSACTION_ID("transaction_id"),
+
     CURRENCY_CODE("CurrencyCode");
 
 
