@@ -57,7 +57,7 @@ public class ScoreboardFragment extends Fragment {
             try {
                 Request.setCommandTag(CommandTags.SHOW_SCOREBOARD);
                 Request.setCurrentMenu(Views.SCOREBOARD_VIEW);
-                Request.sendToServer();
+                Request.sendToServer("");
 
             } catch (Exception e) {
                 String message = getString(R.string.connection_error);

@@ -114,7 +114,7 @@ public class LogInFragment extends Fragment {
                 Request.setCommandTag(CommandTags.LOGIN);
                 Request.setCurrentMenu(Views.REGISTER_VIEW);
                 Request.addData(Strings.PRIVATE_KEY.getLabel(), key);
-                Request.sendToServer();
+                Request.sendToServer(Views.REGISTER_VIEW.getLabel());
 
             } catch (Exception e) {
 //                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();

@@ -55,12 +55,13 @@ public class Request {
     }
 
 
-    public static void sendToServer() {
+    public static void sendToServer(String view) {
 
         try {
             // TODO: after preparing registration uncomment next line
-            Request.setToken();
-
+            if (!view.equals(Views.REGISTER_VIEW.getLabel())){
+                Request.setToken();
+            }
             Socket socket = null;
 
             socket = new Socket("192.168.1.6", 8080);

@@ -126,7 +126,7 @@ public class SignUpFragment extends Fragment {
                 Request.setCurrentMenu(Views.REGISTER_VIEW);
                 Request.addData(Strings.PRIVATE_KEY.getLabel(), privateKey);
                 Request.addData(Strings.NICKNAME.getLabel(), nickname);
-                Request.sendToServer();
+                Request.sendToServer(Views.REGISTER_VIEW.getLabel());
 
             } catch (Exception e) {
 //                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();

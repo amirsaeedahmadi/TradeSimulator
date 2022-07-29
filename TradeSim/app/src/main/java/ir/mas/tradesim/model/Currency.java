@@ -188,7 +188,7 @@ public class Currency {
             try {
                 Request.setCommandTag(CommandTags.GET_CURRENCIES);
                 Request.setCurrentMenu(Views.REGISTER_VIEW);
-                Request.sendToServer();
+                Request.sendToServer("");
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -342,7 +342,7 @@ public class Currency {
             return R.drawable.ic_solana_sol_logo;
         }
         else if (this.name.equals("Dogecoin")){
-            return R.drawable.dogecoin_doge_png;
+            return R.drawable.ic_dogecoin_doge_logo;
         }
         else if (this.name.equals("Polygon")){
             return R.drawable.ic_polygon_matic_logo;

@@ -124,7 +124,7 @@ public class Transaction {
 
                Request.addData(Strings.TRANSACTION.getLabel(), new Gson().toJson(thisTransaction));
 //                Request.addData(Strings.PRIVATE_KEY.getLabel(), User.getInstance().getAuthToken());
-                Request.sendToServer();
+                Request.sendToServer("");
 
             } catch (Exception e) {
                 String message = "Could not connect to the server!";

@@ -13,6 +13,7 @@ import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.User;
 import ir.mas.tradesim.view.MainActivity;
+import ir.mas.tradesim.view.Request;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -20,14 +21,16 @@ public class StartActivity extends AppCompatActivity {
     public static UserDao userDao;
     public static List<UserDb> userList;
 
+
+
+
     Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        Currency.refresh();
 
-        Currency.refresh();
+
 
         MyRoomDatabase database = MyRoomDatabase.getInstance(getBaseContext());
         userDao = database.userDao();
@@ -40,6 +43,8 @@ public class StartActivity extends AppCompatActivity {
         }
         else {
             UserDb userDb = userDao.getAllUsers().get(0);
+            Request.token = userDb.getAuthToken();
+            Currency.refresh();
             User.setInstance(new User(userDb.getAuthToken(), userDb.getNickname(),
                     userDb.getRialCredit(),userDb.getRialEquivalent()));
 
