@@ -1,6 +1,10 @@
 package ir.mas.tradesim.model;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -8,19 +12,32 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.Date;
 
+import ir.mas.tradesim.MainActivity;
+import ir.mas.tradesim.R;
+import ir.mas.tradesim.Request;
+import ir.mas.tradesim.StartActivity;
+import ir.mas.tradesim.TransactionPerformActivity;
 import ir.mas.tradesim.database.CurrencyConverters;
 import ir.mas.tradesim.database.DateConverters;
 import ir.mas.tradesim.database.TransactionTypeConverters;
+import ir.mas.tradesim.database.UserDb;
+import ir.mas.tradesim.enums.CommandTags;
+import ir.mas.tradesim.enums.Strings;
+import ir.mas.tradesim.enums.Views;
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
+
 
 @Entity(tableName = "transaction_table")
 public class Transaction {
     private static int nextId = 1;
     private static ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private static boolean hasInitialized = false;
+    private Context context;
     @PrimaryKey
     @NonNull
     private int transactionId;
@@ -61,21 +78,107 @@ public class Transaction {
      * @author Mahdi Teymoori Anar
      * This method, performs a transaction.
      * @throws NotEnoughValueException if the credit is not enough to perform the transaction*/
-    public void perform() throws NotEnoughValueException {//TODO: send to the server
+    public void perform() throws NotEnoughValueException {
+
         if (type == TransactionType.SELL) {
-            try {
-                currency.decreaseCredit(this.currencyAmount);
-                User.getInstance().increaseRialCredit(this.rialAmount);
-            } catch (NotEnoughValueException e) {
-                throw e;
-            }
+//            try {
+//                currency.decreaseCredit(this.currencyAmount);
+//                User.getInstance().increaseRialCredit(this.rialAmount);
+//            } catch (NotEnoughValueException e) {
+//                throw e;
+//            }
+            new SendTransactionToServer(true).execute();
+
         } else {
+//            try {
+//                User.getInstance().decreaseRialCredit(rialAmount);
+//                currency.increaseCredit(this.currencyAmount);
+//            } catch (NotEnoughValueException e) {
+//                throw e;
+//            }
+            new SendTransactionToServer(false).execute();
+        }
+    }
+
+    class SendTransactionToServer extends AsyncTask<Void, Void, String> {
+
+        boolean transactionTypeChecker;
+        boolean checker;
+
+        public SendTransactionToServer(boolean transactionTypeChecker) {
+            super();
+            this.transactionTypeChecker = transactionTypeChecker;
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            checker = false;
+
             try {
-                User.getInstance().decreaseRialCredit(rialAmount);
-                currency.increaseCredit(this.currencyAmount);
-            } catch (NotEnoughValueException e) {
-                throw e;
+                Request.setCurrentMenu(Views.TRANSACTION_VIEW);
+
+                if (this.transactionTypeChecker) {
+                    Request.setCommandTag(CommandTags.SELL);
+                } else {
+                    Request.setCommandTag(CommandTags.BUY);
+                }
+
+                Request.addData(Strings.TRANSACTION_ID.getLabel(), String.valueOf(transactionId));
+                Request.addData(Strings.CURRENCY_CODE.getLabel(), currency.getCode());
+                Request.addData(Strings.CURRENCY_AMOUNT.getLabel(), String.valueOf(currencyAmount));
+                Request.addData(Strings.RIAL_AMOUNT.getLabel(), String.valueOf(rialAmount));
+                Request.sendToServer();
+
+            } catch (Exception e) {
+                String message = "Could not connect to the server!";
+                System.out.println(message);
+                e.printStackTrace();
+                checker = false;
+                return message;
             }
+
+            String message = "Connected to the Server";
+            System.out.println(message);
+            checker = true;
+            return message;
+
+        }
+
+        @Override
+        protected void onPostExecute(String message) {
+            super.onPostExecute(message);
+            System.out.println(message);
+
+            if (!checker) {
+                Toast.makeText(TransactionPerformActivity.context, R.string.connection_error, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+                if (Request.isSuccessful()) {
+
+                    Toast.makeText(TransactionPerformActivity.context, R.string.transaction_perform_successful, Toast.LENGTH_SHORT).show();
+
+
+//                    new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            StartActivity.userDao.deleteUsers();
+//                            StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
+//                                    User.getInstance().getNickname(), User.getInstance().getRialCredit(),
+//                                    User.getInstance().getRialEquivalent()));
+//                        }
+//                    }).start();
+
+                } else {
+                    Toast.makeText(TransactionPerformActivity.context, R.string.invalid, Toast.LENGTH_LONG).show();
+                }
+            } catch (JSONException e) {
+                Toast.makeText(TransactionPerformActivity.context, R.string.response_error, Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+
         }
     }
 

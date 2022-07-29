@@ -149,6 +149,15 @@ public class LogInFragment extends Fragment {
 
                     System.out.println(Request.getResponse().getString("currencies"));
 
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            StartActivity.userDao.deleteUsers();
+                            StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
+                                    User.getInstance().getNickname(), User.getInstance().getRialCredit(),
+                                    User.getInstance().getRialEquivalent()));
+                        }
+                    }).start();
 
                     StartActivity.userDao.deleteUsers();
                     StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),

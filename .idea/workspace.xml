@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb475fde-a415-4332-9e91-c2b36c1cb607" name="Default Changelist" comment="" />
+    <list default="true" id="bb475fde-a415-4332-9e91-c2b36c1cb607" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/TradeSimulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TradeSimulator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSim/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSim/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/LogInFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/LogInFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/database/MyRoomDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/database/MyRoomDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/database/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/database/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/enums/CommandTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/enums/CommandTags.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/enums/Views.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/enums/Views.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSim/app/src/main/java/ir/mas/tradesim/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSim/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSim/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TradeSim/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TradeSim/gradle.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +35,7 @@
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/TradeSim/app" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
