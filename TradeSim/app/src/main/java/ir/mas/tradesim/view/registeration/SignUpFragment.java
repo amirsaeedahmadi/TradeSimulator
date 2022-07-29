@@ -146,6 +146,7 @@ public class SignUpFragment extends Fragment {
         @Override
         protected void onPostExecute(String message) {
             super.onPostExecute(message);
+
             System.out.println(message);
 
             if (!checker) {
@@ -155,6 +156,7 @@ public class SignUpFragment extends Fragment {
 
             try {
                 if (Request.isSuccessful()) {
+                    Request.getToken();
                     Currency.refresh();
 
                     String authToken = Request.getResponse().getString(Strings.PRIVATE_KEY

@@ -43,23 +43,7 @@ public class ScoreboardFragment extends Fragment {
     private String mParam2;
 
     public ScoreboardFragment() {
-        // get data from server
-        // TODO: revise this method
-        try {
-            Request.setCommandTag(CommandTags.SHOW_SCOREBOARD);
-            Request.setCurrentMenu(Views.SCOREBOARD_VIEW);
-            // TODO: next two lines are appropriate for login menu, remove them in final version!
-//            Request.addData(Strings.USERNAME.getLabel(), userUsername);
-//            Request.addData(Strings.PASSWORD.getLabel(), passwordUsername);
-            Request.sendToServer();
-
-            // you can get message that server returns with this method and show that in ui:
-
-
-        } catch (JSONException e) {
-            // TODO: handle upcoming errors in client
-            e.printStackTrace();
-        }
+        new GetUsersFromServer().execute();
     }
 
 
@@ -102,7 +86,7 @@ public class ScoreboardFragment extends Fragment {
             try {
                 if (Request.isSuccessful()) {
 
-                    TopUser.setTopUsers(new Gson().fromJson(Request.getMessage(), new TypeToken<ArrayList<Currency>>() {
+                    TopUser.setTopUsers(new Gson().fromJson(Request.getMessage(), new TypeToken<ArrayList<TopUser>>() {
                     }.getType()));
 
                 } else {

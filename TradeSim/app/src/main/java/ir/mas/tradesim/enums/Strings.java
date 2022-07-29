@@ -4,7 +4,7 @@ public enum Strings {
 //    USERNAME("Register Menu"),
 //    PASSWORD("Profile Menu"),
 //    NICKNAME("Main Menu");
-    PRIVATE_KEY("PrivateKey"),
+    PRIVATE_KEY("token"),
     NICKNAME("Nickname"),
     RIAL_CREDIT("RialCredit"),
     CURRENCY_AMOUNT("currency_amount"),

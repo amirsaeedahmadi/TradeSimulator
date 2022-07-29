@@ -143,6 +143,7 @@ public class LogInFragment extends Fragment {
 
             try {
                 if (Request.isSuccessful()) {
+                    Request.getToken();
                     Currency.refresh();
                     String authToken = key;
                     String nickname = Request.getResponse().getString(Strings.NICKNAME

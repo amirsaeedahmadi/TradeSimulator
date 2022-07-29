@@ -123,10 +123,7 @@ public class Transaction {
                 }
 
                Request.addData(Strings.TRANSACTION.getLabel(), new Gson().toJson(thisTransaction));
-                Request.addData(Strings.PRIVATE_KEY.getLabel(), User.getInstance().getAuthToken());
-                /*Request.addData(Strings.CURRENCY_CODE.getLabel(), currency.getCode());
-                Request.addData(Strings.CURRENCY_AMOUNT.getLabel(), String.valueOf(currencyAmount));
-                Request.addData(Strings.RIAL_AMOUNT.getLabel(), String.valueOf(rialAmount));*/
+//                Request.addData(Strings.PRIVATE_KEY.getLabel(), User.getInstance().getAuthToken());
                 Request.sendToServer();
 
             } catch (Exception e) {

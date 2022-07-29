@@ -54,19 +54,12 @@ public class Request {
         return response.getString("message");
     }
 
-    public static void extractData(String command) throws JSONException { // extract data from the input with the "--key value" format
-        Pattern pattern = Pattern.compile(Regexes.DATA.getLabel());
-        Matcher matcher = pattern.matcher(command);
-        while (matcher.find())
-            request.put(matcher.group(1), matcher.group(2).trim());
-    }
-
 
     public static void sendToServer() {
 
         try {
             // TODO: after preparing registration uncomment next line
-//            Request.setToken();
+            Request.setToken();
 
             Socket socket = null;
 
@@ -95,7 +88,8 @@ public class Request {
         public void run() {
             try {
                 // TODO: after preparing registration uncomment next line
-//            Request.setToken();
+
+            Request.setToken();
 
                 Socket socket = null;
 
