@@ -3,8 +3,8 @@ package ir.mas.tradesim.model;
 
 
 import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+
+import java.util.LinkedList;
 
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
 
@@ -17,6 +17,8 @@ public class User {
     double rialCredit;
     double rialEquivalent;
     boolean darkMode;
+    public LinkedList<String> throughTime;
+
 
 
     public User( String authToken, String nickname, double rialCredit, double rialEquivalent) {
@@ -25,6 +27,8 @@ public class User {
         this.rialCredit = rialCredit;
         this.rialEquivalent = rialEquivalent;
         this.darkMode = false;
+        this.throughTime = new LinkedList<>();
+        this.throughTime.add(rialEquivalent + "");
     }
 
     public void increaseRialCredit(Double amount) {
