@@ -23,6 +23,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        Currency.refresh();
 
         MyRoomDatabase database = MyRoomDatabase.getInstance(getBaseContext());
         userDao = database.userDao();
@@ -37,7 +38,6 @@ public class StartActivity extends AppCompatActivity {
             UserDb userDb = userDao.getAllUsers().get(0);
             User.setInstance(new User(userDb.getAuthToken(), userDb.getNickname(),
                     userDb.getRialCredit(),userDb.getRialEquivalent()));
-            Currency.refresh();
 
             intent = new Intent(getBaseContext(), MainActivity.class);
             new MyTimer().execute(intent);

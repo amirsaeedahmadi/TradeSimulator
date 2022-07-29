@@ -1,5 +1,7 @@
 package ir.mas.tradesim;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,12 +11,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
+
+import ir.mas.tradesim.database.UserDb;
+import ir.mas.tradesim.enums.Strings;
+import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.TopUser;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Views;
+import ir.mas.tradesim.model.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,14 +65,68 @@ public class ScoreboardFragment extends Fragment {
         }
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ScoreboardFragment.
-     */
+
+    class GetUsersFromServer extends AsyncTask<Void, Void, String> {
+
+        boolean checker = false;
+
+        @Override
+        protected String doInBackground(Void... voids) {
+
+            try {
+                Request.setCommandTag(CommandTags.SHOW_SCOREBOARD);
+                Request.setCurrentMenu(Views.SCOREBOARD_VIEW);
+                Request.sendToServer();
+
+            } catch (Exception e) {
+                String message = getString(R.string.connection_error);
+                System.out.println(message);
+                e.printStackTrace();
+                return message;
+            }
+
+            String message = getString(R.string.connection_success);
+            System.out.println(message);
+            checker = true;
+            return message;
+        }
+
+
+        @Override
+        protected void onPostExecute(String message) {
+            super.onPostExecute(message);
+            System.out.println(message);
+
+            if (!checker) {
+                Toast.makeText(getContext(), R.string.connection_error, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+                if (Request.isSuccessful()) {
+
+                    TopUser.setTopUsers(new Gson().fromJson(Request.getMessage(), new TypeToken<ArrayList<Currency>>() {
+                    }.getType()));
+
+                } else {
+                    Toast.makeText(getContext(), R.string.invalid, Toast.LENGTH_LONG).show();
+                }
+            } catch (JSONException e) {
+                Toast.makeText(getContext(), R.string.response_error, Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+            /**
+             * Use this factory method to create a new instance of
+             * this fragment using the provided parameters.
+             *
+             * @param param1 Parameter 1.
+             * @param param2 Parameter 2.
+             * @return A new instance of fragment ScoreboardFragment.
+             */
     // TODO: Rename and change types and number of parameters
     public static ScoreboardFragment newInstance(String param1, String param2) {
         ScoreboardFragment fragment = new ScoreboardFragment();
@@ -85,7 +151,7 @@ public class ScoreboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_scoreboard, container, false);
-        TopUser.initialize();
+//        TopUser.initialize();
         topUsersRecyclerView = root.findViewById(R.id.topUsersRecyclerView);
         topUsersRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new TopUsersRecyclerViewAdapter(getContext());
