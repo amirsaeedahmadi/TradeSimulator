@@ -23,6 +23,7 @@ import ir.mas.tradesim.model.Adad;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.TransactionType;
 import ir.mas.tradesim.databinding.ActivityCurrencyDetailedBinding;
+import ir.mas.tradesim.model.User;
 
 public class CurrencyDetailedActivity extends AppCompatActivity {
 
@@ -106,8 +107,15 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         creditView = findViewById(R.id.yourCreditTextView);
         equivalentRialView = findViewById(R.id.equivalentRialTextView);
         sparkView = findViewById(R.id.sparkView);
+        if (User.getInstance().isDarkMode()){
+            sparkView.setBaseLineColor(getResources().getColor(R.color.white));;
+        }
+        else{
+            sparkView.setBaseLineColor(getResources().getColor(R.color.black));
+        }
         sparkView.setAdapter(new CurrencySparkAdapter(Currency.getSparkDataByCurrency(
                 intent.getStringExtra("currency code"))));
+        sparkView.setScrubEnabled(true);
         setPrices();
 
         toolbar = binding.toolbar;
