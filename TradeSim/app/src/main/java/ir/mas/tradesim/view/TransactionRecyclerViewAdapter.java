@@ -11,9 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ir.mas.tradesim.R;
+import ir.mas.tradesim.database.TransactionDb;
 import ir.mas.tradesim.model.Adad;
 import ir.mas.tradesim.model.Transaction;
 import ir.mas.tradesim.model.TransactionType;
+import ir.mas.tradesim.view.registeration.StartActivity;
 
 public class TransactionRecyclerViewAdapter extends RecyclerView.Adapter<TransactionRecyclerViewAdapter.ViewHolder> {
     private LayoutInflater inflater;
@@ -59,10 +61,10 @@ public class TransactionRecyclerViewAdapter extends RecyclerView.Adapter<Transac
 //        }
 
         //todo: to add other attributes ...
-        Transaction transaction = Transaction.getTransactions().get(position);
-//        holder.logoView.setImageResource(transaction.getCurrency().getLogo());
+        TransactionDb transaction = StartActivity.transactionList.get(position);
+        holder.logoView.setImageResource(transaction.getCurrency().getLogo());
         holder.nameView.setText(transaction.getCurrency().getName());
-        holder.dateView.setText(transaction.getDate().toString());
+        //holder.dateView.setText(transaction.getDate().toString());
         if (transaction.getType() == TransactionType.BUY) {
             holder.typeView.setImageResource(R.drawable.ic_down);
         } else {
@@ -90,7 +92,7 @@ public class TransactionRecyclerViewAdapter extends RecyclerView.Adapter<Transac
     @Override
     public int getItemCount() {
         System.out.println(Transaction.getTransactions().size());
-        return Transaction.getTransactions().size();
+        return StartActivity.transactionList.size();
     }
 
 }

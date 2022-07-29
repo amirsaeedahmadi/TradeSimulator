@@ -63,7 +63,7 @@ public class TransactionPerformActivity extends AppCompatActivity {
             typeTextView.setText(R.string.sell);
             typeImageView.setImageResource(R.drawable.ic_up);
         }
-//        currencyImageView.setImageResource(currency.getLogo());
+        currencyImageView.setImageResource(currency.getLogo());
         // edit texts
 //        currencyView.setOnClickListener(new );
         currencyView.setOnKeyListener(new View.OnKeyListener() {

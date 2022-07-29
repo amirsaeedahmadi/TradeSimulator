@@ -52,9 +52,6 @@ public class StatsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_stats, container, false);
         sparkView = root.findViewById(R.id.sparkView2);
         textView = root.findViewById(R.id.plotTitle);
-        User.getInstance().throughTime.add("9000");
-        User.getInstance().throughTime.add("9900");
-        User.getInstance().throughTime.add("9950");
         float[] yData = new float[User.getInstance().throughTime.size()];
         for (int i = 0; i < User.getInstance().throughTime.size(); i++) {
             yData[i] = Float.parseFloat(User.getInstance().throughTime.get(i));

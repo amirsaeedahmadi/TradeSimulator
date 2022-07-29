@@ -17,8 +17,9 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 import ir.mas.tradesim.R;
+import ir.mas.tradesim.database.TransactionDb;
 import ir.mas.tradesim.view.Request;
 import ir.mas.tradesim.view.TransactionPerformActivity;
 import ir.mas.tradesim.database.CurrencyConverters;
@@ -28,29 +29,23 @@ import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
+import ir.mas.tradesim.view.registeration.StartActivity;
 
 
-@Entity(tableName = "transaction_table")
 public class Transaction {
-    private static int nextId = 1;
+    public static int nextId = 1;
     private static ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private static boolean hasInitialized = false;
     private Context context;
-    @PrimaryKey
-    @NonNull
     private int transactionId;
-    @TypeConverters(TransactionTypeConverters.class)
     private TransactionType type;
-    @TypeConverters(CurrencyConverters.class)
     private Currency currency;
     private double currencyAmount;
     private double rialAmount;
-    @TypeConverters(DateConverters.class)
     private Date date;
 
     public static Transaction thisTransaction;
 
-    @Ignore
     public Transaction(TransactionType type, Currency currency, double currencyAmount,
                        double rialAmount, Date date) {
         this.type = type;
@@ -79,21 +74,9 @@ public class Transaction {
 
         thisTransaction = this;
         if (type == TransactionType.SELL) {
-//            try {
-//                currency.decreaseCredit(this.currencyAmount);
-//                User.getInstance().increaseRialCredit(this.rialAmount);
-//            } catch (NotEnoughValueException e) {
-//                throw e;
-//            }
             new SendTransactionToServer(true).execute();
 
         } else {
-//            try {
-//                User.getInstance().decreaseRialCredit(rialAmount);
-//                currency.increaseCredit(this.currencyAmount);
-//            } catch (NotEnoughValueException e) {
-//                throw e;
-//            }
             new SendTransactionToServer(false).execute();
         }
     }
@@ -153,22 +136,28 @@ public class Transaction {
 
             try {
                 if (Request.isSuccessful()) {
+                    Toast.makeText(TransactionPerformActivity.context,
+                            R.string.transaction_perform_successful,
+                            Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(TransactionPerformActivity.context, R.string.transaction_perform_successful, Toast.LENGTH_SHORT).show();
+                    StartActivity.transactionDao.insert(new TransactionDb(thisTransaction.transactionId, thisTransaction.type,
+                            thisTransaction.currency, thisTransaction.currencyAmount,
+                            thisTransaction.rialAmount));
+                    StartActivity.transactionList = StartActivity.transactionDao.getAllTransactions();
+                    if (this.transactionTypeChecker){
 
-
-//                    new Thread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            StartActivity.userDao.deleteUsers();
-//                            StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
-//                                    User.getInstance().getNickname(), User.getInstance().getRialCredit(),
-//                                    User.getInstance().getRialEquivalent()));
-//                        }
-//                    }).start();
+                    User.getInstance().setRialCredit(User.getInstance().getRialCredit()
+                            - thisTransaction.getRialAmount());
+                    }
+                    else{
+                        User.getInstance().setRialCredit(User.getInstance().getRialCredit()
+                                + thisTransaction.getRialAmount());
+                    }
+                    User.getInstance().throughTime.add(User.getInstance().rialCredit+ "");
 
                 } else {
                     Toast.makeText(TransactionPerformActivity.context, R.string.invalid, Toast.LENGTH_LONG).show();
+                    Transaction.transactions.remove(thisTransaction);
                 }
             } catch (JSONException e) {
                 Toast.makeText(TransactionPerformActivity.context, R.string.response_error, Toast.LENGTH_SHORT).show();
@@ -206,7 +195,7 @@ public class Transaction {
 
     //getters and setters
 
-    public static ArrayList<Transaction> getTransactions() {
+    public static List<Transaction> getTransactions() {
         return transactions;
     }
 

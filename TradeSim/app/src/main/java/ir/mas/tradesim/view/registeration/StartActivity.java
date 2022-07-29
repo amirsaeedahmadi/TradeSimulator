@@ -8,9 +8,12 @@ import java.util.List;
 
 import ir.mas.tradesim.R;
 import ir.mas.tradesim.database.MyRoomDatabase;
+import ir.mas.tradesim.database.TransactionDao;
+import ir.mas.tradesim.database.TransactionDb;
 import ir.mas.tradesim.database.UserDao;
 import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.Currency;
+import ir.mas.tradesim.model.Transaction;
 import ir.mas.tradesim.model.User;
 import ir.mas.tradesim.view.MainActivity;
 import ir.mas.tradesim.view.Request;
@@ -20,9 +23,8 @@ public class StartActivity extends AppCompatActivity {
 
     public static UserDao userDao;
     public static List<UserDb> userList;
-
-
-
+    public static List<TransactionDb> transactionList;
+    public static TransactionDao transactionDao;
 
     Intent intent;
     @Override
@@ -34,9 +36,13 @@ public class StartActivity extends AppCompatActivity {
 
         MyRoomDatabase database = MyRoomDatabase.getInstance(getBaseContext());
         userDao = database.userDao();
+        transactionDao = database.transactionDao();
 
         userList = userDao.getAllUsers();
-
+        transactionList = transactionDao.getAllTransactions();
+        if (!transactionList.isEmpty()){
+            Transaction.nextId = transactionList.size() + 1;
+        }
         if (userList.isEmpty()) {
             intent = new Intent(getBaseContext(), SignInActivity.class);
             new MyTimer().execute(intent);

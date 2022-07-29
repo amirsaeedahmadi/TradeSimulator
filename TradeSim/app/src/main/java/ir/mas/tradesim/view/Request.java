@@ -64,7 +64,7 @@ public class Request {
             }
             Socket socket = null;
 
-            socket = new Socket("192.168.1.6", 8080);
+            socket = new Socket("172.20.10.4", 5000);
 
 //            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
@@ -94,7 +94,7 @@ public class Request {
 
                 Socket socket = null;
 
-                socket = new Socket("192.168.1.6", 8080);
+                socket = new Socket("172.20.10.4", 5000);
 
 //            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
                 DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());

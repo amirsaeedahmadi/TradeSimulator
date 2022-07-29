@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import ir.mas.tradesim.R;
 import ir.mas.tradesim.model.Transaction;
+import ir.mas.tradesim.view.registeration.StartActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,7 +72,7 @@ public class TransactionsFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_transactions, container, false);
 //        Transaction.initialize();
-        System.out.println(">>> "+Transaction.getTransactions().size());
+        System.out.println(">>> "+ StartActivity.transactionList.size());
         transactionRecyclerView = root.findViewById(R.id.TransactionsRecyclerView);
         transactionRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new TransactionRecyclerViewAdapter(getContext());
