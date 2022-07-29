@@ -9,12 +9,6 @@ import java.util.LinkedList;
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
 
 
-/*StartActivity.userDao.deleteUsers();
-        StartActivity.userDao.insert(new UserDb(User.getInstance().getAuthToken(),
-        User.getInstance().getNickname(), User.getInstance().getRialCredit(),
-        User.getInstance().getRialEquivalent(),
-        new Gson().toJson(User.getInstance().throughTime)));
-        StartActivity.userList = StartActivity.userDao.getAllUsers();*/
 public class User {
 
     private static User instance;

@@ -11,26 +11,26 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView10"
-            android:layout_width="278dp"
-            android:layout_height="57dp"
+            android:id="@+id/plotTitle"
+            android:layout_width="259dp"
+            android:layout_height="54dp"
             android:text="Your Credit Through Time"
             android:textSize="21dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.616"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="-15dp"></TextView>
+            app:layout_constraintBottom_toTopOf="@id/sparkView2"
+            app:layout_constraintStart_toStartOf="parent">
+        </TextView>
 
         <com.robinhood.spark.SparkView
+            android:id="@+id/sparkView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
             app:flow_verticalBias="0.2"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@+id/plotTitle">
 
         </com.robinhood.spark.SparkView>
     </androidx.constraintlayout.widget.ConstraintLayout>

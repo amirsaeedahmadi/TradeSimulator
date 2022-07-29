@@ -7,6 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.robinhood.spark.SparkView;
+
+import ir.mas.tradesim.model.Currency;
+import ir.mas.tradesim.model.User;
 
 
 public class StatsFragment extends Fragment {
@@ -16,6 +22,8 @@ public class StatsFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+    SparkView sparkView;
+    TextView textView;
 
     public StatsFragment() {}
 
@@ -41,6 +49,19 @@ public class StatsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stats, container, false);
+        View root = inflater.inflate(R.layout.fragment_stats, container, false);
+        sparkView = root.findViewById(R.id.sparkView2);
+        textView = root.findViewById(R.id.plotTitle);
+        System.out.println(textView.getText().toString());
+        User.getInstance().throughTime.add("9000");
+        User.getInstance().throughTime.add("9900");
+        User.getInstance().throughTime.add("9950");
+        float[] yData = new float[User.getInstance().throughTime.size()];
+        System.out.println(User.getInstance().throughTime.getFirst());
+        for (int i = 0; i < User.getInstance().throughTime.size(); i++) {
+            yData[i] = Float.parseFloat(User.getInstance().throughTime.get(i));
+        }
+        sparkView.setAdapter(new CurrencySparkAdapter(yData));
+        return root;
     }
 }

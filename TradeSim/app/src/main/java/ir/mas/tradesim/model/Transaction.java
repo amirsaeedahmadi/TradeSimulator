@@ -12,20 +12,19 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-import ir.mas.tradesim.MainActivity;
 import ir.mas.tradesim.R;
 import ir.mas.tradesim.Request;
-import ir.mas.tradesim.StartActivity;
 import ir.mas.tradesim.TransactionPerformActivity;
 import ir.mas.tradesim.database.CurrencyConverters;
 import ir.mas.tradesim.database.DateConverters;
 import ir.mas.tradesim.database.TransactionTypeConverters;
-import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
@@ -49,6 +48,8 @@ public class Transaction {
     private double rialAmount;
     @TypeConverters(DateConverters.class)
     private Date date;
+
+    public static Transaction thisTransaction;
 
     @Ignore
     public Transaction(TransactionType type, Currency currency, double currencyAmount,
@@ -77,6 +78,7 @@ public class Transaction {
 
     public void perform() throws NotEnoughValueException {
 
+        thisTransaction = this;
         if (type == TransactionType.SELL) {
 //            try {
 //                currency.decreaseCredit(this.currencyAmount);
@@ -121,10 +123,11 @@ public class Transaction {
                     Request.setCommandTag(CommandTags.BUY);
                 }
 
-                Request.addData(Strings.TRANSACTION_ID.getLabel(), String.valueOf(transactionId));
-                Request.addData(Strings.CURRENCY_CODE.getLabel(), currency.getCode());
+               Request.addData(Strings.TRANSACTION.getLabel(), new Gson().toJson(thisTransaction));
+                Request.addData(Strings.PRIVATE_KEY.getLabel(), User.getInstance().getAuthToken());
+                /*Request.addData(Strings.CURRENCY_CODE.getLabel(), currency.getCode());
                 Request.addData(Strings.CURRENCY_AMOUNT.getLabel(), String.valueOf(currencyAmount));
-                Request.addData(Strings.RIAL_AMOUNT.getLabel(), String.valueOf(rialAmount));
+                Request.addData(Strings.RIAL_AMOUNT.getLabel(), String.valueOf(rialAmount));*/
                 Request.sendToServer();
 
             } catch (Exception e) {

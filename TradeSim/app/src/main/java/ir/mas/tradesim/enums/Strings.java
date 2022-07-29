@@ -10,7 +10,7 @@ public enum Strings {
     CURRENCY_AMOUNT("currency_amount"),
     RIAL_AMOUNT("rial_amount"),
     TRANSACTION_ID("transaction_id"),
-
+    TRANSACTION("transaction"),
     CURRENCY_CODE("CurrencyCode");
 
 
