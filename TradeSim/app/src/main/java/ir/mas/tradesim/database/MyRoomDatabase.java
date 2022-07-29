@@ -12,11 +12,11 @@ import androidx.room.TypeConverters;
 import ir.mas.tradesim.model.Transaction;
 
 @TypeConverters({TransactionTypeConverters.class, CurrencyConverters.class, DateConverters.class})
-@Database(entities = {UserDb.class, Transaction.class}, version = 3, exportSchema = false)
+@Database(entities = {UserDb.class}, version = 4, exportSchema = false)
 public abstract class MyRoomDatabase extends RoomDatabase {
     public abstract UserDao userDao();
 
-    public abstract TransactionDao transactionDao();
+    //public abstract TransactionDao transactionDao();
 
     private static MyRoomDatabase instance;
 
