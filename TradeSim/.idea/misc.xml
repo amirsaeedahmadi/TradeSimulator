@@ -45,10 +45,17 @@
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.22" />
         <entry key="..\:/MyProjects/MP/MP3/MobileProject/TradeSimulator/TradeSim/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.189" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_show_chart_24.xml" value="0.1665" />
+        <entry key="app/src/main/res/drawable/ic_bitcoin_cash_bch_logo.xml" value="0.1665" />
+        <entry key="app/src/main/res/drawable/ic_ethereum_classic_etc_logo.xml" value="0.1665" />
         <entry key="app/src/main/res/drawable/ic_filecoin_fil_logo.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_html_coin_html_logo.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_wrapped_bitcoin_wbtc_logo.xml" value="0.1665" />
+        <entry key="app/src/main/res/layout/activity_currency.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/activity_currency_detailed.xml" value="0.3037037037037037" />
+        <entry key="app/src/main/res/layout/activity_fullscreen.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4540054321289063" />
+        <entry key="app/src/main/res/layout/currency_linear_layout.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.3098958333333333" />
       </map>
     </option>

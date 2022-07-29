@@ -14,9 +14,9 @@ import com.robinhood.spark.SparkView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
@@ -117,7 +117,9 @@ public class CurrencyDetailedActivity extends AppCompatActivity {
         toolBarLayout = binding.toolbarLayout;
         toolBarLayout.setTitle(getTitle());
         toolBarLayout.setTitle(currency.toString());
-//        toolBarLayout.setBackgroundResource(currency.getLogo());
+        //toolBarLayout.setBackgroundResource(currency.getLogo());
+        //new DownloadImageTask(toolBarLayout)
+          //      .execute(currency.logo);
 
         toolbar.setLogo(null);
         FloatingActionButton fab = binding.fab;
@@ -246,3 +248,4 @@ class LogoSetter extends AsyncTask<CurrencyDetailedActivity, Object, Boolean> {
         if (!isCancelled() && toContinue) new LogoSetter().execute(new CurrencyDetailedActivity[] {activity});
     }
 }
+
