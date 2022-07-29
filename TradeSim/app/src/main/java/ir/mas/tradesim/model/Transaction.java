@@ -74,10 +74,7 @@ public class Transaction {
         transactions.add(this);
     }
 
-    /**
-     * @author Mahdi Teymoori Anar
-     * This method, performs a transaction.
-     * @throws NotEnoughValueException if the credit is not enough to perform the transaction*/
+
     public void perform() throws NotEnoughValueException {
 
         if (type == TransactionType.SELL) {
