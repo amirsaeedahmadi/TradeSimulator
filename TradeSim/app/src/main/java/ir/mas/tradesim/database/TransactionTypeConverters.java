@@ -7,6 +7,7 @@ import ir.mas.tradesim.model.TransactionType;
 
 
 public class TransactionTypeConverters {
+
     @TypeConverter
     public static String fromTransactionType(TransactionType value) {
         return value.toString();

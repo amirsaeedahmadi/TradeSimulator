@@ -2,14 +2,16 @@ package ir.mas.tradesim;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.math.BigDecimal;
 
@@ -61,7 +63,21 @@ public class CurrencyRecyclerViewAdapter extends RecyclerView.Adapter<CurrencyRe
         System.out.println("we are in currencyRecyclerViewAdapter");
         Currency currency = Currency.getCurrencies().get(position);
        // String x = new BigDecimal(currency.getCredit()).toPlainString();
+
         holder.logoView.setImageResource(currency.getLogo());
+
+        /*Picasso.Builder builder = new Picasso.Builder(inflater.getContext());
+        builder.listener(new Picasso.Listener()
+        {
+            @Override
+            public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception)
+            {
+                exception.printStackTrace();
+            }
+        });
+        builder.build().load(currency.logo)
+                .into(holder.logoView);*/
+
         holder.nameView.setText(currency.getName());
         holder.codeView.setText(currency.getCode());
         if ((currency.getPrice() == -1)) {

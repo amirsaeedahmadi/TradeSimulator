@@ -30,7 +30,7 @@ public class Currency {
     String sparkData;
     double price;//e.g. 1000000 (IRR) //=-1 if not accessible to update the value
     double credit;//e.g. 0.01
-    String logo;//Id of the Logo e.g. R.id.monero
+    public String logo;//Id of the Logo e.g. R.id.monero
 
     static public boolean updateChecker;
 
@@ -349,6 +349,45 @@ public class Currency {
         }
         else if (this.name.equals("SHIBA INU")){
             return R.drawable.ic_shiba_inu_shib_logo;
+        }
+        else if (this.name.equals("Monero")){
+            return R.drawable.ic_monero_xmr_logo;
+        }
+        else if (this.name.equals("Tether USD")){
+            return R.drawable.tether_usd;
+        }
+        else if (this.name.equals("USDC")){
+            return R.drawable.usdc;
+        }
+        else if (this.name.equals("Binance Coin")){
+            return R.drawable.binance_coin;
+        }
+        else if (this.name.equals("Binance USD")){
+            return R.drawable.binance_usd;
+        }
+        else if (this.name.equals("Cardano")){
+            return R.drawable.cardano;
+        }
+        else if (this.name.equals("XRP")){
+            return R.drawable.xrp;
+        }
+        else if (this.name.equals("HEX")){
+            return R.drawable.hex;
+        }
+        else if (this.name.equals("Polkadot")){
+            return R.drawable.polkadot;
+        }
+        else if (this.name.equals("Avalanche")){
+            return R.drawable.avalanche;
+        }
+        else if (this.name.equals("Chainlink")){
+            return R.drawable.chainlink;
+        }
+        else if (this.name.equals("TRON")){
+            return R.drawable.tron;
+        }
+        else if (this.name.equals("Lido Staked Ether")){
+            return R.drawable.staked_ether;
         }
 
         return R.drawable.ic_shiba_inu_shib_logo;

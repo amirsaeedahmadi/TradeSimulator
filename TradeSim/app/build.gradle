@@ -50,4 +50,5 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
 
     implementation 'com.robinhood.spark:spark:1.2.0'
+    implementation 'com.squareup.picasso:picasso:2.8'
 }
