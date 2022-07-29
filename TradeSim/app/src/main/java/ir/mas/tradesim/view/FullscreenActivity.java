@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view;
 
 import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;

@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import ir.mas.tradesim.LogInFragment;
+import ir.mas.tradesim.view.registeration.LogInFragment;
 import ir.mas.tradesim.R;
-import ir.mas.tradesim.SignUpFragment;
+import ir.mas.tradesim.view.registeration.SignUpFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

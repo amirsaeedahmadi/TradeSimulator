@@ -7,7 +7,7 @@
     android:theme="@style/Theme.Main"
     app:chainUseRtl="false"
     app:guidelineUseRtl="false"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -63,7 +63,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="ir.mas.tradesim.HomeFragment"
+        android:name="ir.mas.tradesim.view.HomeFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:guidelineUseRtl="false"

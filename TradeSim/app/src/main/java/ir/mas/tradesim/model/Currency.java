@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import ir.mas.tradesim.R;
 import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
-import ir.mas.tradesim.Request;
+import ir.mas.tradesim.view.Request;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Views;
 

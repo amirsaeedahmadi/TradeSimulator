@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view.registeration;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -19,12 +19,15 @@ import org.json.JSONException;
 
 import java.util.LinkedList;
 
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.User;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
+import ir.mas.tradesim.view.MainActivity;
+import ir.mas.tradesim.view.Request;
 
 public class LogInFragment extends Fragment {
 

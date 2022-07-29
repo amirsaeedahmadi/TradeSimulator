@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.model.Adad;
 import ir.mas.tradesim.model.Currency;

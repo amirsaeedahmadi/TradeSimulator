@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -18,11 +18,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import ir.mas.tradesim.R;
+import ir.mas.tradesim.databinding.ActivityCurrencyDetailedBinding;
 import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.model.Adad;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.TransactionType;
-import ir.mas.tradesim.databinding.ActivityCurrencyDetailedBinding;
 import ir.mas.tradesim.model.User;
 
 public class CurrencyDetailedActivity extends AppCompatActivity {

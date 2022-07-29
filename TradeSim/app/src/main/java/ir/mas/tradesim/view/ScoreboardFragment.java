@@ -1,6 +1,5 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -20,13 +19,11 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-import ir.mas.tradesim.database.UserDb;
-import ir.mas.tradesim.enums.Strings;
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.TopUser;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Views;
-import ir.mas.tradesim.model.User;
 
 /**
  * A simple {@link Fragment} subclass.

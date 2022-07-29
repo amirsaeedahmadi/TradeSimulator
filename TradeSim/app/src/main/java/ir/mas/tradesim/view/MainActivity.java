@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view;
 
 
 import android.annotation.SuppressLint;
@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Locale;
 
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.model.Currency;
 
 public class MainActivity extends AppCompatActivity {

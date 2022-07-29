@@ -14,12 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TradeSim">
         <activity
-            android:name=".SignInActivity"
+            android:name=".view.registeration.SignInActivity"
             android:exported="false"
             android:label="@string/title_activity_sign_in"
             android:theme="@style/Theme.Main" />
         <activity
-            android:name=".StartActivity"
+            android:name=".view.registeration.StartActivity"
             android:exported="true"
             android:theme="@style/Theme.TradeSim.Start">
             <intent-filter>
@@ -29,22 +29,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TransactionPerformActivity"
+            android:name=".view.TransactionPerformActivity"
             android:exported="false"
             android:theme="@style/Theme.Main" />
         <activity
-            android:name=".FullscreenActivity"
+            android:name=".view.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="@string/title_activity_fullscreen"
             android:theme="@style/Theme.TradeSim.Fullscreen" />
         <activity
-            android:name=".CurrencyDetailedActivity"
+            android:name=".view.CurrencyDetailedActivity"
             android:exported="false"
             android:label="@string/title_activity_currency_detailed"
             android:theme="@style/Theme.TradeSim.NoActionBar.FullScreen" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Main">
             <intent-filter>
@@ -54,7 +54,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CurrencyActivity"
+            android:name=".view.CurrencyActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

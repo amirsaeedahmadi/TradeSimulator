@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view;
 
 import android.os.Bundle;
 
@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.robinhood.spark.SparkView;
 
-import ir.mas.tradesim.model.Currency;
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.model.User;
 
 
@@ -52,12 +52,10 @@ public class StatsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_stats, container, false);
         sparkView = root.findViewById(R.id.sparkView2);
         textView = root.findViewById(R.id.plotTitle);
-        System.out.println(textView.getText().toString());
         User.getInstance().throughTime.add("9000");
         User.getInstance().throughTime.add("9900");
         User.getInstance().throughTime.add("9950");
         float[] yData = new float[User.getInstance().throughTime.size()];
-        System.out.println(User.getInstance().throughTime.getFirst());
         for (int i = 0; i < User.getInstance().throughTime.size(); i++) {
             yData[i] = Float.parseFloat(User.getInstance().throughTime.get(i));
         }

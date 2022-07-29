@@ -1,6 +1,4 @@
-package ir.mas.tradesim;
-
-import android.net.wifi.WifiManager;
+package ir.mas.tradesim.view;
 
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Views;
@@ -14,31 +12,9 @@ import org.json.JSONObject;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-
-import android.annotation.SuppressLint;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 
 public class Request {
     public static JSONObject request = new JSONObject();
@@ -94,7 +70,7 @@ public class Request {
 
             Socket socket = null;
 
-            socket = new Socket("192.168.1.52", 8080);
+            socket = new Socket("192.168.1.6", 8080);
 
 //            Socket socket = new Socket("0.tcp.ngrok.io", 15169);
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());

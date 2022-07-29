@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view;
 
 import android.os.Bundle;
 
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.model.Adad;
 import ir.mas.tradesim.model.Currency;

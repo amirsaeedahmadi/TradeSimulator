@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view.registeration;
 
 import android.os.Bundle;
 

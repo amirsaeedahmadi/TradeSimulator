@@ -2,7 +2,6 @@ package ir.mas.tradesim.model;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -20,8 +19,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import ir.mas.tradesim.R;
-import ir.mas.tradesim.Request;
-import ir.mas.tradesim.TransactionPerformActivity;
+import ir.mas.tradesim.view.Request;
+import ir.mas.tradesim.view.TransactionPerformActivity;
 import ir.mas.tradesim.database.CurrencyConverters;
 import ir.mas.tradesim.database.DateConverters;
 import ir.mas.tradesim.database.TransactionTypeConverters;

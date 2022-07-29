@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view.registeration;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -6,11 +6,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import java.util.List;
 
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.database.MyRoomDatabase;
 import ir.mas.tradesim.database.UserDao;
 import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.User;
+import ir.mas.tradesim.view.MainActivity;
 
 
 public class StartActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.exceptions.NotAbleToUpdateException;
 import ir.mas.tradesim.exceptions.NotEnoughValueException;
 import ir.mas.tradesim.model.Adad;

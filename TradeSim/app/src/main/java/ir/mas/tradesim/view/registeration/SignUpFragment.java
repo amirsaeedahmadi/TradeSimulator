@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view.registeration;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -17,12 +17,16 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 
 import java.util.Random;
+
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.Currency;
 import ir.mas.tradesim.model.User;
 import ir.mas.tradesim.enums.CommandTags;
 import ir.mas.tradesim.enums.Strings;
 import ir.mas.tradesim.enums.Views;
+import ir.mas.tradesim.view.MainActivity;
+import ir.mas.tradesim.view.Request;
 
 
 public class SignUpFragment extends Fragment {

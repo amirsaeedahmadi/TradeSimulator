@@ -1,4 +1,4 @@
-package ir.mas.tradesim;
+package ir.mas.tradesim.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,8 +16,10 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import ir.mas.tradesim.R;
 import ir.mas.tradesim.database.UserDb;
 import ir.mas.tradesim.model.User;
+import ir.mas.tradesim.view.registeration.StartActivity;
 
 
 public class SettingsFragment extends Fragment {
