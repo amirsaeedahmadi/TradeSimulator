@@ -1,10 +1,10 @@
 # TradeSimulator
 
-# Project Mobile
-پروژه درس برنامه‌سازی موبایل
+# Mobile Programming Course Project
+
 ## Teammates
 <ul>
-  <li>مهدی تیموری انار</li>
-  <li>سپهر حرفی</li>
-  <li> امیرسعید احمدی تنکابنی</li>
+  <li>Mahdi Teymoori Anar</li>
+  <li>Sepehr Harfi</li>
+  <li>Amirsaeed Ahmadi-Tonekaboni</li>
 </ul>
